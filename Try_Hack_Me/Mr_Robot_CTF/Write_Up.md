@@ -80,8 +80,8 @@ We go and check out the website hosted at the port 80.
 ![](https://github.com/pratty010/Boxes/blob/master/Try_Hack_Me/Mr_Robot_CTF/images/web_home_80.png)
 
 We can explore the 6 options presented to us at the main page. You don't get anything useful from visiting them unless you want to join Mr. Robot on his mission!!
-We also visit the website hosted on the port 443. We see that it just the ssl version of the website on port 80. **We also don't find any information leak from the certificate.** Let's do some enumeration while we run the gobuster in the background. \
-Checking the **robots.txt** file. We find that there are two files that are prohibited for all User-Agents. 
+We also visit the website hosted on the port 443. We see that it just the ssl version of the website on port 80. **We also don't find any information leak from the certificate.** 
+So, let us start with some manual enumeration while we run the gobuster in the background. Checking the **robots.txt** file. We find that there are two files that are prohibited for all User-Agents. 
 
 ![](https://github.com/pratty010/Boxes/blob/master/Try_Hack_Me/Mr_Robot_CTF/images/robots.png)
 \
