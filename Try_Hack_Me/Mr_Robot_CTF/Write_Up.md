@@ -583,4 +583,3 @@ firstboot_done  key-3-of-3.txt
 ~# cat key-3-of-3.txt
 ```
 
-![@pratty](https://github.com/pratty010/Boxes)
