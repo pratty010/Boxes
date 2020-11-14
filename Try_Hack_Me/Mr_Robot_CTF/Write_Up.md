@@ -1,4 +1,4 @@
-# Write Up for the Try_Hack_Me box - Mr. Robot CTF
+# Write Up for Try_Hack_Me box - Mr. Robot CTF
 
 This box was first put on VulnHub.com and is a relatively easy box. \
 The box is based around the show Mr. Robot and is a boot-to-root type with aim to find the three hidden flags.
