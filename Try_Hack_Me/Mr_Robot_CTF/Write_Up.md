@@ -91,7 +91,8 @@ fsocity.dic - It is a tailored wordlist. Possible fuzzable parameters and can be
  wget 10.10.87.211/fsocity.dic
  uname -u fsocity.dic > cred.dic
 ```
-/key-1-of-3.txt link - If we visit this link, we find us the first key. Submit it. \
+/
+**/key-1-of-3.txt link - If we visit this link, we find us the first key. Submit it.** /
 Checking the page source for the main page, we get an easter egg.
 
 ![](https://github.com/pratty010/Boxes/blob/master/Try_Hack_Me/Mr_Robot_CTF/images/80_src.png)
