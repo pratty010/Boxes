@@ -429,7 +429,7 @@ We now have a stabilized shell and thus we can now go and enumerate the system.
 
 ### LOCAL ENUMERATON
 
-Let's look around. We can use the _find_ cmmand. We see that the 2nd key exits inhome directory of the user __robot__. But we see that it can only be read by the owner robot. So, we need to pivot to this user. We also find the backup of robot's raw md5 password. We can crack this password using __hashcat__.
+Let's look around. We can use the _find_ command. We see that the 2nd key exits in home directory of the user __robot__. But we see that it can only be read by the owner robot. So, we need to pivot to this user. We also find the backup of robot's raw md5 password. We can crack this password using __hashcat__.
 
 ```bash
 daemon@linux:/$ find /home/ -type f -iname "*.txt"
@@ -449,7 +449,7 @@ daemon@linux:/home/robot$ cat password.raw-md5
 robot:c3fcd3d76192e4007dfb496cca67e13b
 ```
 
-We can use following command to find the mode for cracking raw md5. We can then supply famous rockyou list to crack the md5sum. We find that the credentioals for the user robot are as **robot:abcdefghijklmnopqrstuvwxyz**.
+We can use following command to find the mode for cracking raw md5. We can then supply famous rockyou list to crack the md5sum. We find that the credentials for the user robot are as **robot:abcdefghijklmnopqrstuvwxyz**.
 
 ```bash
 ~/Desktop/Boxes/Try_Hack_Me/Mr_Robot_CTF$ hashcat --example-hashes                                                                                                               
@@ -498,7 +498,7 @@ Started: Thu Nov 12 21:40:46 2020
 Stopped: Thu Nov 12 21:41:14 2020
 ```
 	
-We can use the above creds to pivot to robot user. Now we can see the 2nd key and submit it.
+We can use the above creds to pivot to robot user. Now we can read the 2nd key and submit it.
 
 ```bash
 robot@linux:~$ whoami
