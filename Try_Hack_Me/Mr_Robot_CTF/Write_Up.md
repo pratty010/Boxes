@@ -79,15 +79,12 @@ We go and check out the website hosted at the port 80.
 
 ![](https://github.com/pratty010/Boxes/blob/master/Try_Hack_Me/Mr_Robot_CTF/images/web_home_80.png)
 
-We can explore the 6 options presented to us at the main page. You don't get anything useful from visiting them unless you want to join Mr. Robot on his mission!!
+We can explore the 6 options presented to us at the main page. You don't get anything useful from visiting them unless you want to join Mr. Robot on his mission!!\
 We also visit the website hosted on the port 443. We see that it just the ssl version of the website on port 80. **We also don't find any information leak from the certificate.** \
-\
 Let's do some enumeration while we run the gobuster in the background. \
 Checking the **robots.txt** file. We find that there are two files that are prohibited for all User-Agents. \
 
------
-IMG - robots.png
------
+![](https://github.com/pratty010/Boxes/blob/master/Try_Hack_Me/Mr_Robot_CTF/images/robots.png)
 
 fsocity.dic - It is a tailored wordlist. Possible fuzzable parameters and can be stored for later. We can remove the duplicacy by using _sort -u_.  
 
@@ -95,24 +92,15 @@ fsocity.dic - It is a tailored wordlist. Possible fuzzable parameters and can be
  wget 10.10.87.211/fsocity.dic
  uname -u fsocity.dic > cred.dic
 ```
-/key-1-of-3.txt link - If we visit this link, we find us the first key. Submit it.
-
-------
-IMG - key_1.png
------- 
-
+/key-1-of-3.txt link - If we visit this link, we find us the first key. Submit it. \
 Checking the page source for the main page, we get an easter egg.
 
-------
-IMG - 80_src.png
--------
+![](https://github.com/pratty010/Boxes/blob/master/Try_Hack_Me/Mr_Robot_CTF/images/80_src.png)
     
 Lastly, we can check for the what are the accepatble extensions for the files. Thus, we can be sure that the background loading script can process a .php script for example. This allows us to tailor the malicious payloads that we can upload.\
 _.php_ loads perfectly  while other extensions like _.html_ go in an infinite loop. This means that php files are acceptable. We can inject malicious php scripts later.\
 
-------
-IMG - valid_ext_php.png
---------
+![](https://github.com/pratty010/Boxes/blob/master/Try_Hack_Me/Mr_Robot_CTF/images/valid_ext_php.png)
 
 Let's look at the results that came back from gobuster now. We included the -x option for php extension which we enumerated earlier.\
 The standard command is as follows.The various options are as
@@ -163,6 +151,8 @@ by OJ Reeves (@TheColonial) & Christian Mehlmauer (@_FireFart_)
 ```
 We see that there are few other easter eggs when you try to find out the documents that usullay contain information such as version or release date./readme and /license are two such examples
 
+<img src="https://github.com/pratty010/Boxes/blob/master/Try_Hack_Me/Mr_Robot_CTF/images/readme_dir.png"
+ style="float: left; margin-right: 10px;" />
 -----
 IMG - readme_dir.png & license.png
 ------
