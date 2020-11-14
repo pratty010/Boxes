@@ -5,7 +5,7 @@ The box is based around the show Mr. Robot and is a boot-to-root type with aim t
 
 > Pratyush Prakhar (5#1NC#4N) - 11/11/2020
 
-So, lets just jump right in and start with the enumeration services runnning on the box.
+So, lets just jump right in and start with enumerating services running on the box.
 
 #### Services Enumeration
 
