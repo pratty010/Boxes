@@ -162,7 +162,7 @@ The other peculiar thing is that most of the other pages like /image are **Forbi
 ![](https://github.com/pratty010/Boxes/blob/master/Try_Hack_Me/Mr_Robot_CTF/images/login_dir_302_wp-login.png)
 \
 As this is a wordpress site, we can launch a *wpscan* in the background. Always good to have some enumeration running in the backgorund. Rabbit holes are deep man!! Don't fall too deep in them.\
-We are doing an agressive search for possible plugins, themes and databases.\
+We are doing an agressive search for possible plugins, themes and databases.
 
 ```bash
 $ wpscan -v -e ap,at,cb --url http://10.10.87.211/
