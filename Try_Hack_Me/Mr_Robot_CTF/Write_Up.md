@@ -583,7 +583,7 @@ firstboot_done  key-3-of-3.txt
 ~# cat key-3-of-3.txt
 ```
 \
-So, in the end I just want to say thank certain people whose resources have guided me along the way - ![John Hammond](https://twitter.com/_johnhammond), ![Heath Adams](https://twitter.com/thecybermentor), ![IPPSEC](https://twitter.com/ippsec) and ![Joseph Perry](https://www.linkedin.com/in/jrpiv/). It is just a start with miles to go.\
+So, in the end I just want to say thank certain people whose resources have guided me along the way - [John Hammond](https://twitter.com/_johnhammond), [Heath Adams](https://twitter.com/thecybermentor), [IPPSEC](https://twitter.com/ippsec) and [Joseph Perry](https://www.linkedin.com/in/jrpiv/). It is just a start with miles to go.\
 Keep hacking till we meet again!!
 
 
