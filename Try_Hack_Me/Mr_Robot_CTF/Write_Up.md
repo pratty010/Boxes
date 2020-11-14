@@ -25,7 +25,7 @@ PORT    STATE  SERVICE REASON
 443/tcp open   https   syn-ack ttl 61
 ```
 
-Then ran a standard scan for the specific ports found - **22,80,443**.
+Then ran a standard scan for the specific open ports found - **22, 80, 443**.
 
 ```bash
 # Nmap 7.91 scan initiated Wed Nov 11 22:46:57 2020 as: 
