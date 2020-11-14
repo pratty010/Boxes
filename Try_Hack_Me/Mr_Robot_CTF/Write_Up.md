@@ -182,8 +182,8 @@ Let's run hydra now!! The various options are\
 1. -T : Threads. Default set to 16. One can increase it to reduce fuzz time. I set it to 100.
 2. -L : List of username to enumerate. Will be injected at the _^USER^_ handle.
 3. -p : Single entry replaced at _^PASS^_ handle.
-4. -o : output toa particuar file
-5. http-post-form : The module for fuzzing post forms. The following string contains three part - (login_page dir:Post_Parameters:Invalid_Result). So, we provide the needed and we can use the enumerated invalid response as third field.\
+4. -o : output to a particuar file
+5. http-post-form : The module for fuzzing post forms. The following string contains three part - (Login_Page dir:Post_Parameters:Invalid_Result). So, we provide the needed and we can use the enumerated invalid response as third field.
 
 ```bash
 $ hydra -T100 -f -L www/downloads/cred.dic -p passwd -o userenum.txt 10.10.87.211 http-post-form "/wp-login.php:log=^USER^&pwd=^PASS^&wp-submit=Log+In&redirect_to=http%3A%2F%2F10.10.87.211%2Fwp-admin%2F&testcookie=1:F=Invalid username"
@@ -198,7 +198,7 @@ Hydra (https://github.com/vanhauser-thc/thc-hydra) starting at 2020-11-12 00:01:
 [STATUS] attack finished for 10.10.87.211 (valid pair found)	
 ```
 We find a valid user as **elliot**. Now we can enumerate for the password.\
-We do it one after the other to save us loads of time. If we fuzzed both together, it would generate loads of invalid cred and to track invalid status would also be a pain.\
+We do it one after the other to save us loads of time. If we fuzzed both together, it would generate loads of invalid creds and to track invalid status would also be a pain.\
 Like earlier, **invalid passwords** can be seperated in two ways. First, we can use the invalid password reponse returned. Better is to use the _STATUS_CODE : 302_ as on valid credentials the site will redirect to the /wp-admin page.
 Let's run hydra now.
 We use some different options like
