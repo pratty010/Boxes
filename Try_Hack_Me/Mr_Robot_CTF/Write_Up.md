@@ -567,7 +567,7 @@ So, to exploit this let us visit to __GTFOBINS__(https://gtfobins.github.io/) wh
 
 ![](https://github.com/pratty010/Boxes/blob/master/Try_Hack_Me/Mr_Robot_CTF/images/sudo.png)
 \
-So, let's now use take advantage of the nmap's interactive mode and privesec to root. We find the last key in the /root directory. We can submit this and mark this box as complete !!
+So, let's now use take advantage of the nmap's interactive mode and privesc to root. We find the last key in the /root directory. **We can submit this and mark this box as complete !!**
 
 ```bash
 robot@linux:~$ /usr/local/bin/nmap --interactive
@@ -583,7 +583,7 @@ firstboot_done  key-3-of-3.txt
 ~# cat key-3-of-3.txt
 ```
 \
+<<<<<<< HEAD
 So, in the end I just want to say thank certain people whose resources have guided me along the way - [John Hammond](https://twitter.com/_johnhammond), [Heath Adams](https://twitter.com/thecybermentor), [IPPSEC](https://twitter.com/ippsec) and [Joseph Perry](https://www.linkedin.com/in/jrpiv/). It is just a start with miles to go.\
 Keep hacking till we meet again!!
-
-
+>>>>>>> 633a656... Mr. Robot Final
