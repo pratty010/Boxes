@@ -497,8 +497,8 @@ Candidates.#1....: promo2007 -> harder
 Started: Thu Nov 12 21:40:46 2020
 Stopped: Thu Nov 12 21:41:14 2020
 ```
-	
-We can use the above creds to pivot to robot user. Now we can read the 2nd key and submit it.
+
+**We can use the above creds to pivot to robot user. Now we can read the 2nd key and submit it.**
 
 ```bash
 robot@linux:~$ whoami
@@ -508,8 +508,8 @@ robot@linux:~$ cat key-2-of-3.txt
 
 ### PRIVILEGE ESCALATION
 
-Lastly, we have too look for a path to privesec ourseleves to the root user. For this I am using **Linpeas script**. It is basically an upgrade to the **Linenum script** with color coded output for severity and cool animation. This is the part of _privilege-escalation-awesome-scripts-suite_ which has one for windows too(https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite). \
-I did a full scan usinfg the -a option. One can go and read the color output using.\
+Lastly, we have too look for a path to privesc ourseleves to the root user. For this I am using **Linpeas script**. It is basically an upgrade to the **Linenum script** with color coded output for severity and cool animation. This is the part of _privilege-escalation-awesome-scripts-suite_ which also has one for Windows too (https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite). \
+I did a full scan using the -a option. One can go and read the color output using.\
 
 ```bash
 less -r output_file
@@ -538,7 +538,7 @@ drwxr-xr-x 14 root  root     480 Nov 13 02:15 ..
 -rw-rw-r--  1 robot robot  91965 Nov 13 03:02 local_enum.txt
 ```
 
-While going through the output we see an intresting binary _/usr/local/bin/nmap_. It has setuid and the owner is root. In simplest terms, execution of this file will gives temporary permissions to our user(robot) to run the program/file with the permission of the file owner root.
+While going through the output we see an intresting binary _/usr/local/bin/nmap_. It has set uid permission and the owner is root. In simplest terms, execution of this file will gives temporary permissions to our user(robot) to run the program/file with the permission of the file owner root.
 
 ```bash
 ====================================( Interesting Files )=====================================
