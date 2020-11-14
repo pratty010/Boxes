@@ -229,7 +229,7 @@ We are greeted with a standard _/wp-admin_ page and we are logged in as Elliot A
 ![](https://github.com/pratty010/Boxes/blob/master/Try_Hack_Me/Mr_Robot_CTF/images/wp_admin.png)
 \
 We see that the various php templates of the various _Themes_ in the _Appearance_ section are mutable. On the other hand the _wpscan enumeration__ finds us that these files can then be invoked from going to /wp-content/themes/$THEME_NAME/$PHP_FILE. Enumeration for the win!! \
-Note: One can also modify the _Plugin_ section and achieve the reverse shell. I'll leave the work to you. \
+Note: One can also modify the _Plugin_ section and achieve the reverse shell. I'll leave the work to you. 
 
 ![](https://github.com/pratty010/Boxes/blob/master/Try_Hack_Me/Mr_Robot_CTF/images/404_php.png)
 \
@@ -249,8 +249,8 @@ Note: One can also modify the _Plugin_ section and achieve the reverse shell. I'
 ```
 
 We can now replace contents of a file like _404.php_ with reverse shell code. We start a listner on our side and invoke the modified file. \
-I am using standard php reverse shell script from pentestmonkey(https://github.com/pentestmonkey/php-reverse-shell/blob/master/php-reverse-shell.php) to repace teh content of the 404.php page. The only thing to change is the _IP and PORT_ on which you are listening. A person just starting out will find all the scripts rather useful.\
-
+I am using standard php reverse shell script from pentestmonkey(https://github.com/pentestmonkey/php-reverse-shell/blob/master/php-reverse-shell.php) to repace teh content of the 404.php page. The only thing to change is the _IP and PORT_ on which you are listening. A person just starting out will find all the scripts rather useful.
+\
 **SCRIPT**
 ```php
 	<?php
@@ -409,8 +409,7 @@ We can now stabilize the shell using the _Python pty module_ to get a basic bash
 6. **export HOME=$HOME_DIR** : set home directory to your requirements.
 7. **export SHELL=/bin/bash** : set SHELL to available one. Most of the time /bin/bash or /bin/sh.
 8. **export TERM=xterm-256color** : set TERMINAL to standard xterm or xterm-256color
-9. **stty rows X columns Y** : Finally set the rows and columns size to the output in step 3.
-\ 
+9. **stty rows X columns Y** : Finally set the rows and columns size to the output in step 3. \
 **RESULT**
 ```bash
 $ python -c 'import pty; pty.spawn("/bin/bash")'
