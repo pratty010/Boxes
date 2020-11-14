@@ -7,7 +7,7 @@ The box is based around the show Mr. Robot and is a boot-to-root type with aim t
 
 So, lets just jump right in and start with enumerating services running on the box.
 
-#### Services Enumeration
+### Services Enumeration
 
 Ran a quick scan for all ports.
 
