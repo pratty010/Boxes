@@ -7,7 +7,7 @@ The box is based around the show Mr. Robot and is a boot-to-root type with aim t
 
 So, lets just jump right in and start with the enumeration services runnning on the box.
 
-#### Services Enumeration
+### Services Enumeration
 
 Ran a quick scan for all ports.
 
@@ -77,9 +77,7 @@ Service detection performed. Please report any incorrect results at https://nmap
 
 We go and check out the website hosted at the port 80.
 
------
-IMG - web_home_80.png
------
+![](https://github.com/pratty010/Boxes/blob/master/Try_Hack_Me/Mr_Robot_CTF/images/web_home_80.png)
 
 We can explore the 6 options presented to us at the main page. You don't get anything useful from visiting them unless you want to join Mr. Robot on his mission!!
 We also visit the website hosted on the port 443. We see that it just the ssl version of the website on port 80. **We also don't find any information leak from the certificate.** \
@@ -448,7 +446,7 @@ daemon@linux:/$ stty rows 46 columns 187
 ```
 We now have a stabilized shell and thus we can now go and enumerate the system.
 
-# LOCAL ENUMERATON
+### LOCAL ENUMERATON
 
 Let's look around. We can use the _find_ cmmand. We see that the 2nd key exits inhome directory of the user __robot__. But we see that it can only be read by the owner robot. So, we need to pivot to this user. We also find the backup of robot's raw md5 password. We can crack this password using __hashcat__.
 
@@ -528,7 +526,7 @@ robot
 robot@linux:~$ cat key-2-of-3.txt 
 ```
 
-# PRIV EXEC
+### PRIVESEC
 
 Lastly, we have too look for a path to privesec ourseleves to the root user. For this I am using **Linpeas script**. It is basically an upgrade to the **Linenum script** with color coded output for severity and cool animation. This is the part of _privilege-escalation-awesome-scripts-suite_ which has one for windows too(https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite). \
 I did a full scan usinfg the -a option. One can go and read the color output using.\
