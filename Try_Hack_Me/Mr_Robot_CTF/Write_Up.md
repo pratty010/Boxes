@@ -249,7 +249,7 @@ Note: One can also modify the _Plugin_ section and achieve the reverse shell. I'
 ```
 
 We can now replace contents of a file like _404.php_ with reverse shell code. We start a listner on our side and invoke the modified file. \
-I am using standard php reverse shell script from pentestmonkey(https://github.com/pentestmonkey/php-reverse-shell/blob/master/php-reverse-shell.php) to repace teh content of the 404.php page. The only thing to change is the _IP and PORT_ on which you are listening. A person just starting out will find all the scripts rather useful.
+I am using standard php reverse shell script from pentestmonkey(https://github.com/pentestmonkey/php-reverse-shell/blob/master/php-reverse-shell.php) to repace teh content of the 404.php page. The only thing to change is the _IP and PORT_ on which you are listening. A person just starting out will find all the scripts rather useful.\
 \
 **SCRIPT**
 ```php
@@ -410,6 +410,7 @@ We can now stabilize the shell using the _Python pty module_ to get a basic bash
 7. **export SHELL=/bin/bash** : set SHELL to available one. Most of the time /bin/bash or /bin/sh.
 8. **export TERM=xterm-256color** : set TERMINAL to standard xterm or xterm-256color
 9. **stty rows X columns Y** : Finally set the rows and columns size to the output in step 3. \
+\
 **RESULT**
 ```bash
 $ python -c 'import pty; pty.spawn("/bin/bash")'
