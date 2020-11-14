@@ -97,13 +97,13 @@ Checking the page source for the main page, we get an easter egg.
 
 ![](https://github.com/pratty010/Boxes/blob/master/Try_Hack_Me/Mr_Robot_CTF/images/80_src.png)
     
-Lastly, we can check for the what are the accepatble extensions for the files. Thus, we can be sure that the background loading script can process a .php script for example. This allows us to tailor the malicious payloads that we can upload.\
+Lastly, we can check for the what are the accepatble extensions for the files. Thus, we understand that it is a php web server. This allows us to tailor the malicious payloads that we can upload.\
 _.php_ loads perfectly  while other extensions like _.html_ go in an infinite loop. This means that php files are acceptable. We can inject malicious php scripts later.
 
 ![](https://github.com/pratty010/Boxes/blob/master/Try_Hack_Me/Mr_Robot_CTF/images/valid_ext_php.png)
 \
 Let's look at the results that came back from gobuster now. We included the -x option for php extension which we enumerated earlier.\
-The standard command is as follows.The various options are as
+The standard command is as follows with options as
 1. dir : It specified the directory listing brute force.
 2. -u  : URL
 3. -w  : wordlist to brute force directory listing against.
