@@ -1,9 +1,9 @@
 # Write Up for the Try_Hack_Me box - Mr. Robot CTF. 
 
-This box was first put on VulnHub.com and is a relatively Easy box. \
+This box was first put on VulnHub.com and is a relatively easy box. \
 The box is based around the show Mr. Robot and is a boot-to-root type with aim to find the three hidden flags.
 
-> Pratyush Prakhar(5#1NC#4N) - 11/11/2020
+> Pratyush Prakhar (5#1NC#4N) - 11/11/2020
 
 So, lets just jump right in and start with the enumeration services runnning on the box.
 
@@ -77,20 +77,14 @@ Service detection performed. Please report any incorrect results at https://nmap
 
 We go and check out the website hosted at the port 80.
 
------
-IMG - web_home_80.png
------
+![](https://github.com/pratty010/Boxes/blob/master/Try_Hack_Me/Mr_Robot_CTF/images/web_home_80.png)
 
 We can explore the 6 options presented to us at the main page. You don't get anything useful from visiting them unless you want to join Mr. Robot on his mission!!
-We also visit the website hosted on the port 443. We see that it just the ssl version of the website on port 80. **We also don't find any information leak from the certificate.** \
+We also visit the website hosted on the port 443. We see that it just the ssl version of the website on port 80. **We also don't find any information leak from the certificate.** Let's do some enumeration while we run the gobuster in the background. \
+Checking the **robots.txt** file. We find that there are two files that are prohibited for all User-Agents. 
+
+![](https://github.com/pratty010/Boxes/blob/master/Try_Hack_Me/Mr_Robot_CTF/images/robots.png)
 \
-Let's do some enumeration while we run the gobuster in the background. \
-Checking the **robots.txt** file. We find that there are two files that are prohibited for all User-Agents. \
-
------
-IMG - robots.png
------
-
 fsocity.dic - It is a tailored wordlist. Possible fuzzable parameters and can be stored for later. We can remove the duplicacy by using _sort -u_.  
 
 ```bash
