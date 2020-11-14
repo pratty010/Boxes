@@ -151,18 +151,18 @@ by OJ Reeves (@TheColonial) & Christian Mehlmauer (@_FireFart_)
 /dashboard (Status: 302)
 ```
 
-We see that there are few other easter eggs when you try to find out the documents that usullay contain information such as version or release date./readme is such an example. I leave the rest upto you to find.
+We see that there are few other easter eggs when you try to find out the documents that usually contain information such as version or release date. /readme is such an example. I leave the rest upto you to find.
 
 ![](https://github.com/pratty010/Boxes/blob/master/Try_Hack_Me/Mr_Robot_CTF/images/readme_dir.png)
 \
-The other picular thing is that most of the other pages like /image are **Forbidden** and others lead to the standard _/wp-login_ page. It ensures that 	  to move further we need _valid credentials_ to login into the wordpress site.
+The other peculiar thing is that most of the other pages like /image are **Forbidden** and others lead to the standard _/wp-login_ page. It ensures that 	  to move further we need _valid credentials_ to login into the wordpress site.
 
 ![](https://github.com/pratty010/Boxes/blob/master/Try_Hack_Me/Mr_Robot_CTF/images/forbidden.png)
 \
 ![](https://github.com/pratty010/Boxes/blob/master/Try_Hack_Me/Mr_Robot_CTF/images/login_dir_302_wp-login.png)
 \
-As this is a wordpress site, we can launch a *wpscan* in the background. Always good to have some enumeration running in the backgorund. Rabbit holes are deep man!! DOn't fall too deep.\
-We are doing an agressive serach for possible plugins, themes and databases.\
+As this is a wordpress site, we can launch a *wpscan* in the background. Always good to have some enumeration running in the backgorund. Rabbit holes are deep man!! Don't fall too deep in them.\
+We are doing an agressive search for possible plugins, themes and databases.\
 
 ```bash
 $ wpscan -v -e ap,at,cb --url http://10.10.87.211/
@@ -172,10 +172,8 @@ $ wpscan -v -e ap,at,cb --url http://10.10.87.211/
 
 We can use any fuzzer available such as _wfuzz, hydra and patator_. One can choose any one of the following for this purpose. We would need the _http-post-form_ option as this wp-login is a post form as seen in the burp intercept.
 
---------
-IMG - burp.png
----------
-
+![](https://github.com/pratty010/Boxes/blob/master/Try_Hack_Me/Mr_Robot_CTF/images/burp.png)
+\
 Let's enumerate the user first. We see that an **invalid user** can be distingused by the reflective response. We can include this in our hydra search.
 
 ![](https://github.com/pratty010/Boxes/blob/master/Try_Hack_Me/Mr_Robot_CTF/images/invalid_usr.png)
