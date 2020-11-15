@@ -8,10 +8,10 @@ The box is based around the show Mr. Robot and is a boot-to-root type with aim t
 ### Tools
 
 **Enumeration**
-[nmap](https://github.com/pratty010/Boxes/blob/master/Try_Hack_Me/Mr_Robot_CTF/Write_Up.md#services-enumeration)
-[wpscan](https://github.com/pratty010/Boxes/blob/master/Try_Hack_Me/Mr_Robot_CTF/Write_Up.md#web-reconnaissance)
-[LinPeas](https://github.com/pratty010/Boxes/blob/master/Try_Hack_Me/Mr_Robot_CTF/Write_Up.md#privilege-escalation)
 \
+[nmap](https://github.com/pratty010/Boxes/blob/master/Try_Hack_Me/Mr_Robot_CTF/Write_Up.md#services-enumeration) \
+[wpscan](https://github.com/pratty010/Boxes/blob/master/Try_Hack_Me/Mr_Robot_CTF/Write_Up.md#web-reconnaissance) \
+[LinPeas](https://github.com/pratty010/Boxes/blob/master/Try_Hack_Me/Mr_Robot_CTF/Write_Up.md#privilege-escalation) \
 
 **Brute Forcing**
 1. gobuster
