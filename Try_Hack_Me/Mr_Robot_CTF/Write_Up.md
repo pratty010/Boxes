@@ -14,8 +14,9 @@ The box is based around the show Mr. Robot and is a boot-to-root type with aim t
 [LinPeas](https://github.com/pratty010/Boxes/blob/master/Try_Hack_Me/Mr_Robot_CTF/Write_Up.md#privilege-escalation) 
 
 **Brute Forcing**
-[GoBuster](https://github.com/pratty010/Boxes/blob/master/Try_Hack_Me/Mr_Robot_CTF/Write_Up.md#web-reconnaissance)
-[Hydra](https://github.com/pratty010/Boxes/blob/master/Try_Hack_Me/Mr_Robot_CTF/Write_Up.md#hydra)
+\
+[GoBuster](https://github.com/pratty010/Boxes/blob/master/Try_Hack_Me/Mr_Robot_CTF/Write_Up.md#web-reconnaissance) \
+[Hydra](https://github.com/pratty010/Boxes/blob/master/Try_Hack_Me/Mr_Robot_CTF/Write_Up.md#hydra) \
 \
 So, without wasting anymore time, lets just jump right in and start with enumerating services running on the box.
 
