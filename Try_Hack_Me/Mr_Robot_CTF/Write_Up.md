@@ -5,11 +5,23 @@ The box is based around the show Mr. Robot and is a boot-to-root type with aim t
 
 > Pratyush Prakhar (5#1NC#4N) - 11/11/2020
 
-So, lets just jump right in and start with enumerating services running on the box.
+### Tools
+
+**Enumeration**
+\
+1. nmap
+2. wpscan
+3. LinPeas
+\
+**Brute Forcing**
+1. gobuster
+2. hydra
+\
+So, without wasting anymore time, lets just jump right in and start with enumerating services running on the box.
 
 ### Services Enumeration
 
-Ran a quick scan for all ports.
+Ran a quick scan for all ports usinng nmap. Nmap is the most widely used tool for service enumeration. If it was a local box, we could have used _netdiscover_ to obatin the IP of the box.
 
 ```bash
 # Nmap 7.91 scan initiated Wed Nov 11 22:40:19 2020 as: 
@@ -583,7 +595,8 @@ firstboot_done  key-3-of-3.txt
 ~# cat key-3-of-3.txt
 ```
 \
-<<<<<<< HEAD
 So, in the end I just want to say thank certain people whose resources have guided me along the way - [John Hammond](https://twitter.com/_johnhammond), [Heath Adams](https://twitter.com/thecybermentor), [IPPSEC](https://twitter.com/ippsec) and [Joseph Perry](https://www.linkedin.com/in/jrpiv/). It is just a start with miles to go.\
 Keep hacking till we meet again!!
->>>>>>> 633a656... Mr. Robot Final
+
+**Stay Tuned On** \
+[![alt text][http://i.imgur.com/0o48UoR.png]](https://github.com/pratty010/Boxes) 
