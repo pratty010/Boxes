@@ -8,12 +8,12 @@ The box is based around the show Mr. Robot and is a boot-to-root type with aim t
 ### Tools
 
 **Enumeration**
-\
+
 1. nmap
 2. wpscan
 3. LinPeas
-\
 **Brute Forcing**
+
 1. gobuster
 2. hydra
 \
@@ -599,4 +599,4 @@ So, in the end I just want to say thank certain people whose resources have guid
 Keep hacking till we meet again!!
 
 **Stay Tuned On** \
-[![alt text][http://i.imgur.com/0o48UoR.png]](https://github.com/pratty010/Boxes) 
+![http://i.imgur.com/0o48UoR.png](https://github.com/pratty010/Boxes) 
