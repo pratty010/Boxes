@@ -22,7 +22,7 @@ So, without wasting anymore time, lets just jump right in and start with enumera
 
 ### Services Enumeration
 
-Ran a quick scan for all ports usinng nmap. Nmap is the most widely used tool for service enumeration. If it was a local box, we could have used _netdiscover_ to obatin the IP of the box.
+Ran a quick scan for all ports usinng nmap. Nmap is the most widely used tool for services enumeration. If it was a local box, we could have used _netdiscover_ to obatin the IP of the box.
 
 ```bash
 # Nmap 7.91 scan initiated Wed Nov 11 22:40:19 2020 as: 
