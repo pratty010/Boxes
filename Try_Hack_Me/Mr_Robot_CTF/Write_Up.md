@@ -5,7 +5,7 @@ The box is based around the show Mr. Robot and is a boot-to-root type with aim t
 
 > Pratyush Prakhar (5#1NC#4N) - 11/11/2020
 
-### Tools
+## Tools
 
 **Enumeration**
 \
@@ -20,7 +20,7 @@ The box is based around the show Mr. Robot and is a boot-to-root type with aim t
 
 So, without wasting anymore time, lets just jump right in and start with enumerating services running on the box.
 
-### Services Enumeration
+## Services Enumeration
 
 Ran a quick scan for all ports usinng nmap. Nmap is the most widely used tool for services enumeration. If it was a local box, we could have used _netdiscover_ to obatin the IP of the box.
 
@@ -86,7 +86,7 @@ Read data files from: /usr/bin/../share/nmap
 Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
 ```
 
-### Web Reconnaissance
+## Web Reconnaissance
 
 We go and check out the website hosted at the port 80.
 
@@ -181,7 +181,7 @@ We are doing an agressive search for possible plugins, themes and databases.
 $ wpscan -v -e ap,at,cb --url http://10.10.87.211/
 ```
 
-### HYDRA
+## HYDRA
 
 We can use any fuzzer available such as _wfuzz, hydra and patator_. One can choose any one of the following for this purpose. We would need the _http-post-form_ option as this wp-login is a post form as seen in the burp intercept.
 
@@ -235,7 +235,7 @@ Hydra (https://github.com/vanhauser-thc/thc-hydra) starting at 2020-11-12 00:45:
 We find valid credentails as **elliot:ER28-0652**. We can now login using this.
 
 
-### WORDPRESS & REVRESE SHELL
+## WORDPRESS & REVRESE SHELL
 
 We are greeted with a standard _/wp-admin_ page and we are logged in as Elliot Alderson. We will move around and see if we find something that can get us a shell.
 
@@ -440,7 +440,7 @@ daemon@linux:/$ stty rows 46 columns 187
 ```
 We now have a stabilized shell and thus we can now go and enumerate the system.
 
-### LOCAL ENUMERATON
+## LOCAL ENUMERATON
 
 Let's look around. We can use the _find_ command. We see that the 2nd key exits in home directory of the user __robot__. But we see that it can only be read by the owner robot. So, we need to pivot to this user. We also find the backup of robot's raw md5 password. We can crack this password using __hashcat__.
 
@@ -519,7 +519,7 @@ robot
 robot@linux:~$ cat key-2-of-3.txt 
 ```
 
-### PRIVILEGE ESCALATION
+## PRIVILEGE ESCALATION
 
 Lastly, we have too look for a path to privesc ourseleves to the root user. For this I am using **Linpeas script**. It is basically an upgrade to the **Linenum script** with color coded output for severity and cool animation. This is the part of _privilege-escalation-awesome-scripts-suite_ which also has one for Windows too (https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite). \
 I did a full scan using the -a option. One can go and read the color output using.\
