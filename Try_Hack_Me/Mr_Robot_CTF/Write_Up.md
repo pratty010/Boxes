@@ -8,12 +8,11 @@ The box is based around the show Mr. Robot and is a boot-to-root type with aim t
 ### Tools
 
 **Enumeration**
-
 1. nmap
 2. wpscan
-3. LinPeas
+3. LinPeas 
+\
 **Brute Forcing**
-
 1. gobuster
 2. hydra
 \
