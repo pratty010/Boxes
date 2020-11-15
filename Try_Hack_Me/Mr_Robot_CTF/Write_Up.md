@@ -599,4 +599,4 @@ So, in the end I just want to say thank certain people whose resources have guid
 Keep hacking till we meet again!!
 
 Stay Tuned On\
-[![alt text](https://github.com/pratty010/Boxes/blob/master/Try_Hack_Me/Mr_Robot_CTF/images/LinkedIn.png)](https://github.com/pratty010/Boxes)   [![alt text](https://github.com/pratty010/Boxes/blob/master/Try_Hack_Me/Mr_Robot_CTF/images/LinkedIn1.png)](https://github.com/pratty010/Boxes)
+[![alt text](https://github.com/pratty010/Boxes/blob/master/Try_Hack_Me/Mr_Robot_CTF/images/Github.png)](https://github.com/pratty010/Boxes)   [![alt text](https://github.com/pratty010/Boxes/blob/master/Try_Hack_Me/Mr_Robot_CTF/images/LinkedIn.png)](https://www.linkedin.com/in/pratyush-prakhar)
