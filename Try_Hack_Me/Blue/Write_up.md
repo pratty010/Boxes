@@ -302,9 +302,8 @@ type flag2.txt
 c:\Users\Jon\Documents>type flag3.txt
 type flag3.txt
 ```
-\
 
-We can mark the box complete now after submitting allt he flags. Onto the next challenge !! \
+We can mark the box complete now after submitting all the flags. Onto the next challenge !! 
 
 Stay Tuned On\
 [![alt text](https://github.com/pratty010/Boxes/blob/master/Try_Hack_Me/Mr_Robot_CTF/images/Github.png)](https://github.com/pratty010/Boxes)   [![alt text](https://github.com/pratty010/Boxes/blob/master/Try_Hack_Me/Mr_Robot_CTF/images/LinkedIn.png)](https://www.linkedin.com/in/pratyush-prakhar/)
