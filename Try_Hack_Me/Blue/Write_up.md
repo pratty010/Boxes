@@ -14,7 +14,7 @@ Has following sequels as Ice and Blaster.
 	Ran a quick scan for the required port range (0-1000). 
 
 ```bash
-nmap -vv -p0-1000 -oN nmap/allport_scan.nmap 10.10.130.42**
+nmap -vv -p0-1000 -oN nmap/allport_scan.nmap 10.10.130.42
 ```
 **Output**
 
@@ -29,8 +29,7 @@ PORT    STATE SERVICE      REASON
 139/tcp open  netbios-ssn  syn-ack ttl 125
 445/tcp open  microsoft-ds syn-ack ttl 125
 ```
-\
-	Then ran a standard scan - Default services and scripts on the determined specific ports**(135,139,445)** \
+	Then ran a standard scan - Default services and scripts on the determined specific ports**(135,139,445)** 
 
 ```bash
 nmap -vv -p0-1000 -oN nmap/allport_scan.nmap 10.10.130.42
@@ -49,8 +48,7 @@ PORT    STATE SERVICE      REASON          VERSION
 
 3.  What is this machine vulnerable to? - **ms17-010**
 
-Ran a nmap scan for finding the known vulnerabilities. 
-
+	Ran a nmap scan for finding the known vulnerabilities. 
 ```bash
 nmap -vv -p135,139,445 --script vuln -oN nmap/vulnub.nmap 10.10.130.42
 ```
