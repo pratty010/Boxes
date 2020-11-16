@@ -29,8 +29,7 @@ PORT    STATE SERVICE      REASON
 139/tcp open  netbios-ssn  syn-ack ttl 125
 445/tcp open  microsoft-ds syn-ack ttl 125
 ```
-	Then ran a standard scan - Default services and scripts on the determined specific ports**(135,139,445)** 
-
+Then ran a standard scan - Default services and scripts on the determined specific ports**(135,139,445)**
 ```bash
 nmap -vv -p0-1000 -oN nmap/allport_scan.nmap 10.10.130.42
 ```
