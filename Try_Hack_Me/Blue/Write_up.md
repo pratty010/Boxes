@@ -95,7 +95,7 @@ msf5 >
 
 2. Find the exploitation code we will run against the machine. What is the full path of the code? - **exploit/windows/smb/ms17_010_eternalblue** 
 
-We use the _eternalblue_ one but actually the _psexec_ is the **most stable** verion of the exploit. It should be used in normall scenerios. 
+	We use the _eternalblue_ one but actually the _psexec_ is the **most stable** verion of the exploit. It should be used in normall scenerios. 
 
 **OUTPUT**
 
@@ -116,7 +116,7 @@ Matching Modules
 
 3. Show options and set the one required value. What is the name of this value? - **RHOSTS** 
 
-_RHOSTS_ is the only flag required and not set. One can make additional chages to flags like _LHOST_ and _PAYLOAD_. We set RHOST to $BOX_IP and run the exoplit. I also set my _LPORT_ to 9999. 
+	_RHOSTS_ is the only flag required and not set. One can make additional chages to flags like _LHOST_ and _PAYLOAD_. We set RHOST to $BOX_IP and run the exoplit. I also set 	my _LPORT_ to 9999. 
 
 **OUTPUT**
 ```bash
