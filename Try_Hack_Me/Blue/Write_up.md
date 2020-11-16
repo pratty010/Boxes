@@ -11,7 +11,7 @@ Has following sequels as Ice and Blaster.
 
 2. How many ports are open with a port number under 1000? - **3**
 	
-Ran a quick scan for the required port range (0-1000). \
+Ran a quick scan for the required port range (0-1000). 
 
 ```bash
 nmap -vv -p0-1000 -oN nmap/allport_scan.nmap 10.10.130.42**
