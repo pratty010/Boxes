@@ -110,7 +110,7 @@ Permission denied, please try again.
 	1. We get the `default Apache` page.
 	2. We can run sub domain check on this port using `gobuster`.
 
-![web]()
+![](https://github.com/pratty010/Boxes/blob/master/Try_Hack_Me/Bolt/images/web_port_80.png)
 
 
 **Results**
@@ -145,17 +145,19 @@ Progress: 213149 / 220561 (96.64%)^C
 	2. We can check for some low hanging fruits.
 	3. Page Source check. 
 
-![Web]()
-![username]()
-![passwd]()
+![](https://github.com/pratty010/Boxes/blob/master/Try_Hack_Me/Bolt/images/web_port_8000.png)
+\
+![](https://github.com/pratty010/Boxes/blob/master/Try_Hack_Me/Bolt/images/bolt_username.png)
+\
+![](https://github.com/pratty010/Boxes/blob/master/Try_Hack_Me/Bolt/images/bolt_passwd.png)
 
 3. We find from the posts of the Admin Jake that the username:password for the CMS is `bolt:boltadmin123`. Let's now find the login page.
 
-4. The login page can be found at the bolt subdomain as explained [here](https://github.com/bolt/site-bolt-cm/blob/master/app/config/config.yml).
-![login page]()
+4. The login page can be found at the bolt subdomain as explained [here](https://github.com/bolt/site-bolt-cm/blob/master/app/config/config.yml).\
+![](https://github.com/pratty010/Boxes/blob/master/Try_Hack_Me/Bolt/images/bolt_login.png)
 
-5. Let's login using the given credentials. We get the Bolt CMS version as `3.7.1`. We can use this to find any known CVE in it.
-![admin page]()
+5. Let's login using the given credentials. We get the Bolt CMS version as `3.7.1`. We can use this to find any known CVE in it.\
+![](https://github.com/pratty010/Boxes/blob/master/Try_Hack_Me/Bolt/images/bolt_admin.png)
 
 6. Using ExploitDB `(searchsploit)`, Rapid7 to find a known CVE () in the [3.7.0 version](https://www.rapid7.com/db/modules/exploit/unix/webapp/bolt_authenticated_rce/). We can use the searchsploit as well for the same. 
 
@@ -395,4 +397,4 @@ THM{wh0_d035nt_l0ve5_b0l7_r1gh7?}
 
 
 **Stay Tuned for More**\
-[![alt text](https://github.com/pratty010/Boxes/blob/master/Try_Hack_Me/Mr_Robot_CTF/images/Github.png)](https://github.com/pratty010/Boxes)   [![alt text](https://github.com/pratty010/Boxes/blob/master/Try_Hack_Me/Mr_Robot_CTF/images/LinkedIn.png)](https://www.linkedin.com/in/pratyush-prakhar/)
+[![alt text](https://github.com/pratty010/Boxes/blob/master/Try_Hack_Me/Mr.%20Robot/images/Github.png)](https://github.com/pratty010/Boxes)   [![alt text](https://github.com/pratty010/Boxes/blob/master/Try_Hack_Me/Mr.%20Robot/images/LinkedIn.png)](https://www.linkedin.com/in/pratyush-prakhar/)
