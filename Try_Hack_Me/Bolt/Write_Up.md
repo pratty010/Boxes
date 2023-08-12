@@ -396,5 +396,6 @@ THM{wh0_d035nt_l0ve5_b0l7_r1gh7?}
 7. Look for flag.txt inside the machine. - **THM{wh0_d035nt_l0ve5_b0l7_r1gh7?}**
 
 
-**Stay Tuned for More**\
-[![alt text](https://github.com/pratty010/Boxes/blob/master/Try_Hack_Me/Mr.%20Robot/images/Github.png)](https://github.com/pratty010/Boxes)   [![alt text](https://github.com/pratty010/Boxes/blob/master/Try_Hack_Me/Mr.%20Robot/images/LinkedIn.png)](https://www.linkedin.com/in/pratyush-prakhar/)
+**Stay Tuned On**\
+[Github](https://github.com/pratty010/Boxes)\
+[LinkedIn](https://www.linkedin.com/in/pratyush-prakhar/)

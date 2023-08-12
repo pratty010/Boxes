@@ -316,4 +316,5 @@ We can mark the box complete now after submitting all the flags. Onto the next c
 
 
 **Stay Tuned On**\
-[![alt text](https://github.com/pratty010/Boxes/blob/master/Try_Hack_Me/Mr.%20Robot/images/Github.png)](https://github.com/pratty010/Boxes)   [![alt text](https://github.com/pratty010/Boxes/blob/master/Try_Hack_Me/Mr.%20Robot/images/LinkedIn.png)](https://www.linkedin.com/in/pratyush-prakhar/)
+[Github](https://github.com/pratty010/Boxes)\
+[LinkedIn](https://www.linkedin.com/in/pratyush-prakhar/)

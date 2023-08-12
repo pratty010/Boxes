@@ -607,5 +607,7 @@ firstboot_done  key-3-of-3.txt
 So, in the end I just want to say thank certain people whose resources have guided me along the way - [John Hammond](https://twitter.com/_johnhammond), [Heath Adams](https://twitter.com/thecybermentor), [IPPSEC](https://twitter.com/ippsec) and [Joseph Perry](https://www.linkedin.com/in/jrpiv/). It is just a start with miles to go.\
 Keep hacking till we meet again!!
 
+
 **Stay Tuned On**\
-[![alt text](https://github.com/pratty010/Boxes/blob/master/Try_Hack_Me/Mr.%20Robot/images/Github.png)](https://github.com/pratty010/Boxes)   [![alt text](https://github.com/pratty010/Boxes/blob/master/Try_Hack_Me/Mr.%20Robot/images/LinkedIn.png)](https://www.linkedin.com/in/pratyush-prakhar/)
+[Github](https://github.com/pratty010/Boxes)\
+[LinkedIn](https://www.linkedin.com/in/pratyush-prakhar/)
