@@ -1,0 +1,10 @@
+/home                [36m (Status: 302)[0m [Size: 23][34m [--> /][0m
+/img                 [36m (Status: 301)[0m [Size: 173][34m [--> /img/][0m
+/Home                [36m (Status: 302)[0m [Size: 23][34m [--> /][0m
+/assets              [36m (Status: 301)[0m [Size: 179][34m [--> /assets/][0m
+/portal              [32m (Status: 200)[0m [Size: 1409]
+/css                 [36m (Status: 301)[0m [Size: 173][34m [--> /css/][0m
+/js                  [36m (Status: 301)[0m [Size: 171][34m [--> /js/][0m
+/logout              [36m (Status: 302)[0m [Size: 29][34m [--> /portal][0m
+/Portal              [32m (Status: 200)[0m [Size: 1409]
+/HOME                [36m (Status: 302)[0m [Size: 23][34m [--> /][0m

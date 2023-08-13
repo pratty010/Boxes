@@ -1,0 +1,4 @@
+ftp:groot:iamgroot,
+sql:root:A#136vMOd!3O,
+sql:spiderman:w3bs,
+sql:thanos:ihave3stones

@@ -1,0 +1,25 @@
+# Nmap 7.94 scan initiated Sat Aug 12 18:36:03 2023 as: nmap -vv -sC -sV -oN nmap/main.nmap 10.10.8.182
+Nmap scan report for 10.10.8.182
+Host is up, received reset ttl 61 (0.23s latency).
+Scanned at 2023-08-12 18:36:04 EDT for 16s
+Not shown: 997 closed tcp ports (reset)
+PORT   STATE SERVICE REASON         VERSION
+21/tcp open  ftp     syn-ack ttl 61 vsftpd 3.0.3
+22/tcp open  ssh     syn-ack ttl 61 OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   2048 e0:81:16:a2:b4:7b:30:ce:75:85:f1:82:e9:40:58:c9 (RSA)
+| ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC30OjLUoSZ4WbeCwMnfZ4PkvI7RgeStulMTQT/tAThTnTmaqt+fQgq8iRKgf+9L7rVSQqW9jUK3O01vwea4BGxQRd47+vjdq0oYlefSvBAhmb9UGlJjXOc//AlYgnPRo4mczv/z8Q04+ztP7NyxKWKBxAqJjmRYIvpMvm7ka5bLogDiSCUmOS80GYOhY181Uo4PQYxJ/+tcwkXbDg3JcZMv66e4Vo8sXkb/s4xYcRO1V/QlyKspHvcqsbixWnEiXfZhmsi5e1NtIgJx1SKqgExjAgjO/Helw9eBs+bAI6DQWFQvyGNOmivBBm/hdDHsPhJtLE573um96Xx28qdjEV1
+|   256 7c:c3:0e:14:26:a5:d6:48:fe:c5:8e:fc:0d:cc:24:f8 (ECDSA)
+| ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBBB70Zhi9T1y1ZU23nbD9vV4Vs8Vl4axVqgDDafvgTxZLOG8cQ03rHVOTuJ9siIlcAHZ/J1wlC11eO0yF5ZrqTE=
+|   256 01:88:80:8c:78:d6:7f:ae:0f:4f:b2:f3:26:e4:84:5b (ED25519)
+|_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMRuu3GPrQKBKxVrsNNE81Uv/dLyWZi1HRB3093zcw8p
+80/tcp open  http    syn-ack ttl 61 Node.js Express framework
+|_http-favicon: Unknown favicon MD5: E084507EB6547A72F9CEC12E0A9B7A36
+|_http-title: Avengers! Assemble!
+| http-methods: 
+|_  Supported Methods: GET HEAD POST OPTIONS
+Service Info: OSs: Unix, Linux; CPE: cpe:/o:linux:linux_kernel
+
+Read data files from: /usr/bin/../share/nmap
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Sat Aug 12 18:36:20 2023 -- 1 IP address (1 host up) scanned in 16.88 seconds
