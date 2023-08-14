@@ -167,7 +167,7 @@ $ cat flag3.txt
 
 4. Let's now explore the sub pages/directories that might be hosted on the web server. We will use `gobuster` to analyze it.
 
-![Results](https://github.com/pratty010/Boxes/blob/master/Try_Hack_Me/Avengers%20Blog/web/port_80.txt)
+[Results](https://github.com/pratty010/Boxes/blob/master/Try_Hack_Me/Avengers%20Blog/web/port_80.txt)
 
 
 5. We are greeted with a login page for the `/portal` sub-page. There might be a possibility of SQL Injection somewhere here. AS we don't have any creds, that is our best bet here.
