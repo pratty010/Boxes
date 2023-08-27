@@ -1,0 +1,30 @@
+# Nmap 7.93 scan initiated Sat Aug 26 21:43:53 2023 as: nmap -vv -sC -sV -oN nmap/main.nmap 10.129.1.12
+Nmap scan report for 10.129.1.12
+Host is up, received echo-reply ttl 127 (0.038s latency).
+Scanned at 2023-08-26 21:43:53 EDT for 17s
+Not shown: 997 closed tcp ports (reset)
+PORT    STATE SERVICE       REASON          VERSION
+135/tcp open  msrpc         syn-ack ttl 127 Microsoft Windows RPC
+139/tcp open  netbios-ssn   syn-ack ttl 127 Microsoft Windows netbios-ssn
+445/tcp open  microsoft-ds? syn-ack ttl 127
+Service Info: OS: Windows; CPE: cpe:/o:microsoft:windows
+
+Host script results:
+|_clock-skew: 3h59m59s
+| p2p-conficker: 
+|   Checking for Conficker.C or higher...
+|   Check 1 (port 65128/tcp): CLEAN (Couldn't connect)
+|   Check 2 (port 11584/tcp): CLEAN (Couldn't connect)
+|   Check 3 (port 38953/udp): CLEAN (Timeout)
+|   Check 4 (port 15467/udp): CLEAN (Failed to receive data)
+|_  0/4 checks are positive: Host is CLEAN or ports are blocked
+| smb2-security-mode: 
+|   311: 
+|_    Message signing enabled but not required
+| smb2-time: 
+|   date: 2023-08-27T05:44:04
+|_  start_date: N/A
+
+Read data files from: /usr/bin/../share/nmap
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Sat Aug 26 21:44:10 2023 -- 1 IP address (1 host up) scanned in 17.86 seconds
