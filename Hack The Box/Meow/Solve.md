@@ -1,6 +1,6 @@
 # Write Up for Hack The Box box - [Meow](https://app.hackthebox.com/starting-point?tier=0)
 
-Part of Starting Point. Guided Box
+Part of Starting Point. Very Easy, Guided Box
 
 > Pratyush Prakhar (5#1NC#4N) - 08/25/2023
 
@@ -17,8 +17,8 @@ Part of Starting Point. Guided Box
 
 5. What is the name of the most common tool for finding open ports on a target? - **nmap**
 
-6. What service do we identify on port 23/tcp during our scans? - **telnet** --> [nmap file]()
+6. What service do we identify on port 23/tcp during our scans? - **telnet** --> [nmap file](https://github.com/pratty010/Boxes/blob/master/Hack%20The%20Box/Meow/nmap/main.nmap)
 
-7. What username is able to log into the target over telnet with a blank password? - **root** --> [hydra file]()
+7. What username is able to log into the target over telnet with a blank password? - **root** --> [hydra file](https://github.com/pratty010/Boxes/blob/master/Hack%20The%20Box/Meow/telnet/telnet_break.txt)
 
-8. Submit root flag - **b40abdfe23665f766f9c61ecba8a4c19** --> [root bash]()
+8. Submit root flag - **b40abdfe23665f766f9c61ecba8a4c19** --> [root terminal](https://github.com/pratty010/Boxes/blob/master/Hack%20The%20Box/Meow/telnet/root.bash)

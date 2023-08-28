@@ -11,14 +11,14 @@ Part of Starting Point. Guided Box
 
 2. What port does SMB use to operate at? - **445**
 
-3. What is the service name for port 445 that came up in our Nmap scan? - **microsoft-ds**
+3. What is the service name for port 445 that came up in our Nmap scan? - **microsoft-ds** --> [nmap file](https://github.com/pratty010/Boxes/blob/master/Hack%20The%20Box/Dancing/nmap/main.nmap)
 
-4. What is the 'flag' or 'switch' that we can use with the smbclient utility to 'list' the available shares on Dancing? - **smbclient -L** --> [share file]()
+4. What is the 'flag' or 'switch' that we can use with the smbclient utility to 'list' the available shares on Dancing? - **smbclient -L** --> [Shares file](https://github.com/pratty010/Boxes/blob/master/Hack%20The%20Box/Dancing/smb/share.out)
 
 5. How many shares are there on Dancing? - **4**
 
-6. What is the name of the share we are able to access in the end with a blank password? - **WorkShares** --> [share file]()
+6. What is the name of the share we are able to access in the end with a blank password? - **WorkShares** --> [WorkSpaces Dir](https://github.com/pratty010/Boxes/blob/master/Hack%20The%20Box/Dancing/smb/WorkSpaces)
 
 7. What is the command we can use within the SMB shell to download the files we find? - **get** 
 
-8. Submit root flag - **5f61c10dffbc77a704d76016a22f1664** --> [flag file]()
+8. Submit root flag - **5f61c10dffbc77a704d76016a22f1664** --> [flag file](https://github.com/pratty010/Boxes/blob/master/Hack%20The%20Box/Dancing/smb/WorkSpaces/James.P/flag.txt)
