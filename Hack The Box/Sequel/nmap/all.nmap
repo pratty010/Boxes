@@ -1,0 +1,10 @@
+# Nmap 7.94 scan initiated Sun Aug 27 21:16:00 2023 as: nmap -vv -p- -oN nmap/all.nmap 10.129.176.136
+Nmap scan report for 10.129.176.136
+Host is up, received echo-reply ttl 63 (0.039s latency).
+Scanned at 2023-08-27 21:16:00 EDT for 41s
+Not shown: 65534 closed tcp ports (reset)
+PORT     STATE SERVICE REASON
+3306/tcp open  mysql   syn-ack ttl 63
+
+Read data files from: /usr/bin/../share/nmap
+# Nmap done at Sun Aug 27 21:16:41 2023 -- 1 IP address (1 host up) scanned in 41.22 seconds

@@ -1,0 +1,161 @@
+200      GET        3l      209w     8599c http://10.129.239.185/assets/js/vendor/modernizr-3.7.1.min.js
+200      GET        1l      237w     3218c http://10.129.239.185/assets/images/basic.svg
+200      GET        4l      212w    20216c http://10.129.239.185/assets/js/jquery.magnific-popup.min.js
+200      GET       33l      100w     4005c http://10.129.239.185/assets/images/portfolio/7.png
+200      GET     2208l     2886w    28218c http://10.129.239.185/assets/css/LineIcons.css
+200      GET       39l      254w    20806c http://10.129.239.185/assets/images/author-1.jpg
+MSG      0.000 feroxbuster::heuristics detected directory listing: http://10.129.239.185/assets/ (Apache)
+200      GET      142l      887w    84823c http://10.129.239.185/assets/images/team-1.jpg
+403      GET        1l       10w       61c http://10.129.239.185/assets/contact.php
+MSG      0.000 feroxbuster::heuristics detected directory listing: http://10.129.239.185/assets/fonts (Apache)
+200      GET      144l      915w    81652c http://10.129.239.185/assets/images/team-3.jpg
+MSG      0.000 feroxbuster::heuristics detected directory listing: http://10.129.239.185/assets/images (Apache)
+MSG      0.000 feroxbuster::heuristics detected directory listing: http://10.129.239.185/assets/css (Apache)
+200      GET      351l      795w     6951c http://10.129.239.185/assets/css/magnific-popup.css
+200      GET      933l     1573w    11304c http://10.129.239.185/assets/css/default.css
+200      GET      146l     1217w    99726c http://10.129.239.185/assets/images/team-2.jpg
+200      GET        1l      176w     2353c http://10.129.239.185/assets/images/enterprise.svg
+200      GET        5l     1434w    97163c http://10.129.239.185/assets/js/vendor/jquery-1.12.4.min.js
+200      GET       31l      221w    18427c http://10.129.239.185/assets/images/author-2.jpg
+200      GET     3247l    10751w   113681c http://10.129.239.185/assets/css/style.css
+200      GET       32l      241w    19416c http://10.129.239.185/assets/images/author-4.jpg
+200      GET      206l     1252w    93284c http://10.129.239.185/assets/fonts/LineIcons.woff2
+200      GET       49l      269w    21630c http://10.129.239.185/assets/images/author-3.jpg
+MSG      0.000 feroxbuster::heuristics detected directory listing: http://10.129.239.185/assets/images/slider (Apache)
+200      GET     1626l     5908w   135448c http://10.129.239.185/assets/fonts/LineIcons.ttf
+200      GET     1626l     5909w   135628c http://10.129.239.185/assets/fonts/LineIcons.eot
+200      GET       66l      468w    37986c http://10.129.239.185/assets/images/slider/3.png
+200      GET      101l      699w    57008c http://10.129.239.185/assets/images/slider/2.png
+200      GET       42l      260w    22786c http://10.129.239.185/assets/images/slider/1.png
+200      GET      227l     1422w   117180c http://10.129.239.185/assets/fonts/LineIcons.woff
+200      GET     1559l    68101w   609222c http://10.129.239.185/assets/fonts/LineIcons.svg
+200      GET        1l       32w      536c http://10.129.239.185/assets/images/f-shape-1.svg
+200      GET       33l       93w     3864c http://10.129.239.185/assets/images/portfolio/3.png
+200      GET       36l      101w     4128c http://10.129.239.185/assets/images/portfolio/9.png
+200      GET       33l       97w     4443c http://10.129.239.185/assets/images/portfolio/4.png
+200      GET      211l      336w     5148c http://10.129.239.185/assets/js/main.js
+200      GET       48l      136w     1249c http://10.129.239.185/assets/js/ajax-contact.js
+200      GET       34l       95w     4347c http://10.129.239.185/assets/images/portfolio/6.png
+200      GET        1l      142w     2214c http://10.129.239.185/assets/images/pro.svg
+200      GET        1l       32w      539c http://10.129.239.185/assets/images/portfolio/shape.svg
+200      GET       35l       94w     4448c http://10.129.239.185/assets/images/portfolio/2.png
+MSG      0.000 feroxbuster::heuristics detected directory listing: http://10.129.239.185/assets/js/ (Apache)
+200      GET        5l      369w    21004c http://10.129.239.185/assets/js/popper.min.js
+200      GET        1l      248w    42863c http://10.129.239.185/assets/js/slick.min.js
+200      GET       44l      380w     5564c http://10.129.239.185/assets/js/jquery.easing.min.js
+200      GET        7l      662w    58072c http://10.129.239.185/assets/js/bootstrap.min.js
+200      GET        7l      110w     5594c http://10.129.239.185/assets/js/imagesloaded.pkgd.min.js
+200      GET       19l       59w      655c http://10.129.239.185/assets/js/scrolling-nav.js
+MSG      0.000 feroxbuster::heuristics detected directory listing: http://10.129.239.185/assets/js/vendor (Apache)
+200      GET       12l      557w    35445c http://10.129.239.185/assets/js/isotope.pkgd.min.js
+200      GET        7l     1966w   155758c http://10.129.239.185/assets/css/bootstrap.min.css
+200      GET       36l      103w     4449c http://10.129.239.185/assets/images/portfolio/8.png
+200      GET       34l      101w     4434c http://10.129.239.185/assets/images/portfolio/5.png
+200      GET      999l     3031w    58565c http://10.129.239.185/index.html
+200      GET        1l       75w      702c http://10.129.239.185/assets/images/logo.svg
+200      GET        3l       12w      544c http://10.129.239.185/assets/images/favicon.png
+301      GET        9l       28w      317c http://10.129.239.185/assets => http://10.129.239.185/assets/
+200      GET      126l      811w    73256c http://10.129.239.185/assets/images/about.jpg
+MSG      0.000 feroxbuster::heuristics detected directory listing: http://10.129.239.185/assets/images/portfolio/ (Apache)
+200      GET      119l      179w     1776c http://10.129.239.185/assets/css/slick.css
+200      GET       34l      101w     4163c http://10.129.239.185/assets/images/portfolio/1.png
+200      GET        1l       75w      705c http://10.129.239.185/assets/images/logo-2.svg
+200      GET      999l     3031w    58565c http://10.129.239.185/
+200      GET        7l       12w    60774c http://10.129.239.185/assets/css/style.css.map
+200      GET        0l        0w        0c http://10.129.239.185/config.php
+301      GET        9l       28w      314c http://10.129.239.185/css => http://10.129.239.185/css/
+MSG      0.000 feroxbuster::heuristics detected directory listing: http://10.129.239.185/css (Apache)
+301      GET        9l       28w      320c http://10.129.239.185/dashboard => http://10.129.239.185/dashboard/
+200      GET       40l       77w      793c http://10.129.239.185/css/signin.css
+200      GET       79l      215w     1411c http://10.129.239.185/css/stylesheet.css
+200      GET        6l     1429w   121200c http://10.129.239.185/css/bootstrap.min.css
+200      GET        1l        2w       23c http://10.129.239.185/dashboard/.git/HEAD
+200      GET       11l       29w      288c http://10.129.239.185/dashboard/.git/config
+200      GET        1l        1w       12c http://10.129.239.185/dashboard/.gitignore
+301      GET        9l       28w      325c http://10.129.239.185/dashboard/.git => http://10.129.239.185/dashboard/.git/
+200      GET        1l        9w      201c http://10.129.239.185/dashboard/.git/logs/HEAD
+200      GET       17l       71w     1163c http://10.129.239.185/dashboard/.git/logs/
+MSG      0.000 feroxbuster::heuristics detected directory listing: http://10.129.239.185/dashboard/.git (Apache)
+MSG      0.000 feroxbuster::heuristics detected directory listing: http://10.129.239.185/dashboard/.git/logs/ (Apache)
+200      GET       26l       56w     1595c http://10.129.239.185/dashboard/.git/packed-refs
+MSG      0.000 feroxbuster::heuristics detected directory listing: http://10.129.239.185/dashboard/.git/info (Apache)
+MSG      0.000 feroxbuster::heuristics detected directory listing: http://10.129.239.185/dashboard/.git/branches (Apache)
+MSG      0.000 feroxbuster::heuristics detected directory listing: http://10.129.239.185/dashboard/.git/refs (Apache)
+200      GET        6l       43w      240c http://10.129.239.185/dashboard/.git/info/exclude
+200      GET      470l     2855w   276083c http://10.129.239.185/dashboard/.git/index
+301      GET        9l       28w      316c http://10.129.239.185/fonts => http://10.129.239.185/fonts/
+MSG      0.000 feroxbuster::heuristics detected directory listing: http://10.129.239.185/fonts (Apache)
+200      GET       94l      534w    42816c http://10.129.239.185/fonts/glyphicons-halflings-regular.woff
+200      GET      772l     1723w    58132c http://10.129.239.185/fonts/glyphicons-halflings-regular.ttf
+200      GET      288l    13959w   108738c http://10.129.239.185/fonts/glyphicons-halflings-regular.svg
+MSG      0.000 feroxbuster::heuristics detected directory listing: http://10.129.239.185/dashboard/.git/hooks (Apache)
+200      GET        1l       10w       73c http://10.129.239.185/dashboard/.git/description
+200      GET       24l      163w      896c http://10.129.239.185/dashboard/.git/hooks/commit-msg.sample
+200      GET       15l       79w      478c http://10.129.239.185/dashboard/.git/hooks/applypatch-msg.sample
+200      GET       49l      279w     1638c http://10.129.239.185/dashboard/.git/hooks/pre-commit.sample
+200      GET       53l      230w     1348c http://10.129.239.185/dashboard/.git/hooks/pre-push.sample
+200      GET      128l      539w     3610c http://10.129.239.185/dashboard/.git/hooks/update.sample
+200      GET       24l       83w      544c http://10.129.239.185/dashboard/.git/hooks/pre-receive.sample
+MSG      0.000 feroxbuster::heuristics detected directory listing: http://10.129.239.185/dashboard/.git/objects (Apache)
+200      GET       73l      429w    32536c http://10.129.239.185/fonts/glyphicons-halflings-regular.woff2
+200      GET      169l      798w     4898c http://10.129.239.185/dashboard/.git/hooks/pre-rebase.sample
+200      GET       42l      238w     1492c http://10.129.239.185/dashboard/.git/hooks/prepare-commit-msg.sample
+200      GET      109l      477w     3079c http://10.129.239.185/dashboard/.git/hooks/fsmonitor-watchman.sample
+200      GET       13l       67w      416c http://10.129.239.185/dashboard/.git/hooks/pre-merge-commit.sample
+200      GET       14l       69w      424c http://10.129.239.185/dashboard/.git/hooks/pre-applypatch.sample
+200      GET      106l      587w    35387c http://10.129.239.185/fonts/glyphicons-halflings-regular.eot
+200      GET        8l       32w      189c http://10.129.239.185/dashboard/.git/hooks/post-update.sample
+301      GET        9l       28w      313c http://10.129.239.185/js => http://10.129.239.185/js/
+MSG      0.000 feroxbuster::heuristics detected directory listing: http://10.129.239.185/js (Apache)
+200      GET        7l      432w    37045c http://10.129.239.185/js/bootstrap.min.js
+200      GET       13l       31w      484c http://10.129.239.185/js/npm.js
+302      GET        0l        0w        0c http://10.129.239.185/logout.php => login.php
+200      GET       39l      115w     1577c http://10.129.239.185/login.php
+301      GET        9l       28w      324c http://10.129.239.185/dashboard/css => http://10.129.239.185/dashboard/css/
+MSG      0.000 feroxbuster::heuristics detected directory listing: http://10.129.239.185/dashboard/css (Apache)
+200      GET       10l     2376w   169740c http://10.129.239.185/dashboard/css/sb-admin-2.min.css
+200      GET    11244l    22052w   210000c http://10.129.239.185/dashboard/css/sb-admin-2.css
+301      GET        9l       28w      324c http://10.129.239.185/dashboard/img => http://10.129.239.185/dashboard/img/
+MSG      0.000 feroxbuster::heuristics detected directory listing: http://10.129.239.185/dashboard/img (Apache)
+302      GET        0l        0w        0c http://10.129.239.185/dashboard/index.php => http://10.129.239.185/login.php
+200      GET       38l      128w     2163c http://10.129.239.185/dashboard/img/undraw_profile_1.svg
+200      GET       39l      102w     3147c http://10.129.239.185/dashboard/img/undraw_rocket.svg
+200      GET       47l      155w     2733c http://10.129.239.185/dashboard/img/undraw_profile_3.svg
+200      GET       44l      137w     2630c http://10.129.239.185/dashboard/img/undraw_profile_2.svg
+200      GET       38l      112w     2820c http://10.129.239.185/dashboard/img/undraw_profile.svg
+200      GET        1l      360w    37285c http://10.129.239.185/dashboard/img/undraw_posting_photo.svg
+MSG      0.000 feroxbuster::heuristics detected directory listing: http://10.129.239.185/dashboard/js (Apache)
+301      GET        9l       28w      323c http://10.129.239.185/dashboard/js => http://10.129.239.185/dashboard/js/
+200      GET        7l       33w     1265c http://10.129.239.185/dashboard/js/sb-admin-2.min.js
+200      GET       56l      175w     1780c http://10.129.239.185/dashboard/js/sb-admin-2.js
+MSG      0.000 feroxbuster::heuristics detected directory listing: http://10.129.239.185/dashboard/js/demo (Apache)
+200      GET        4l       10w      103c http://10.129.239.185/dashboard/js/demo/datatables-demo.js
+200      GET       35l       98w     1057c http://10.129.239.185/dashboard/js/demo/chart-pie-demo.js
+200      GET      118l      391w     3569c http://10.129.239.185/dashboard/js/demo/chart-area-demo.js
+200      GET      111l      347w     3189c http://10.129.239.185/dashboard/js/demo/chart-bar-demo.js
+301      GET        9l       28w      327c http://10.129.239.185/dashboard/vendor => http://10.129.239.185/dashboard/vendor/
+MSG      0.000 feroxbuster::heuristics detected directory listing: http://10.129.239.185/dashboard/vendor (Apache)
+301      GET        9l       28w      336c http://10.129.239.185/dashboard/vendor/chart.js => http://10.129.239.185/dashboard/vendor/chart.js/
+MSG      0.000 feroxbuster::heuristics detected directory listing: http://10.129.239.185/dashboard/vendor/jquery (Apache)
+MSG      0.000 feroxbuster::heuristics detected directory listing: http://10.129.239.185/dashboard/vendor/jquery-easing (Apache)
+MSG      0.000 feroxbuster::heuristics detected directory listing: http://10.129.239.185/dashboard/vendor/fontawesome-free (Apache)
+MSG      0.000 feroxbuster::heuristics detected directory listing: http://10.129.239.185/dashboard/vendor/datatables (Apache)
+MSG      0.000 feroxbuster::heuristics detected directory listing: http://10.129.239.185/dashboard/vendor/bootstrap (Apache)
+200      GET      166l      953w     4047c http://10.129.239.185/dashboard/vendor/jquery-easing/jquery.easing.js
+200      GET        1l       44w     2532c http://10.129.239.185/dashboard/vendor/jquery-easing/jquery.easing.min.js
+200      GET       59l      254w     1656c http://10.129.239.185/dashboard/vendor/jquery-easing/jquery.easing.compatibility.js
+200      GET        1l      116w     5243c http://10.129.239.185/dashboard/vendor/datatables/dataTables.bootstrap4.min.css
+200      GET       34l      237w     1548c http://10.129.239.185/dashboard/vendor/fontawesome-free/LICENSE.txt
+200      GET        3l       23w      187c http://10.129.239.185/dashboard/vendor/fontawesome-free/attribution.js
+200      GET       84l      157w     2303c http://10.129.239.185/dashboard/vendor/fontawesome-free/package.json
+200      GET      209l      542w     5884c http://10.129.239.185/dashboard/vendor/datatables/dataTables.bootstrap4.css
+200      GET      184l      607w     4706c http://10.129.239.185/dashboard/vendor/datatables/dataTables.bootstrap4.js
+200      GET        8l       47w     2098c http://10.129.239.185/dashboard/vendor/datatables/dataTables.bootstrap4.min.js
+200      GET        2l     1062w    72380c http://10.129.239.185/dashboard/vendor/jquery/jquery.slim.min.js
+200      GET        2l     1297w    89476c http://10.129.239.185/dashboard/vendor/jquery/jquery.min.js
+200      GET        1l        2w   110370c http://10.129.239.185/dashboard/vendor/jquery/jquery.slim.min.map
+200      GET      168l     1179w    83597c http://10.129.239.185/dashboard/vendor/datatables/jquery.dataTables.min.js
+200      GET        1l        7w   137974c http://10.129.239.185/dashboard/vendor/jquery/jquery.min.map
+200      GET     8777l    36133w   234458c http://10.129.239.185/dashboard/vendor/jquery/jquery.slim.js
+200      GET    10872l    44287w   287630c http://10.129.239.185/dashboard/vendor/jquery/jquery.js
+200      GET    15387l    65559w   450399c http://10.129.239.185/dashboard/vendor/datatables/jquery.dataTables.js
