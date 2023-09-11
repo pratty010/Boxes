@@ -1,0 +1,12 @@
+# Nmap 7.93 scan initiated Sun Sep 10 20:43:32 2023 as: nmap -vv -T3 -p- -oN nmap/all.nmap 10.129.68.231
+Nmap scan report for 10.129.68.231
+Host is up, received echo-reply ttl 127 (0.22s latency).
+Scanned at 2023-09-10 20:43:32 EDT for 478s
+Not shown: 65532 filtered tcp ports (no-response)
+PORT     STATE SERVICE   REASON
+80/tcp   open  http      syn-ack ttl 127
+5985/tcp open  wsman     syn-ack ttl 127
+7680/tcp open  pando-pub syn-ack ttl 127
+
+Read data files from: /usr/bin/../share/nmap
+# Nmap done at Sun Sep 10 20:51:30 2023 -- 1 IP address (1 host up) scanned in 478.53 seconds
