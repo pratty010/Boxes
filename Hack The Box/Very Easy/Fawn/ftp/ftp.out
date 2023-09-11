@@ -1,0 +1,33 @@
+Connected to 10.129.217.231.
+220 (vsFTPd 3.0.3)
+Name (10.129.217.231:ace): 331 Please specify the password.
+230 Login successful.
+Remote system type is UNIX.
+Using binary mode to transfer files.
+[?2004hftp> ls
+[?2004l200 PORT command successful. Consider using PASV.
+150 Here comes the directory listing.
+-rw-r--r--    1 0        0              32 Jun 04  2021 flag.txt
+226 Directory send OK.
+[?2004hftp> get flag.txt
+[?2004llocal: flag.txt remote: flag.txt
+200 PORT command successful. Consider using PASV.
+150 Opening BINARY mode data connection for flag.txt (32 bytes).
+226 Transfer complete.
+32 bytes received in 0.00 secs (156.2500 kB/s)
+[?2004hftp> ls -la
+[?2004l200 PORT command successful. Consider using PASV.
+150 Here comes the directory listing.
+drwxr-xr-x    2 0        121          4096 Jun 04  2021 .
+drwxr-xr-x    2 0        121          4096 Jun 04  2021 ..
+-rw-r--r--    1 0        0              32 Jun 04  2021 flag.txt
+226 Directory send OK.
+[?2004hftp> cd ..
+[?2004l250 Directory successfully changed.
+[?2004hftp> ls
+[?2004l200 PORT command successful. Consider using PASV.
+150 Here comes the directory listing.
+-rw-r--r--    1 0        0              32 Jun 04  2021 flag.txt
+226 Directory send OK.
+[?2004hftp> exit
+[?2004l221 Goodbye.

