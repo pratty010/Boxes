@@ -1,6 +1,6 @@
-# Write Up for Hack The Box box - [Meow](https://app.hackthebox.com/starting-point?tier=0)
+# Write Up for Hack The Box box - [Redeemer](https://app.hackthebox.com/starting-point?tier=0)
 
-Part of Starting Point. Guided Box
+Part of Starting Point Path. Guided Box
 
 > Pratyush Prakhar (5#1NC#4N) - 08/25/2023
 
