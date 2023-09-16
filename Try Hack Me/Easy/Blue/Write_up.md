@@ -263,6 +263,11 @@ hashcat -m 1000 -a 3 hashes /opt/rockyou.txt
 ```
 \
 The NTLM hashes are stored in hashes file. Dictionary used is rockyou.txt. 
+\
+**Cracked Output**
+`````
+ffb43f0de35be4d9917ac0cc8ad57f8d:alqfna22
+`````
 
 ## FINDING FLAGS
 

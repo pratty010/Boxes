@@ -1,0 +1,20 @@
+# Nmap 7.93 scan initiated Sun Sep 10 21:59:53 2023 as: nmap -vv -T3 -p80 -sC -sV -oN nmap/main.nmap 10.10.227.105
+Nmap scan report for 10.10.227.105
+Host is up, received reset ttl 61 (0.23s latency).
+Scanned at 2023-09-10 21:59:54 EDT for 12s
+
+PORT   STATE SERVICE REASON         VERSION
+80/tcp open  http    syn-ack ttl 61 nginx 1.14.0 (Ubuntu)
+| http-git: 
+|   10.10.227.105:80/.git/
+|     Git repository found!
+|_    Repository description: Unnamed repository; edit this file 'description' to name the...
+|_http-title: Super Awesome Site!
+|_http-server-header: nginx/1.14.0 (Ubuntu)
+| http-methods: 
+|_  Supported Methods: GET HEAD
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+Read data files from: /usr/bin/../share/nmap
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Sun Sep 10 22:00:06 2023 -- 1 IP address (1 host up) scanned in 13.00 seconds
