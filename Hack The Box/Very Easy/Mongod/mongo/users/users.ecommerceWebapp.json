@@ -1,0 +1,82 @@
+[
+    {
+      "_id": "630e4432b82540ebbd1748c6",
+      "id": 1,
+      "username": "Ryley",
+      "email": "vheathcote@example.net",
+      "createdAt": "2019-07-17",
+      "password": "fff4b345de2aee9f1fa5e2a44b3b03378b189d1e"
+    },
+    {
+      "_id": "630e4454b82540ebbd1748c7",
+      "id": 2,
+      "username": "Bertha",
+      "email": "astreich@example.net",
+      "createdAt": "1976-02-18",
+      "password": "085ed623db4b520f59ab1b6b6d222eea94ceb4cb"
+    },
+    {
+      "_id": "630e445cb82540ebbd1748c8",
+      "id": 3,
+      "username": "Maximillian",
+      "email": "trent.carroll@example.org",
+      "createdAt": "2005-08-26",
+      "password": "3859489a17b1cf46251aca8984af8da43356e496"
+    },
+    {
+      "_id": "630e446cb82540ebbd1748c9",
+      "id": 4,
+      "username": "Giuseppe",
+      "email": "bernadine81@example.com",
+      "createdAt": "2009-03-31",
+      "password": "cb4a1ed66f998facd1a39b32f0f1ee698ee7e166"
+    },
+    {
+      "_id": "630e4475b82540ebbd1748ca",
+      "id": 5,
+      "username": "Darrell",
+      "email": "pblanda@example.org",
+      "createdAt": "1986-04-10",
+      "password": "6fd69f347d34d5dacd62f45851c4052a69ef8a94"
+    },
+    {
+      "_id": "630f4df1683a81f8b58a73d0",
+      "id": 6,
+      "username": "itrantow",
+      "email": "boyer.elna@example.com",
+      "createdAt": "1975-04-28",
+      "password": "e5f81b290486127cdb76133ecb7d9b1d"
+    },
+    {
+      "_id": "630f4df1683a81f8b58a73d1",
+      "id": 7,
+      "username": "mayra34",
+      "email": "lferry@example.org",
+      "createdAt": "1997-05-14",
+      "password": "03a8f2ef52750aa1f257817198f2d9d1"
+    },
+    {
+      "_id": "630f4df1683a81f8b58a73d2",
+      "id": 8,
+      "username": "hahn.maritza",
+      "email": "klubowitz@example.com",
+      "createdAt": "2019-03-06",
+      "password": "ef6b43e3406e5cd3d6165d104885d6f3"
+    },
+    {
+      "_id": "630f4df1683a81f8b58a73d3",
+      "id": 9,
+      "username": "cremin.eliza",
+      "email": "mgutkowski@example.org",
+      "createdAt": "2006-03-09",
+      "password": "e4d416c0d0e2c39e234538487bd4a90f"
+    },
+    {
+      "_id": "630f4df1683a81f8b58a73d4",
+      "id": 10,
+      "username": "jazmyne.raynor",
+      "email": "uwisoky@example.com",
+      "createdAt": "1971-08-28",
+      "password": "6a7e8382202666495e7af9e8c4eeae01"
+    }
+  ]
