@@ -1,0 +1,1 @@
+# Nmap 7.94 scan initiated Sun Sep 17 19:42:11 2023 as: nmap -vv -p- -oN nmap/all.nmap 10.10.157.218

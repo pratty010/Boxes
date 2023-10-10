@@ -1,0 +1,10 @@
+# Nmap 7.93 scan initiated Fri Sep 29 16:31:48 2023 as: nmap -vvv -p 873 -oN rustscan/intial.nmap 10.129.228.37
+Nmap scan report for 10.129.228.37
+Host is up, received conn-refused (0.022s latency).
+Scanned at 2023-09-29 16:31:48 EDT for 0s
+
+PORT    STATE SERVICE REASON
+873/tcp open  rsync   syn-ack
+
+Read data files from: /usr/bin/../share/nmap
+# Nmap done at Fri Sep 29 16:31:48 2023 -- 1 IP address (1 host up) scanned in 0.12 seconds

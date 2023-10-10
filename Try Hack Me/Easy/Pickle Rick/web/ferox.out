@@ -1,0 +1,28 @@
+301      GET        9l       28w      315c http://10.10.157.218/assets => http://10.10.157.218/assets/
+MSG      0.000 feroxbuster::heuristics detected directory listing: http://10.10.157.218/assets (Apache)
+200      GET        6l      430w    37609c http://10.10.157.218/assets/bootstrap.min.js
+200      GET      201l     1054w    91974c http://10.10.157.218/assets/portal.jpg
+200      GET      163l     1557w    87738c http://10.10.157.218/assets/fail.gif
+200      GET        2l     1283w    86927c http://10.10.157.218/assets/jquery.min.js
+200      GET       25l       61w      882c http://10.10.157.218/login.php
+200      GET        6l     1460w   121458c http://10.10.157.218/assets/bootstrap.min.css
+200      GET     1493l     8917w   917403c http://10.10.157.218/assets/rickandmorty.jpeg
+200      GET       37l      110w     1062c http://10.10.157.218/
+200      GET     1655l     9030w   389362c http://10.10.157.218/assets/picklerick.gif
+200      GET       37l      110w     1062c http://10.10.157.218/index.html
+302      GET        0l        0w        0c http://10.10.157.218/portal.php => http://10.10.157.218/login.php
+200      GET        1l        1w       17c http://10.10.157.218/robots.txt
+404      GET        9l       33w      293c http://10.10.157.218/Reports%20List.txt
+404      GET        9l       33w      292c http://10.10.157.218/Reports%20List.sh
+404      GET        9l       33w      294c http://10.10.157.218/Reports%20List.html
+404      GET        9l       33w      295c http://10.10.157.218/external%20files.txt
+404      GET        9l       33w      291c http://10.10.157.218/modern%20mom.txt
+404      GET        9l       33w      291c http://10.10.157.218/modern%20mom.php
+302      GET        0l        0w        0c http://10.10.157.218/denied.php => http://10.10.157.218/login.php
+404      GET        9l       33w      291c http://10.10.157.218/Web%20References
+404      GET        9l       33w      295c http://10.10.157.218/Web%20References.txt
+404      GET        9l       33w      294c http://10.10.157.218/Web%20References.sh
+404      GET        9l       33w      296c http://10.10.157.218/Web%20References.html
+404      GET        9l       33w      287c http://10.10.157.218/My%20Project
+404      GET        9l       33w      291c http://10.10.157.218/My%20Project.php
+404      GET        9l       33w      290c http://10.10.157.218/My%20Project.sh

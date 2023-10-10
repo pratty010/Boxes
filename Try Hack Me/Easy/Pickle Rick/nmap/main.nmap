@@ -1,0 +1,24 @@
+# Nmap 7.94 scan initiated Sun Sep 17 19:42:52 2023 as: nmap -vv -sC -sV -p22,80 -oN nmap/main.nmap 10.10.157.218
+Nmap scan report for 10.10.157.218
+Host is up, received reset ttl 61 (0.21s latency).
+Scanned at 2023-09-17 19:42:52 EDT for 14s
+
+PORT   STATE SERVICE REASON         VERSION
+22/tcp open  ssh     syn-ack ttl 61 OpenSSH 7.2p2 Ubuntu 4ubuntu2.6 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   2048 7a:bf:55:c9:e5:8d:91:50:a0:6c:0a:a3:a1:5e:1d:bf (RSA)
+| ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDLt3ouh56GS2MFh6zVk9CXIKoHXqsz2FXEnOzPYCz3dPmN0+mBENQ0iub1LPQ8quXZMVV9O3Kar6pZmeWkcJSd+gVUII/Ywh3LXl8wVZ7TWb68WY85Dufd5IsmwKDhiSROSOVTkGPeuLYXNcHpeSkmqMcb2ANEn9jtzfHW6ZD3njnKwgXaLdRWryfgWCCeelCc/KOQwYoNjaCUY0cAdkWuAs9CBkg5Ap0UAeNpOSm9Z7M1X+gfF7prbO5plJYUqtJt/6gT7nXEzjFLHKW93Atr8AicZKASvPP8tWiwPhPI4oQKtNoxzWYMWUBrksqNrNxJxvekojCC6PXNQi9CnTXX
+|   256 c0:4f:d2:07:34:b2:45:9c:ad:79:60:7f:cc:d8:7c:19 (ECDSA)
+| ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBK7JZfUp+kcf20DGUEoQ13Tiuc4HUIZIqWPNFnS7hZRJU3KfJRf+dzC0CSmAvPvjMt3inqYuPPS8S0zAf3v11Jw=
+|   256 11:93:22:f0:7b:ca:6a:cd:84:eb:dd:59:5a:86:1b:ca (ED25519)
+|_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIH5qNsHoFdhAV0rMNK9RiVI63Bp1D9yWk8M9Ghfvqp+R
+80/tcp open  http    syn-ack ttl 61 Apache httpd 2.4.18 ((Ubuntu))
+|_http-title: Rick is sup4r cool
+| http-methods: 
+|_  Supported Methods: GET HEAD POST OPTIONS
+|_http-server-header: Apache/2.4.18 (Ubuntu)
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+Read data files from: /usr/bin/../share/nmap
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Sun Sep 17 19:43:06 2023 -- 1 IP address (1 host up) scanned in 14.46 seconds
