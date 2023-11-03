@@ -1,0 +1,1 @@
+sweet_rice_cms:manager:Password123(MD5:42f749ade7f9e195bf475f37a44cafcb)
