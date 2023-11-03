@@ -1,0 +1,10 @@
+# Nmap 7.94 scan initiated Thu Oct 26 07:27:19 2023 as: nmap -vvv -p 80 -oN nmap/all.nmap 10.10.252.173
+Nmap scan report for 10.10.252.173
+Host is up, received syn-ack (0.18s latency).
+Scanned at 2023-10-26 07:27:20 EDT for 0s
+
+PORT   STATE SERVICE REASON
+80/tcp open  http    syn-ack
+
+Read data files from: /usr/bin/../share/nmap
+# Nmap done at Thu Oct 26 07:27:20 2023 -- 1 IP address (1 host up) scanned in 0.45 seconds
