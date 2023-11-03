@@ -1,7 +1,7 @@
 # Write Up for Try Hack Me box - [Git Happens](https://tryhackme.com/room/githappens)
 
 This box is based on a vulnerable git directory exposed.
-We can use that to determine earlier changes and possible secrets.
+We can use that to determine earlier changes and possible secrets. Let's jump in.
 
 > Pratyush Prakhar (5#1NC#4N) - 09/09/2023
 
@@ -36,12 +36,12 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 
 3. Let's look into it.
 
-![web page]()
+![](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Git%20Happens/images/web.png)
 
 
 ## WEB
 
-1. We start with a typical check directory brute-force scan. We find that there is a `.git` directory that is leaked for the static webpage. Let's look into methods to exploit it. The full [ferox scan]() file is here for reference.
+1. We start with a typical check directory brute-force scan. We find that there is a `.git` directory that is leaked for the static webpage. Let's look into methods to exploit it. The full [FeroxBuster scan](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Git%20Happens/web/ferox.txt) file is here for reference.
 
 **Results**
 
@@ -77,7 +77,7 @@ MSG      0.000 feroxbuster::heuristics detected directory listing: http://10.10.
 ...............................................................................................................
 ```
 
-2. [Nikto scan]() also confirms the same.
+2. [Nikto scan](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Git%20Happens/web/nikto.out) also confirms the same.
 
 **Results**
 
@@ -103,7 +103,7 @@ $ nikto -url http://10.10.252.173/ -output nikto.out
 
 3. We can also confirm it on the web server as `http://10.10.252.173/.git/`. Let's explore this path.
 
-![git](https://github.com/pratty010/Boxes/blob/master/Try_Hack_Me/Bolt/images/web_port_8000.png)
+![](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Git%20Happens/images/git.png)
 
 
 ## GIT
