@@ -200,21 +200,21 @@ Papers: No Results
 	1. There is a [SQL Backup File Disclosure](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Lazy%20Admin/web/exploit/40718.txt) that allows us to fetch a old [Backup File](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Lazy%20Admin/web/exploit/mysql_bakup_20191129023059-1.5.1.sql)
 	\
 	\
-	![](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Lazy%20Admin/sql_bakup.png)
+	![](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Lazy%20Admin/images/sql_bakup.png)
 	2. We get some credentials from this file which can be seen here --> [creds file](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Lazy%20Admin/creds.txt). Might need to crack the hash. You can employ either the cat or john. 
 	3. Let's try these keys to the found login door at `/content/ac/`. And we are in as the CMS manager.
 	\
 	\
-	![](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Lazy%20Admin/login.png)
+	![](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Lazy%20Admin/images/login.png)
 	4. Let's now work on the file inclusion vulnerability so that we can upload a malicious PHP script and execute it to get a reverse shell on the box. The steps defined in the [known exploit](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Lazy%20Admin/web/exploit/40716.py) are as follows
 		1. Go to the `media center` where you can upload our [malicious file](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Lazy%20Admin/web/exploit/revshell.php5).
 		\
 		\
-		![](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Lazy%20Admin/mc.png)
+		![](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Lazy%20Admin/images/mc.png)
 		2. Can be invoked from the subdirectory as `/attachment/revshell.php` to invoke the uploaded revshell.
 		\
 		\
-		![](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Lazy%20Admin/revshell.png)
+		![](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Lazy%20Admin/images/revshell.png)
 
 ## INITIAL ACCESS
 
@@ -275,7 +275,7 @@ www-data@THM-Chal:/$
 	-rw-rw-r--  1 itguy itguy   38 Nov 29  2019 user.txt
 	```
 	
-	3. Even better, `/etc/copy.sh` is a file owned by by **root:root** but anyone can write to it and execute it. We can directly run it as sudo without any password as defined in `sudo -l`.
+	3. Even better. `/etc/copy.sh` is a file owned by by **root:root** but anyone can write to it and execute it. We can directly run it as sudo without any password as defined in `sudo -l`.
 	
 	```bash
 	www-data@THM-Chal:/home/itguy$ ls -la /etc/copy.sh 
