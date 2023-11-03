@@ -3,7 +3,7 @@
 The box showcases web exploitation and set uid priv escalation.\
 The box is now taken of the website. But still worth it.
  
-> Pratyush Prakhar (5h1NcH@n010) - 11/01/2020
+> Pratyush Prakhar (5#1NC#4N) - 11/01/2020
 
 
 ## RECONNAISSANCE

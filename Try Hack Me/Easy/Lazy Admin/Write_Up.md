@@ -3,7 +3,7 @@
 As the name suggests, Lazy Admin is Easy Box centered around MisConfigurations.\
 First it is a vulnerable version of a CMS followed by a improper permissions on the root files.
 
-> Pratyush Prakhar (5#1NC#4N) - 09/20/2023
+> Pratyush Prakhar (5#1NC#4N) - 08/12/2023
 
 ## RECONNAISSANCE
 
