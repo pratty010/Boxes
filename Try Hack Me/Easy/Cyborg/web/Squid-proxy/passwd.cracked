@@ -1,0 +1,9 @@
+Hash-mode was not specified with -m. Attempting to auto-detect hash mode.
+The following mode was auto-detected as the only one matching your input hash:
+
+1600 | Apache $apr1$ MD5, md5apr1, MD5 (APR) | FTP, HTTP, SMTP, LDAP Server
+
+NOTE: Auto-detect is best effort. The correct hash-mode is NOT guaranteed!
+Do NOT report auto-detect issues unless you are certain of the hash type.
+
+music_archive:$apr1$BpZ.Q.1m$F0qqPwHSOG50URuOVQTTn.:squidward

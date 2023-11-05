@@ -1,0 +1,15 @@
+301      GET        9l       28w      312c http://10.10.84.246/admin => http://10.10.84.246/admin/
+200      GET       15l       74w     6143c http://10.10.84.246/icons/ubuntu-logo.png
+200      GET      375l      968w    11321c http://10.10.84.246/
+200      GET      139l      325w     5771c http://10.10.84.246/admin/index.html
+200      GET       93l      322w     4926c http://10.10.84.246/admin/admin.html
+200      GET       69l       92w      771c http://10.10.84.246/admin/styles.css
+200      GET      375l      968w    11321c http://10.10.84.246/index.html
+301      GET        9l       28w      310c http://10.10.84.246/etc => http://10.10.84.246/etc/
+MSG      0.000 feroxbuster::heuristics detected directory listing: http://10.10.84.246/etc (Apache)
+200      GET       87l      742w    65832c http://10.10.84.246/admin/piano.jpg
+MSG      0.000 feroxbuster::heuristics detected directory listing: http://10.10.84.246/etc/squid (Apache)
+200      GET      354l     1830w   145022c http://10.10.84.246/admin/studio.jpeg
+200      GET        6l       27w      258c http://10.10.84.246/etc/squid/squid.conf
+200      GET        1l        1w       52c http://10.10.84.246/etc/squid/passwd
+200      GET     6005l    34696w  2799646c http://10.10.84.246/admin/archive.tar

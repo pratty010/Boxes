@@ -1,0 +1,5 @@
+301      GET        9l       28w      313c http://10.10.59.237/images => http://10.10.59.237/images/
+MSG      0.000 feroxbuster::heuristics detected directory listing: http://10.10.59.237/images (Apache)
+200      GET     2388l    12398w  1132176c http://10.10.59.237/images/crew.jpg
+200      GET       30l      153w      969c http://10.10.59.237/
+200      GET       30l      153w      969c http://10.10.59.237/index.html

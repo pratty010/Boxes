@@ -1,0 +1,13 @@
+301      GET        9l       28w      312c http://10.10.207.152/css => http://10.10.207.152/css/
+MSG      0.000 feroxbuster::heuristics detected directory listing: http://10.10.207.152/css (Apache)
+200      GET      100l      161w     1611c http://10.10.207.152/css/panel.css
+301      GET        9l       28w      316c http://10.10.207.152/uploads => http://10.10.207.152/uploads/
+MSG      0.000 feroxbuster::heuristics detected directory listing: http://10.10.207.152/uploads (Apache)
+301      GET        9l       28w      311c http://10.10.207.152/js => http://10.10.207.152/js/
+MSG      0.000 feroxbuster::heuristics detected directory listing: http://10.10.207.152/js (Apache)
+200      GET       11l       22w      263c http://10.10.207.152/js/maquina_de_escrever.js
+200      GET      105l      188w     1697c http://10.10.207.152/css/home.css
+200      GET       25l       44w      616c http://10.10.207.152/
+200      GET       25l       44w      616c http://10.10.207.152/index.php
+301      GET        9l       28w      314c http://10.10.207.152/panel => http://10.10.207.152/panel/
+200      GET       22l       47w      732c http://10.10.207.152/panel/index.php
