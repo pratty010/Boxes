@@ -1,4 +1,4 @@
-# This is my writeup for the Try_Hack_Me box - Vulnversity
+# This is my writeup for the Try Hack Me box - [Vulnversity](https://tryhackme.com/room/vulnversity)
 
 The box showcases web exploitation and set uid priv escalation.\
 The box is now taken of the website. But still worth it.
@@ -9,7 +9,6 @@ The box is now taken of the website. But still worth it.
 ## RECONNAISSANCE
 
 1. Scan the box, how many ports are open?- **6**
-	
 	1. Ran a quick scan for all ports
 
 	**Output**
@@ -201,9 +200,7 @@ $ python -c 'import pty; pty.spawn("/bin/bash")'
 www-data@vulnuniversity:/$ ^Z
 [1]+  Stopped                 nc -lnvvp 8888
 kali@kali:~/Desktop/Try_Hack_Me/Vulnversity$ stty raw -echo
-kali@kali:~/Desktop/Try_Hack_Me/Vulnversity$ nc -lnvvp 8888
-                                                                                                                                                                                                                
-www-data@vulnuniversity:/$ l                                   
+kali@kali:~/Desktop/Try_Hack_Me/Vulnversity$ nc -lnvvp 8888                                
 ```
 
 5. What is the name of the user who manages the webserver? - **bill**

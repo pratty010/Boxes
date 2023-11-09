@@ -241,13 +241,16 @@ ftp>
 
 1. Let's first check out the web server on port 80. 
 	1. We get a default page with no links going out. - Default HTML page. **We collect some useful [usernames](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Bounty%20Hunter/users.txt) though from index page.**
+	\
 	![](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Bounty%20Hunter/images/web.png)
+	\
 	2. We will go for the low hanging fruit - robots, page source and try to get some information. - Nothing. Strange.
+	\
 	![](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Bounty%20Hunter/images/ps.png)
+	\
 	3. We can also run other enumerations on the side as `subdomain` and `nikto`. - Nada. Check [here](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Bounty%20Hunter/web).
 	4. Look through a proxy to get more details on the request:response model setup. Nothing to go on.
 	5. We can run sub domain check on this port using `feroxbuster`. This turned up [empty too](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Bounty%20Hunter/web/ferox.txt). Not even a login portal or CMS. Maybe this is a rabbit hole. Smart creator.
-
 
 2. This is very odd. But with exhausting all other options and getting hints from the Box questions, I think we need to Bruteforce the SSH service. Let's look into it.
 

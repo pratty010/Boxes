@@ -1,7 +1,7 @@
 # Write Up for Try Hack Me box - [AnonForce](https://tryhackme.com/room/bsidesgtanonforce)
 
 This was an interesting box as someone forgot to remove system dir listing on the FTP.\
-Moreover, also left some interesting secrets file that allowed as sysadmin foothold on the system.
+Moreover, also left some interesting secrets file that allowed us to escalate as sysadmin on the system.
 
 > Pratyush Prakhar (5#1NC#4N) - 06/16/2023
 
@@ -377,7 +377,7 @@ ftp:*:109:117:ftp daemon,,,:/srv/ftp:/bin/false
 $ unshadow passwd backup_shadow.txt > hashes
 ```
 
-2. Let's reach out to JOHN once more to crack the [unshadowed file](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Anonforce/ssh/hashes) to get some creds to get access. And what luck, we cracked the [root](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Anonforce/ssh/cracked_hashes.txt)!!!!
+2. Let's reach out to JOHN once more to crack the [unshadowed file](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Anonforce/ssh/hashes) to get some creds to get access. And what luck, we cracked the [root](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Anonforce/ssh/cracked_hashes.txt) !!!
 
 ```bash
 $ john hashes --wordlist=/usr/share/wordlists/rockyou.txt 
@@ -403,7 +403,7 @@ root:******:0:0:root:/root:/bin/bash
 └─$ john hashes --show > cracked_hashes.txt
 ```
 
-3. The Box is PAWNed!!!. Let's SSH into the box to get full C&C.
+3. The Box is PAWNed !! Let's SSH into the box to get full C&C.
 
 ```bash
 $ ssh root@10.10.217.109                          

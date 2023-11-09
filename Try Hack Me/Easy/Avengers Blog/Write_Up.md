@@ -99,7 +99,7 @@ Nmap done: 1 IP address (1 host up) scanned in 16.88 seconds
 ## FTP
 
 1. We have VsFTP installed on the system. Will require a set of login credentials to get access through this path.
-2. the task provides us with Groot's creds as `groot:iamgroot`. Let's login using this.
+2. The task provides us with Groot's creds as `groot:iamgroot`. Let's login using this.
 3. We obtain **flag 3** in it.
 
 **Results**
@@ -152,53 +152,51 @@ $ cat flag3.txt
 	2. We will go for the low hanging fruit - robots, page source and try to get some information.
 	3. We ca3 run sub domain check on this port using `gobuster`.
 	4. Look through a proxy to get more details on the request:response model setup.
-
-![](https://github.com/pratty010/Boxes/blob/master/Try_Hack_Me/Avengers%20Blog/images/webpage.png)
-
-2. In the `Page Source`, we get a hint to look into the default js file. On exploring we get the `cookie` being set as `flag1=*****************`
-
-![](https://github.com/pratty010/Boxes/blob/master/Try_Hack_Me/Avengers%20Blog/images/ps.png)
 \
-![](https://github.com/pratty010/Boxes/blob/master/Try_Hack_Me/Avengers%20Blog/images/ps_cookie.png)
-
+![](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Avengers%20Blog/images/webpage.png)
+\
+2. In the `Page Source`, we get a hint to look into the default js file. On exploring we get the `cookie` being set as `flag1=*****************`
+\
+![](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Avengers%20Blog/images/ps.png)
+\
+\
+![](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Avengers%20Blog/images/ps_cookie.png)
+\
 3. Using the inspector developer tool in the browser, we observe that the original response have the **flag2** in it.
+\
+![](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Avengers%20Blog/images/headers.png)
+\
+4. Let's now explore the sub pages/directories that might be hosted on the web server. We will use `gobuster` to analyze it. [Results](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Avengers%20Blog/web/port_80.txt)
 
-![](https://github.com/pratty010/Boxes/blob/master/Try_Hack_Me/Avengers%20Blog/images/headers.png)
-
-4. Let's now explore the sub pages/directories that might be hosted on the web server. We will use `gobuster` to analyze it.
-
-[Results](https://github.com/pratty010/Boxes/blob/master/Try_Hack_Me/Avengers%20Blog/web/port_80.txt)
-
-
-5. We are greeted with a login page for the `/portal` sub-page. There might be a possibility of SQL Injection somewhere here. AS we don't have any creds, that is our best bet here.
-
-![](https://github.com/pratty010/Boxes/blob/master/Try_Hack_Me/Avengers%20Blog/images/portal.png)
-
+5. We are greeted with a login page for the `/portal` sub-page. There might be a possibility of SQL Injection somewhere here. As we don't have any creds, that is our best bet here.
+\
+![](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Avengers%20Blog/images/portal.png)
+\
 6. We get in with this query in both param - `' or 1=1--`. We are greeted with page that might have CLI injection on the system. Let's pursue this path to get some more information.
-
-![](https://github.com/pratty010/Boxes/blob/master/Try_Hack_Me/Avengers%20Blog/images/cli.png)
-
+\
+![](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Avengers%20Blog/images/cli.png)
+\
 
 ## INITIAL ACCESS
 
-1. We get by exploring that the basic enumeration tools like `ls, cat, more, less, vim, nc, python` are all disallowed. So, it will hard to get on the bocx through a shell.
+1. We get by exploring that the basic enumeration tools like `ls, cat, more, less, vim, nc, python` are all disallowed. So, it will hard to get on the box through a shell.
 
-2. we can still explore around the file system to get information on the system. **flag 5** found in the `/home/ubuntu` directory. We can obtain it by using the only read call allowed `rev` which is the rare case. This shows insecure coding practices.
-
-![](https://github.com/pratty010/Boxes/blob/master/Try_Hack_Me/Avengers%20Blog/images/jarvis.png)
-
+2. We can still explore around the file system to get information on the system. **flag 5** found in the `/home/ubuntu` directory. We can obtain it by using the only read call allowed `rev` which is the rare case. This shows insecure coding practices.
+\
+![](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Avengers%20Blog/images/jarvis.png)
+\
 
 ## EXTRA TREATS
 
 1. We see that there are two important files that we find on `/home/ubuntu/avengers` dir as `server.js` and `create.sql`. We read them through the rev command used above.
 
 2. We get the following from it.
-	1. Additional credentials - [see file here](https://github.com/pratty010/Boxes/blob/master/Try_Hack_Me/Avengers%20Blog/creds.txt)
-	2. **Flag 4** was found in the [database file](https://github.com/pratty010/Boxes/blob/master/Try_Hack_Me/Avengers%20Blog/web/portal/sql/create.sql)
-	3. Commands that are banned to use [here](https://github.com/pratty010/Boxes/blob/master/Try_Hack_Me/Avengers%20Blog/web/portal/sql/server.js)
+	1. Additional credentials - [see file here](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Avengers%20Blog/creds.txt)
+	2. **Flag 4** was found in the [database file](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Avengers%20Blog/web/portal/sql/create.sql)
+	3. Commands that are banned to use [here](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Avengers%20Blog/web/portal/sql/server.js)
 
 3. We tried additional SSH and FTP logins using the new credentials. No Luck!!
-4. We can use the above information to dig deeper and find more issues and privesc. Good Luck hunting!!
+4. We can use the above information to dig deeper and find more issues and privesc. Good Luck Hunting!!
 
 ## FLAGS
 

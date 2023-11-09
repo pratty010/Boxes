@@ -164,9 +164,13 @@ Easy Box with certain misconfigurations and sudo PrivEsc with wget binary.
 
 1. Let's first check out the web server on port 80. 
 	1. We get a default page with no links going out. - Default Apache page.
+	\
 	![](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Wgel%20CTF/images/web.png)
+	\
 	2. We will go for the low hanging fruit - robots, page source and try to get some information. - We get that there might be a useful username leaked here - `jessie`.
+	\
 	![](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Wgel%20CTF/images/ps.png)
+	\
 	3. We can also run other enumerations on the side as `subdomain` and `nikto`. Check [here](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Wgel%20CTF/web/nikto.txt).
 	4. Look through a proxy to get more details on the request:response model setup. Nothing to go on.
 	5. We can run sub domain check on this port using `feroxbuster`.
@@ -175,7 +179,9 @@ Easy Box with certain misconfigurations and sudo PrivEsc with wget binary.
 2. The directory brute forcing can turn into a rabbit hole if a proper wordlist is not used. *This box is the perfect example of it*. I usually work with raft wordlists as part as part of Seclists. But in this case it will miss a key file as `.<files>` are not included in most. So, we need to take a step back and work with an old friend. I will let you look into that. We found following interesting sub-dirs.
 	1. `/sitemap` --> Hosts UNAPP which seems like an in-house products. There is no further information obtained from this page. We can also look into the contact us page but it was a bust. Sad that no XSS, CSRF will be possible.
 	2. But to our surprise `/sitemap/.ssh` turned up. Someone forgot to close out their directory listing. Sad for jessie.
+	\
 	![](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Wgel%20CTF/images/ssh.png)
+	\
 
 ## INITIAL ACCESS - SSH
 

@@ -1,4 +1,4 @@
-# Writeup for the Try_Hack_Me box - [Kenobi](https://tryhackme.com/room/kenobi). 
+# Writeup for the Try Hack Me box - [Kenobi](https://tryhackme.com/room/kenobi)
 
 The box utilizes **Samba share** for enumeration and get on the box. Priv Esc is through a SUID binary on an unknown binary.
  
@@ -6,7 +6,7 @@ The box utilizes **Samba share** for enumeration and get on the box. Priv Esc is
 
 ## RECON
 
-1. Scan the machine with nmap, how many ports are open? - [here](https://github.com/pratty010/Boxes/blob/master/Try_Hack_Me/Kenobi/nmap/main.nmap)
+1. Scan the machine with nmap, how many ports are open? - [here](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Kenobi/nmap/main.nmap)
 
 **Output**
 
@@ -98,9 +98,9 @@ Host script results:
 1. FTP is a basic file transfer protocol which allows to host a part of file system for access. 
 2. For access, one might need `credentials` for acess. This provides a part for `fuzzing attacks` but might be caught by access logging mechanisms ont he system. Thus, a risk to follow this attack path. 
 3. In this case, we have the `ProFTPD 1.3.5` which has password protection.
-4. Let's look into any exploit that might be possible using `searchsploit` - [here](https://github.com/pratty010/Boxes/tree/master/Try_Hack_Me/Kenobi/ftp)
+4. Let's look into any exploit that might be possible using `searchsploit` - [here](https://github.com/pratty010/Boxes/tree/master/Try%20Hack%20Me/Easy/Kenobi/ftp)
    1. Both `mod_copy` exploit fail due to non-writable paths.
-   2. But the [text file](https://github.com/pratty010/Boxes/blob/master/Try_Hack_Me/Kenobi/ftp/36742.txt) here explains that we can use `CPFR` and `CPTO` commands on this version to copy file around the system. This can be exploited if we have some access to the file system to read or view and better execute.
+   2. But the [text file](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Kenobi/ftp/36742.txt) here explains that we can use `CPFR` and `CPTO` commands on this version to copy file around the system. This can be exploited if we have some access to the file system to read or view and better execute.
  5. Let's move on to next options. We can use it once we have some credentials or the second path.
 
 **Output**
@@ -130,10 +130,8 @@ ProFTPd 1.3.5 - 'mod_copy' Remote Command Exe | linux/remote/49908.py
 ProFTPd 1.3.5 - File Copy                     | linux/remote/36742.txt
 ---------------------------------------------- ---------------------------------
 Shellcodes: No Results
-Papers: No Results
-                    
+Papers: No Results  
 ```
-
 
 ## SMB
 
@@ -177,7 +175,7 @@ s  .                                   D        0  Wed Sep  4 06:49:09 2019
 
                 9204224 blocks of size 1024. 6877100 blocks available
 ```
-5. We get `log.txt` file from share which can be useful to get some [useful information](https://github.com/pratty010/Boxes/blob/master/Try_Hack_Me/Kenobi/smb/log.txt). Information disclosed
+5. We get `log.txt` file from share which can be useful to get some [useful information](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Kenobi/smb/log.txt). Information disclosed
    1. Information about the SSH key generation.
    2. ProFTPD default config file.
 6. But there is no direct path to get foothold. Let's move to the next path.
@@ -225,7 +223,7 @@ drwxr-xr-x  3 root root  4096 Sep  4  2019 www
 
 3. We find that the `/var` dir of the server is mountable and we can read file from the system. 
 
-4. And now we have a path inside by combining the copy files exploit [here](https://github.com/pratty010/Boxes/blob/master/Try_Hack_Me/Kenobi/Write_up.md#ftp) and the read here through var directory. 
+4. And now we have a path inside by combining the copy files exploit [here](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Kenobi/Write_up.md#ftp) and the read here through var directory. 
 
 
 ## INITIAL ACCESS
@@ -284,7 +282,7 @@ To run a command as administrator (user "root"), use "sudo <command>".
 See "man sudo_root" for details.
 ```
 
-2. We can now use SSH to get on the system with the kenobi's [SSH private key](https://github.com/pratty010/Boxes/blob/master/Try_Hack_Me/Kenobi/ssh/kenobi/kenobi_id_rsa).
+2. We can now use SSH to get on the system with the kenobi's [SSH private key](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Kenobi/ssh/kenobi/kenobi_id_rsa).
 
 
 ## SSH
@@ -296,9 +294,8 @@ See "man sudo_root" for details.
 
 ## PRIVESC
 
-1. We get on the system and run the `linpeas.sh` script to get all the [useful information](https://github.com/pratty010/Boxes/blob/master/Try_Hack_Me/Kenobi/ssh/linpeas.out) on the system.
+1. We get on the system and run the `linpeas.sh` script to get all the [useful information](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Kenobi/ssh/linpeas.out) on the system.
 2. We find that there is a `SUID` privesc set on an unknown binary as `/usr/bin/menu` which has permission set as `root`.
-
 
 **Output**
 
@@ -307,11 +304,7 @@ See "man sudo_root" for details.
 
 -rw-r--r-- 1 root root 655 May 16  2017 /etc/skel/.profile
 -rw-r--r-- 1 kenobi kenobi 655 Sep  4  2019 /home/kenobi/.profile
-
-
-
-
-
+.......................................................
 
                       ╔════════════════════════════════════╗
 ══════════════════════╣ Files with Interesting Permissions ╠══════════════════════                                                                                                           
@@ -423,7 +416,7 @@ root@kenobi:/tmp# cat /root/root.txt
 ```
 
 5. The box is pawned!! We can use this to get full hold of the system.
-   1. Got the [shadow file](https://github.com/pratty010/Boxes/blob/master/Try_Hack_Me/Kenobi/ssh/root/shadow) and can be used to crack passwords with `john` with [hashes](https://github.com/pratty010/Boxes/blob/master/Try_Hack_Me/Kenobi/ssh/hashes) file.
+   1. Got the [shadow file](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Kenobi/ssh/root/shadow) and can be used to crack passwords with `john` with [hashes](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Kenobi/ssh/hashes) file.
 
 
 ## Answers to complete the box

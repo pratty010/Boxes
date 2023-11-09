@@ -7,7 +7,7 @@ Easy Box with common known issues such as PHP upload and SUID PrivEsc.
 ## RECONNAISSANCE
 
 1. Scan the box with rustscan.
-	1. Full port scan --> [nmap file here](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/RootMe/rustscan/all.nmap). FOund **2** ports open.
+	1. Full port scan --> [nmap file here](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/RootMe/rustscan/all.nmap). Found **2** ports open.
 
 	**Results**
 
@@ -162,6 +162,7 @@ Easy Box with common known issues such as PHP upload and SUID PrivEsc.
 
 3. Let's explore Web part first. You know why. If not then keep hacking and you will.
 
+
 ## WEB
 
 1. Let's first check out the web server on port 80. 
@@ -170,11 +171,11 @@ Easy Box with common known issues such as PHP upload and SUID PrivEsc.
 	3. We can also run other enumerations on the side as `subdomain` and `nikto`. -  Nada. Check [here](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/RootMe/web).
 	4. Look through a proxy to get more details on the request:response model setup.
 	5. We can run sub domain check on this port using `feroxbuster`.
-
+\
 ![](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/RootMe/images/web.png)
-
+\
 2. In the `feroxbuster` scan we found two interesting sub-directories as *panel* and *uploads*. We can utilize both to now construct our Exploit Chain.
-
+\
 ![](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/RootMe/images/panel.png)
 \
 \

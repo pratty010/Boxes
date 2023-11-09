@@ -86,20 +86,26 @@ kali@10.10.84.246: Permission denied (publickey,password).
    2. Let's check for the low hanging fruits such as robots.txt, backend language processor, and basic login and admin pages. --> `/admin page obtained`.
    3. Basic Nikto Scan yields following [results](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Cyborg/web/nikto.txt).
 	2. We can run sub domain check on this port using `feroxbuster`. Results [here](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Cyborg/web/ferox.txt).
-
+\
 ![](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Cyborg/images/web.png)
-
+\
 2. From both scans we get following interesting sub directories --> `/admin` and `/etc/squid`
    1. On the admin page, we get a `admin.html` page talking about [Squid Proxy](http://www.squid-cache.org/) and how the user has stored a backup archive names `music_archive.`
+   \
    ![](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Cyborg/images/squid_proxy.png)
+   \
    2. Also, we obtain a `archive.tar` [file](web/Archive/archive.tar) from the same page which can uncompressed to a [Borg Repository](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Cyborg/web/Archive/home/field/dev/final_archive/README).
+   \
    ![](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Cyborg/images/admin.png)
+   \
    3. On [research](https://www.liquidweb.com/kb/install-squid-proxy-server-ubuntu-16-04/) and through the above results, we find squid proxy to be installed at `/etc/squid` and we obtain the [following files](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Cyborg/web/Squid-proxy).
+   \
    ![](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Cyborg/images/sp_config.png)
-
+   \
 3. Now that we have enough information to go on, let's first look into the [Borg Repository](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Cyborg/web/Archive/home) so obtained. [BorgBackup](https://www.borgbackup.org/) (short: Borg) is a deduplicating backup program. Optionally, it supports compression and authenticated encryption.
 The main goal of Borg is to provide an efficient and secure way to backup data. The data deduplication technique used makes Borg suitable for daily backups since only changes are stored. Let's use this binary to extract backed up information from this repository.
-   1. We can use the `info` subcommand on the `final_archive`. But we see that it needs a passphrase. This points us towards the [passwd](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Cyborg/web/Squid-proxy/passwd) file obtained earlier. Let's employ hashcat to obtain the cracked secret as [cracked file](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Cyborg/web/Squid-proxy/passwd.cracked). Supply this to the borg command and we get in!!!
+   1. We can use the `info` subcommand on the `final_archive`. But we see that it needs a passphrase. This points us towards the [passwd](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Cyborg/web/Squid-proxy/passwd) file obtained earlier. Let's employ hashcat to obtain the cracked secret as [cracked file](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Cyborg/web/Squid-proxy/passwd.cracked). Supply this to the borg command and we get in !!!
+   
    ```bash
    $ borg info home/field/dev/final_archive
    Enter passphrase for key /home/kali/Desktop/Boxes/Try_Hack_Me/In Progress/Easy/Cyborg/web/Archive/home/field/dev/final_archive:

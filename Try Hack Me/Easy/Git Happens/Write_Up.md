@@ -35,9 +35,9 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 	1. *Port 80* - HTTP - **nginx 1.14.0**
 
 3. Let's look into it.
-
+\
 ![](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Git%20Happens/images/web.png)
-
+\
 
 ## WEB
 
@@ -102,9 +102,9 @@ $ nikto -url http://10.10.252.173/ -output nikto.out
 ```
 
 3. We can also confirm it on the web server as `http://10.10.252.173/.git/`. Let's explore this path.
-
+\
 ![](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Git%20Happens/images/git.png)
-
+\
 
 ## GIT
 
