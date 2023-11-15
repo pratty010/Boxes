@@ -1,0 +1,24 @@
+# Nmap 7.94SVN scan initiated Fri Nov 10 17:40:54 2023 as: nmap -vvv -p 80,22 -sC -sV -oN rustscan/main.nmap 10.10.110.219
+Nmap scan report for 10.10.110.219
+Host is up, received syn-ack (0.15s latency).
+Scanned at 2023-11-10 17:40:55 IST for 12s
+
+PORT   STATE SERVICE REASON  VERSION
+22/tcp open  ssh     syn-ack OpenSSH 7.2p2 Ubuntu 4ubuntu2.6 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   2048 df:f0:53:2e:3e:15:bf:34:30:32:0f:76:7b:dd:f2:e3 (RSA)
+| ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDYgUqnsD0iU8W8llafklFVl86zhb0mEFOfuUhEWilNfOwaChQInv3r03fbtxUJZEP9krA+0FL7D5Ob/iwYziUa+PQpahGYW6HluQOv324muXGxNCA5FPX6wCJ8xFZ1yFCWjvIv7grk3ru71MZVJ8tNIx4bOvnR+W62SV+ju15UtJcR+//oUzLSAgff8HMFrSFe8o7nVqNSsgoxoo4BQnLXdK8P9X9CwVlSjPRtFxJJwq/AmDlKkKwigCNiL/qvSG+OqtQTHOEQYeu5EnmxRj+hgoW7KliZql6w6Sb0uKVW/7at5RLLY/si8ifkosDbptL7KqEPhynfvx2+8tER4QwX
+|   256 e3:e3:55:24:7a:d1:df:80:5f:93:92:94:a8:0d:f2:3f (ECDSA)
+| ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBM06/UCs+eoWLkgx/5i2HAku7IyI9Qot1CKHsFgvy9BZh2LwdKYsEjXsyzIHczKbCJ3Yv+RZhI8LCqZdk2Ed864=
+|   256 f9:67:7b:a5:f9:7d:8f:08:3b:d5:9e:e3:67:10:48:0c (ED25519)
+|_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIH35J/udnMxsO5dTmy3l0lnA+m1+VzYxzfItoEXOM7RT
+80/tcp open  http    syn-ack Apache httpd 2.4.18 ((Ubuntu))
+| http-methods: 
+|_  Supported Methods: OPTIONS GET HEAD POST
+|_http-server-header: Apache/2.4.18 (Ubuntu)
+|_http-title: Rick is sup4r cool
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+Read data files from: /usr/bin/../share/nmap
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Fri Nov 10 17:41:07 2023 -- 1 IP address (1 host up) scanned in 12.65 seconds

@@ -176,7 +176,7 @@ Fall back on the more crude methods to pwn the Box.
 	Nmap done: 1 IP address (1 host up) scanned in 40.25 seconds
 	```
 
-2. There are **2 TCP** ports open. 
+2. There are **3 TCP** ports open. 
 	1. *Port 21* - FTP - **vsftpd 3.0.3**
 	2. *Port 22* - SSH - **OpenSSH 7.2p2** 
 	3. *Port 80* - WEB - **Apache httpd 2.4.18**

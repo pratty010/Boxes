@@ -1,0 +1,6 @@
+200      GET       20l      113w      808c http://10.10.44.0/
+301      GET        9l       28w      308c http://10.10.44.0/files => http://10.10.44.0/files/
+MSG      0.000 feroxbuster::heuristics detected directory listing: http://10.10.44.0/files (Apache)
+MSG      0.000 feroxbuster::heuristics detected directory listing: http://10.10.44.0/files/ftp (Apache)
+200      GET      728l     5285w   461820c http://10.10.44.0/files/important.jpg
+200      GET        1l       40w      208c http://10.10.44.0/files/notice.txt

@@ -1,0 +1,152 @@
+pspy - version: v1.2.1 - Commit SHA: f9e6a1590a4312b9faa093d8dc84e19567977a6d
+
+
+     ██▓███    ██████  ██▓███ ▓██   ██▓
+    ▓██░  ██▒▒██    ▒ ▓██░  ██▒▒██  ██▒
+    ▓██░ ██▓▒░ ▓██▄   ▓██░ ██▓▒ ▒██ ██░
+    ▒██▄█▓▒ ▒  ▒   ██▒▒██▄█▓▒ ▒ ░ ▐██▓░
+    ▒██▒ ░  ░▒██████▒▒▒██▒ ░  ░ ░ ██▒▓░
+    ▒▓▒░ ░  ░▒ ▒▓▒ ▒ ░▒▓▒░ ░  ░  ██▒▒▒ 
+    ░▒ ░     ░ ░▒  ░ ░░▒ ░     ▓██ ░▒░ 
+    ░░       ░  ░  ░  ░░       ▒ ▒ ░░  
+                   ░           ░ ░     
+                               ░ ░     
+
+Config: Printing events (colored=true): processes=true | file-system-events=false ||| Scanning for processes every 100ms and on inotify events ||| Watching directories: [/usr /tmp /etc /home /var /opt] (recursive) | [] (non-recursive)
+Draining file system events due to startup...
+done
+2023/11/11 11:15:11 [33;1mCMD: UID=1002  PID=20331  | tee pspy.out [0m
+2023/11/11 11:15:11 [33;1mCMD: UID=1002  PID=20330  | ./pspy64 [0m
+2023/11/11 11:15:11 [34;1mCMD: UID=0     PID=1729   | [0m
+2023/11/11 11:15:11 [33;1mCMD: UID=1002  PID=1726   | bash [0m
+2023/11/11 11:15:11 [33;1mCMD: UID=1002  PID=1722   | -sh [0m
+2023/11/11 11:15:11 [33;1mCMD: UID=1002  PID=1721   | sshd: lennie@pts/1   [0m
+2023/11/11 11:15:11 [34;1mCMD: UID=105   PID=1687   | /usr/lib/apt/methods/http [0m
+2023/11/11 11:15:11 [34;1mCMD: UID=0     PID=1675   | /usr/bin/python3 /usr/bin/unattended-upgrade --download-only [0m
+2023/11/11 11:15:11 [34;1mCMD: UID=0     PID=1661   | sshd: lennie [priv]  [0m
+2023/11/11 11:15:11 [34;1mCMD: UID=0     PID=1617   | [0m
+2023/11/11 11:15:11 [33;1mCMD: UID=1002  PID=1418   | bash [0m
+2023/11/11 11:15:11 [33;1mCMD: UID=1002  PID=1413   | -sh [0m
+2023/11/11 11:15:11 [33;1mCMD: UID=1002  PID=1412   | sshd: lennie@pts/0   [0m
+2023/11/11 11:15:11 [33;1mCMD: UID=1002  PID=1352   | (sd-pam)   [0m
+2023/11/11 11:15:11 [33;1mCMD: UID=1002  PID=1347   | /lib/systemd/systemd --user [0m
+2023/11/11 11:15:11 [34;1mCMD: UID=0     PID=1345   | sshd: lennie [priv]  [0m
+2023/11/11 11:15:11 [34;1mCMD: UID=0     PID=1287   | /bin/sh /usr/lib/apt/apt.systemd.daily lock_is_held update [0m
+2023/11/11 11:15:11 [34;1mCMD: UID=0     PID=1279   | /bin/sh /usr/lib/apt/apt.systemd.daily update [0m
+2023/11/11 11:15:11 [36;1mCMD: UID=33    PID=1251   | /usr/sbin/apache2 -k start [0m
+2023/11/11 11:15:11 [36;1mCMD: UID=33    PID=1250   | /usr/sbin/apache2 -k start [0m
+2023/11/11 11:15:11 [36;1mCMD: UID=33    PID=1249   | /usr/sbin/apache2 -k start [0m
+2023/11/11 11:15:11 [36;1mCMD: UID=33    PID=1248   | /usr/sbin/apache2 -k start [0m
+2023/11/11 11:15:11 [36;1mCMD: UID=33    PID=1247   | /usr/sbin/apache2 -k start [0m
+2023/11/11 11:15:11 [34;1mCMD: UID=0     PID=1240   | /usr/sbin/apache2 -k start [0m
+2023/11/11 11:15:11 [34;1mCMD: UID=0     PID=1178   | /sbin/agetty --keep-baud 115200 38400 9600 ttyS0 vt220 [0m
+2023/11/11 11:15:11 [34;1mCMD: UID=0     PID=1173   | /sbin/agetty --noclear tty1 linux [0m
+2023/11/11 11:15:11 [34;1mCMD: UID=0     PID=1115   | /usr/bin/python3 /usr/share/unattended-upgrades/unattended-upgrade-shutdown --wait-for-signal [0m
+2023/11/11 11:15:11 [34;1mCMD: UID=0     PID=1098   | /sbin/mdadm --monitor --pid-file /run/mdadm/monitor.pid --daemonise --scan --syslog [0m
+2023/11/11 11:15:11 [34;1mCMD: UID=0     PID=1092   | /usr/lib/policykit-1/polkitd --no-debug [0m
+2023/11/11 11:15:11 [34;1mCMD: UID=0     PID=1081   | /usr/sbin/sshd -D [0m
+2023/11/11 11:15:11 [34;1mCMD: UID=0     PID=1077   | /usr/sbin/vsftpd /etc/vsftpd.conf [0m
+2023/11/11 11:15:11 [34;1mCMD: UID=0     PID=1073   | /usr/sbin/cron -f [0m
+2023/11/11 11:15:11 [34;1mCMD: UID=0     PID=1059   | /lib/systemd/systemd-logind [0m
+2023/11/11 11:15:11 [32;1mCMD: UID=107   PID=1029   | /usr/bin/dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-activation [0m
+2023/11/11 11:15:11 [34;1mCMD: UID=0     PID=1026   | /usr/sbin/acpid [0m
+2023/11/11 11:15:11 [34;1mCMD: UID=0     PID=1020   | /usr/lib/accountsservice/accounts-daemon [0m
+2023/11/11 11:15:11 [34;1mCMD: UID=0     PID=1007   | /usr/bin/amazon-ssm-agent [0m
+2023/11/11 11:15:11 [35;1mCMD: UID=1     PID=1005   | /usr/sbin/atd -f [0m
+2023/11/11 11:15:11 [35;1mCMD: UID=104   PID=1001   | /usr/sbin/rsyslogd -n [0m
+2023/11/11 11:15:11 [34;1mCMD: UID=0     PID=999    | /usr/bin/lxcfs /var/lib/lxcfs/ [0m
+2023/11/11 11:15:11 [34;1mCMD: UID=0     PID=997    | /sbin/iscsid [0m
+2023/11/11 11:15:11 [34;1mCMD: UID=0     PID=996    | /sbin/iscsid [0m
+2023/11/11 11:15:11 [34;1mCMD: UID=0     PID=799    | /sbin/dhclient -1 -v -pf /run/dhclient.eth0.pid -lf /var/lib/dhcp/dhclient.eth0.leases -I -df /var/lib/dhcp/dhclient6.eth0.leases eth0 [0m
+2023/11/11 11:15:11 [34;1mCMD: UID=0     PID=456    | /lib/systemd/systemd-udevd [0m
+2023/11/11 11:15:11 [34;1mCMD: UID=0     PID=415    | /sbin/lvmetad -f [0m
+2023/11/11 11:15:11 [34;1mCMD: UID=0     PID=403    | [0m
+2023/11/11 11:15:11 [34;1mCMD: UID=0     PID=400    | [0m
+2023/11/11 11:15:11 [34;1mCMD: UID=0     PID=398    | [0m
+2023/11/11 11:15:11 [34;1mCMD: UID=0     PID=397    | [0m
+2023/11/11 11:15:11 [34;1mCMD: UID=0     PID=396    | [0m
+2023/11/11 11:15:11 [34;1mCMD: UID=0     PID=395    | [0m
+2023/11/11 11:15:11 [34;1mCMD: UID=0     PID=394    | [0m
+2023/11/11 11:15:11 [34;1mCMD: UID=0     PID=390    | [0m
+2023/11/11 11:15:11 [34;1mCMD: UID=0     PID=387    | [0m
+2023/11/11 11:15:11 [34;1mCMD: UID=0     PID=385    | /lib/systemd/systemd-journald [0m
+2023/11/11 11:15:11 [34;1mCMD: UID=0     PID=363    | [0m
+2023/11/11 11:15:11 [34;1mCMD: UID=0     PID=298    | [0m
+2023/11/11 11:15:11 [34;1mCMD: UID=0     PID=297    | [0m
+2023/11/11 11:15:11 [34;1mCMD: UID=0     PID=272    | [0m
+2023/11/11 11:15:11 [34;1mCMD: UID=0     PID=241    | [0m
+2023/11/11 11:15:11 [34;1mCMD: UID=0     PID=139    | [0m
+2023/11/11 11:15:11 [34;1mCMD: UID=0     PID=138    | [0m
+2023/11/11 11:15:11 [34;1mCMD: UID=0     PID=137    | [0m
+2023/11/11 11:15:11 [34;1mCMD: UID=0     PID=136    | [0m
+2023/11/11 11:15:11 [34;1mCMD: UID=0     PID=135    | [0m
+2023/11/11 11:15:11 [34;1mCMD: UID=0     PID=134    | [0m
+2023/11/11 11:15:11 [34;1mCMD: UID=0     PID=133    | [0m
+2023/11/11 11:15:11 [34;1mCMD: UID=0     PID=132    | [0m
+2023/11/11 11:15:11 [34;1mCMD: UID=0     PID=131    | [0m
+2023/11/11 11:15:11 [34;1mCMD: UID=0     PID=84     | [0m
+2023/11/11 11:15:11 [34;1mCMD: UID=0     PID=83     | [0m
+2023/11/11 11:15:11 [34;1mCMD: UID=0     PID=71     | [0m
+2023/11/11 11:15:11 [34;1mCMD: UID=0     PID=69     | [0m
+2023/11/11 11:15:11 [34;1mCMD: UID=0     PID=65     | [0m
+2023/11/11 11:15:11 [34;1mCMD: UID=0     PID=64     | [0m
+2023/11/11 11:15:11 [34;1mCMD: UID=0     PID=62     | [0m
+2023/11/11 11:15:11 [34;1mCMD: UID=0     PID=61     | [0m
+2023/11/11 11:15:11 [34;1mCMD: UID=0     PID=60     | [0m
+2023/11/11 11:15:11 [34;1mCMD: UID=0     PID=59     | [0m
+2023/11/11 11:15:11 [34;1mCMD: UID=0     PID=58     | [0m
+2023/11/11 11:15:11 [34;1mCMD: UID=0     PID=57     | [0m
+2023/11/11 11:15:11 [34;1mCMD: UID=0     PID=56     | [0m
+2023/11/11 11:15:11 [34;1mCMD: UID=0     PID=55     | [0m
+2023/11/11 11:15:11 [34;1mCMD: UID=0     PID=54     | [0m
+2023/11/11 11:15:11 [34;1mCMD: UID=0     PID=53     | [0m
+2023/11/11 11:15:11 [34;1mCMD: UID=0     PID=52     | [0m
+2023/11/11 11:15:11 [34;1mCMD: UID=0     PID=51     | [0m
+2023/11/11 11:15:11 [34;1mCMD: UID=0     PID=50     | [0m
+2023/11/11 11:15:11 [34;1mCMD: UID=0     PID=49     | [0m
+2023/11/11 11:15:11 [34;1mCMD: UID=0     PID=33     | [0m
+2023/11/11 11:15:11 [34;1mCMD: UID=0     PID=32     | [0m
+2023/11/11 11:15:11 [34;1mCMD: UID=0     PID=31     | [0m
+2023/11/11 11:15:11 [34;1mCMD: UID=0     PID=30     | [0m
+2023/11/11 11:15:11 [34;1mCMD: UID=0     PID=28     | [0m
+2023/11/11 11:15:11 [34;1mCMD: UID=0     PID=27     | [0m
+2023/11/11 11:15:11 [34;1mCMD: UID=0     PID=26     | [0m
+2023/11/11 11:15:11 [34;1mCMD: UID=0     PID=25     | [0m
+2023/11/11 11:15:11 [34;1mCMD: UID=0     PID=24     | [0m
+2023/11/11 11:15:11 [34;1mCMD: UID=0     PID=23     | [0m
+2023/11/11 11:15:11 [34;1mCMD: UID=0     PID=22     | [0m
+2023/11/11 11:15:11 [34;1mCMD: UID=0     PID=21     | [0m
+2023/11/11 11:15:11 [34;1mCMD: UID=0     PID=20     | [0m
+2023/11/11 11:15:11 [34;1mCMD: UID=0     PID=19     | [0m
+2023/11/11 11:15:11 [34;1mCMD: UID=0     PID=18     | [0m
+2023/11/11 11:15:11 [34;1mCMD: UID=0     PID=17     | [0m
+2023/11/11 11:15:11 [34;1mCMD: UID=0     PID=15     | [0m
+2023/11/11 11:15:11 [34;1mCMD: UID=0     PID=14     | [0m
+2023/11/11 11:15:11 [34;1mCMD: UID=0     PID=13     | [0m
+2023/11/11 11:15:11 [34;1mCMD: UID=0     PID=12     | [0m
+2023/11/11 11:15:11 [34;1mCMD: UID=0     PID=11     | [0m
+2023/11/11 11:15:11 [34;1mCMD: UID=0     PID=10     | [0m
+2023/11/11 11:15:11 [34;1mCMD: UID=0     PID=9      | [0m
+2023/11/11 11:15:11 [34;1mCMD: UID=0     PID=8      | [0m
+2023/11/11 11:15:11 [34;1mCMD: UID=0     PID=7      | [0m
+2023/11/11 11:15:11 [34;1mCMD: UID=0     PID=6      | [0m
+2023/11/11 11:15:11 [34;1mCMD: UID=0     PID=5      | [0m
+2023/11/11 11:15:11 [34;1mCMD: UID=0     PID=4      | [0m
+2023/11/11 11:15:11 [34;1mCMD: UID=0     PID=3      | [0m
+2023/11/11 11:15:11 [34;1mCMD: UID=0     PID=2      | [0m
+2023/11/11 11:15:11 [34;1mCMD: UID=0     PID=1      | /sbin/init [0m
+2023/11/11 11:15:36 [33;1mCMD: UID=1002  PID=20363  | ls [0m
+2023/11/11 11:15:38 [34;1mCMD: UID=0     PID=20366  | [0m
+2023/11/11 11:15:38 [34;1mCMD: UID=0     PID=20365  | [0m
+2023/11/11 11:15:38 [34;1mCMD: UID=0     PID=20364  | /bin/systemd-tmpfiles --clean [0m
+2023/11/11 11:16:01 [34;1mCMD: UID=0     PID=20373  | /bin/bash /home/lennie/scripts/planner.sh [0m
+2023/11/11 11:16:01 [34;1mCMD: UID=0     PID=20372  | /bin/bash /home/lennie/scripts/planner.sh [0m
+2023/11/11 11:16:01 [34;1mCMD: UID=0     PID=20371  | /bin/sh -c /home/lennie/scripts/planner.sh [0m
+2023/11/11 11:16:01 [34;1mCMD: UID=0     PID=20370  | /usr/sbin/CRON -f [0m
+2023/11/11 11:17:01 [34;1mCMD: UID=0     PID=20379  | /bin/sh -c    cd / && run-parts --report /etc/cron.hourly [0m
+2023/11/11 11:17:01 [34;1mCMD: UID=0     PID=20378  | /bin/bash /home/lennie/scripts/planner.sh [0m
+2023/11/11 11:17:01 [34;1mCMD: UID=0     PID=20377  | /bin/sh -c    cd / && run-parts --report /etc/cron.hourly [0m
+2023/11/11 11:17:01 [34;1mCMD: UID=0     PID=20376  | /bin/sh -c /home/lennie/scripts/planner.sh [0m
+2023/11/11 11:17:01 [34;1mCMD: UID=0     PID=20375  | /usr/sbin/CRON -f [0m
+2023/11/11 11:17:01 [34;1mCMD: UID=0     PID=20374  | /usr/sbin/CRON -f [0m
+2023/11/11 11:17:01 [34;1mCMD: UID=0     PID=20380  | /bin/bash /etc/print.sh [0m

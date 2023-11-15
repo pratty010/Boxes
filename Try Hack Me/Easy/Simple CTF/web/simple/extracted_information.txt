@@ -1,0 +1,4 @@
+[+] Username found: mitch
+[+] E-mail found: admin@admin.com
+[+] Salt for password found: 1dac0d92e9fa6bb2
+[*] Hash found: 0c01f4468bd75d7a84c7eb73846e8d96

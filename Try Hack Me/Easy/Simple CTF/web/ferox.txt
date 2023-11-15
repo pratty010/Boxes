@@ -1,0 +1,57 @@
+200      GET       15l       74w     6143c http://10.10.231.118/icons/ubuntu-logo.png
+200      GET      375l      968w    11321c http://10.10.231.118/
+200      GET       32l      141w      929c http://10.10.231.118/robots.txt
+404      GET        9l       33w      289c http://10.10.231.118/Reports%20List
+404      GET        9l       33w      293c http://10.10.231.118/Reports%20List.txt
+404      GET        9l       33w      292c http://10.10.231.118/Reports%20List.sh
+301      GET        9l       28w      315c http://10.10.231.118/simple => http://10.10.231.118/simple/
+404      GET        9l       33w      295c http://10.10.231.118/external%20files.txt
+301      GET        9l       28w      323c http://10.10.231.118/simple/uploads => http://10.10.231.118/simple/uploads/
+301      GET        9l       28w      322c http://10.10.231.118/simple/assets => http://10.10.231.118/simple/assets/
+MSG      0.000 feroxbuster::heuristics detected directory listing: http://10.10.231.118/simple/assets (Apache)
+301      GET        9l       28w      321c http://10.10.231.118/simple/admin => http://10.10.231.118/simple/admin/
+301      GET        9l       28w      319c http://10.10.231.118/simple/doc => http://10.10.231.118/simple/doc/
+MSG      0.000 feroxbuster::heuristics detected directory listing: http://10.10.231.118/simple/tmp (Apache)
+301      GET        9l       28w      323c http://10.10.231.118/simple/modules => http://10.10.231.118/simple/modules/
+MSG      0.000 feroxbuster::heuristics detected directory listing: http://10.10.231.118/simple/modules (Apache)
+301      GET        9l       28w      319c http://10.10.231.118/simple/tmp => http://10.10.231.118/simple/tmp/
+301      GET        9l       28w      319c http://10.10.231.118/simple/lib => http://10.10.231.118/simple/lib/
+MSG      0.000 feroxbuster::heuristics detected directory listing: http://10.10.231.118/simple/admin/themes (Apache)
+301      GET        9l       28w      331c http://10.10.231.118/simple/admin/templates => http://10.10.231.118/simple/admin/templates/
+301      GET        9l       28w      329c http://10.10.231.118/simple/admin/plugins => http://10.10.231.118/simple/admin/plugins/
+301      GET        9l       28w      328c http://10.10.231.118/simple/admin/themes => http://10.10.231.118/simple/admin/themes/
+301      GET        9l       28w      327c http://10.10.231.118/simple/lib/plugins => http://10.10.231.118/simple/lib/plugins/
+301      GET        9l       28w      326c http://10.10.231.118/simple/admin/lang => http://10.10.231.118/simple/admin/lang/
+301      GET        9l       28w      332c http://10.10.231.118/simple/assets/templates => http://10.10.231.118/simple/assets/templates/
+MSG      0.000 feroxbuster::heuristics detected directory listing: http://10.10.231.118/simple/lib/assets (Apache)
+301      GET        9l       28w      326c http://10.10.231.118/simple/lib/assets => http://10.10.231.118/simple/lib/assets/
+301      GET        9l       28w      327c http://10.10.231.118/simple/lib/classes => http://10.10.231.118/simple/lib/classes/
+301      GET        9l       28w      336c http://10.10.231.118/simple/assets/module_custom => http://10.10.231.118/simple/assets/module_custom/
+301      GET        9l       28w      326c http://10.10.231.118/simple/assets/css => http://10.10.231.118/simple/assets/css/
+301      GET        9l       28w      335c http://10.10.231.118/simple/assets/admin_custom => http://10.10.231.118/simple/assets/admin_custom/
+301      GET        9l       28w      331c http://10.10.231.118/simple/tmp/templates_c => http://10.10.231.118/simple/tmp/templates_c/
+301      GET        9l       28w      345c http://10.10.231.118/simple/modules/MenuManager/templates => http://10.10.231.118/simple/modules/MenuManager/templates/
+301      GET        9l       28w      335c http://10.10.231.118/simple/modules/MenuManager => http://10.10.231.118/simple/modules/MenuManager/
+301      GET        9l       28w      342c http://10.10.231.118/simple/modules/MenuManager/images => http://10.10.231.118/simple/modules/MenuManager/images/
+301      GET        9l       28w      342c http://10.10.231.118/simple/modules/FileManager/images => http://10.10.231.118/simple/modules/FileManager/images/
+301      GET        9l       28w      338c http://10.10.231.118/simple/modules/FileManager/js => http://10.10.231.118/simple/modules/FileManager/js/
+301      GET        9l       28w      345c http://10.10.231.118/simple/modules/FileManager/templates => http://10.10.231.118/simple/modules/FileManager/templates/
+301      GET        9l       28w      337c http://10.10.231.118/simple/modules/Search/images => http://10.10.231.118/simple/modules/Search/images/
+301      GET        9l       28w      325c http://10.10.231.118/simple/tmp/cache => http://10.10.231.118/simple/tmp/cache/
+301      GET        9l       28w      328c http://10.10.231.118/simple/modules/News => http://10.10.231.118/simple/modules/News/
+301      GET        9l       28w      330c http://10.10.231.118/simple/modules/Search => http://10.10.231.118/simple/modules/Search/
+301      GET        9l       28w      324c http://10.10.231.118/simple/lib/lang => http://10.10.231.118/simple/lib/lang/
+301      GET        9l       28w      340c http://10.10.231.118/simple/modules/Search/templates => http://10.10.231.118/simple/modules/Search/templates/
+301      GET        9l       28w      347c http://10.10.231.118/simple/modules/CmsJobManager/templates => http://10.10.231.118/simple/modules/CmsJobManager/templates/
+301      GET        9l       28w      337c http://10.10.231.118/simple/modules/CmsJobManager => http://10.10.231.118/simple/modules/CmsJobManager/
+301      GET        9l       28w      335c http://10.10.231.118/simple/modules/News/images => http://10.10.231.118/simple/modules/News/images/
+301      GET        9l       28w      337c http://10.10.231.118/simple/modules/DesignManager => http://10.10.231.118/simple/modules/DesignManager/
+301      GET        9l       28w      339c http://10.10.231.118/simple/modules/AdminSearch/lib => http://10.10.231.118/simple/modules/AdminSearch/lib/
+301      GET        9l       28w      329c http://10.10.231.118/simple/lib/lang/help => http://10.10.231.118/simple/lib/lang/help/
+404      GET        9l       33w      303c http://10.10.231.118/simple/admin/Style%20Library
+404      GET        9l       33w      307c http://10.10.231.118/simple/admin/Style%20Library.txt
+404      GET        9l       34w      311c http://10.10.231.118/simple/lib/plugins/neuf%20giga%20photo
+404      GET        9l       34w      315c http://10.10.231.118/simple/lib/plugins/neuf%20giga%20photo.txt
+404      GET        9l       33w      316c http://10.10.231.118/simple/modules/FilePicker/Style%20Library
+404      GET        9l       33w      320c http://10.10.231.118/simple/modules/FilePicker/Style%20Library.txt
+404      GET        9l       33w      321c http://10.10.231.118/simple/modules/AdminSearch/Style%20Library.txt
