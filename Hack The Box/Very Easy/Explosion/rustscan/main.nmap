@@ -1,0 +1,81 @@
+# Nmap 7.94SVN scan initiated Mon Jan 29 15:24:22 2024 as: nmap -vvv -p 135,139,445,3389,5985,47001,49665,49664,49667,49666,49669,49668,49670,49671 -sC -sV -oN rustscan/main.nmap 10.129.42.86
+Nmap scan report for 10.129.42.86
+Host is up, received conn-refused (0.044s latency).
+Scanned at 2024-01-29 15:24:23 EST for 63s
+
+PORT      STATE SERVICE       REASON  VERSION
+135/tcp   open  msrpc         syn-ack Microsoft Windows RPC
+139/tcp   open  netbios-ssn   syn-ack Microsoft Windows netbios-ssn
+445/tcp   open  microsoft-ds? syn-ack
+3389/tcp  open  ms-wbt-server syn-ack Microsoft Terminal Services
+| rdp-ntlm-info: 
+|   Target_Name: EXPLOSION
+|   NetBIOS_Domain_Name: EXPLOSION
+|   NetBIOS_Computer_Name: EXPLOSION
+|   DNS_Domain_Name: Explosion
+|   DNS_Computer_Name: Explosion
+|   Product_Version: 10.0.17763
+|_  System_Time: 2024-01-29T20:25:17+00:00
+| ssl-cert: Subject: commonName=Explosion
+| Issuer: commonName=Explosion
+| Public Key type: rsa
+| Public Key bits: 2048
+| Signature Algorithm: sha256WithRSAEncryption
+| Not valid before: 2024-01-28T20:18:19
+| Not valid after:  2024-07-29T20:18:19
+| MD5:   5c96:c6fb:a603:8370:7533:fd78:6e40:a182
+| SHA-1: fedb:fb2a:1d10:b008:e360:02a2:3726:0d60:3c57:b716
+| -----BEGIN CERTIFICATE-----
+| MIIC1jCCAb6gAwIBAgIQPCF84u96V5RL/hnbdBBhPjANBgkqhkiG9w0BAQsFADAU
+| MRIwEAYDVQQDEwlFeHBsb3Npb24wHhcNMjQwMTI4MjAxODE5WhcNMjQwNzI5MjAx
+| ODE5WjAUMRIwEAYDVQQDEwlFeHBsb3Npb24wggEiMA0GCSqGSIb3DQEBAQUAA4IB
+| DwAwggEKAoIBAQDO7KZDqdIUtzcOdnQR1I10vBYj6lrgThJzTsf24LHXTXW/RwRb
+| Lrn041CIqvYoFMWXFBtSw0znpqHogcPChMz+YKCcr6HxmyoBI074624TYBzRhR9i
+| 7JOgAwNigtAXqo9KRi8iR3i9YekCljQ9Ja7ijhSsy9L1jTQEGs9bhvWJZjA6vRCb
+| GRUggzHN63FVjuoWFlqZ5/yMTFspH5OAin9x+NAViZcwGDYayTnuXwxi46S118XZ
+| jUd12wJzMSpam3wYkuDWPvSAalyi3goAbna2KABAf/ZqcctAQ9/4n0QlEHQ9snZI
+| r4Nhm4Yn7kbtyjxUH94ZAFSTz/NeVCvgYitFAgMBAAGjJDAiMBMGA1UdJQQMMAoG
+| CCsGAQUFBwMBMAsGA1UdDwQEAwIEMDANBgkqhkiG9w0BAQsFAAOCAQEAJfT6o4l8
+| ddLh2J2hWmz/wv5zVZNiLc2V1tGLjfMF52TFm1yp49k9LCITPOmlVr3Npv1EsMzC
+| 56CB0QZ53biRNYuVG+md6cY/so4d83zMG8gLaw1Pym9fdzsEmchXm+JSYM/SXNFP
+| QZtmHc/hdcu0x9QZxeBHLO835+a20IJ+Y0vMrsuDOR97EDM3zcYBzZfhcZ6sNtGy
+| LyD2qarZI9cAtSrtC7POL/wFSE5TXApK7Hd9mD2/WEfZDn4l2r+NQkvhFzu1JYN0
+| 5gf0x3G9X3KPUpOXSxAZvCD2poFCKPBXnKFjilMckLLZOhNljDTF9L4H4pofr9tG
+| EZSWdmagdvfPwA==
+|_-----END CERTIFICATE-----
+|_ssl-date: 2024-01-29T20:25:25+00:00; -1s from scanner time.
+5985/tcp  open  http          syn-ack Microsoft HTTPAPI httpd 2.0 (SSDP/UPnP)
+|_http-server-header: Microsoft-HTTPAPI/2.0
+|_http-title: Not Found
+47001/tcp open  http          syn-ack Microsoft HTTPAPI httpd 2.0 (SSDP/UPnP)
+|_http-title: Not Found
+|_http-server-header: Microsoft-HTTPAPI/2.0
+49664/tcp open  msrpc         syn-ack Microsoft Windows RPC
+49665/tcp open  msrpc         syn-ack Microsoft Windows RPC
+49666/tcp open  msrpc         syn-ack Microsoft Windows RPC
+49667/tcp open  msrpc         syn-ack Microsoft Windows RPC
+49668/tcp open  msrpc         syn-ack Microsoft Windows RPC
+49669/tcp open  msrpc         syn-ack Microsoft Windows RPC
+49670/tcp open  msrpc         syn-ack Microsoft Windows RPC
+49671/tcp open  msrpc         syn-ack Microsoft Windows RPC
+Service Info: OS: Windows; CPE: cpe:/o:microsoft:windows
+
+Host script results:
+| p2p-conficker: 
+|   Checking for Conficker.C or higher...
+|   Check 1 (port 14050/tcp): CLEAN (Couldn't connect)
+|   Check 2 (port 45382/tcp): CLEAN (Couldn't connect)
+|   Check 3 (port 38257/udp): CLEAN (Timeout)
+|   Check 4 (port 46122/udp): CLEAN (Failed to receive data)
+|_  0/4 checks are positive: Host is CLEAN or ports are blocked
+|_clock-skew: mean: -1s, deviation: 0s, median: -1s
+| smb2-security-mode: 
+|   3:1:1: 
+|_    Message signing enabled but not required
+| smb2-time: 
+|   date: 2024-01-29T20:25:21
+|_  start_date: N/A
+
+Read data files from: /usr/bin/../share/nmap
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Mon Jan 29 15:25:26 2024 -- 1 IP address (1 host up) scanned in 63.78 seconds

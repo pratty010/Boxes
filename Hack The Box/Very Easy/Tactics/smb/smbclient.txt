@@ -1,0 +1,65 @@
+Password for [WORKGROUP\Administrator]:
+Try "help" to get a list of possible commands.
+[?2004hsmb: \> ls
+[?2004l  $Recycle.Bin                      DHS        0  Wed Apr 21 11:23:49 2021
+  Config.Msi                        DHS        0  Wed Jul  7 14:04:56 2021
+  Documents and Settings          DHSrn        0  Wed Apr 21 11:17:12 2021
+  pagefile.sys                      AHS 738197504  Wed Jan 31 02:11:03 2024
+  PerfLogs                            D        0  Sat Sep 15 03:19:00 2018
+  Program Files                      DR        0  Wed Jul  7 14:04:24 2021
+  Program Files (x86)                 D        0  Wed Jul  7 14:03:38 2021
+  ProgramData                        DH        0  Tue Sep 13 12:27:53 2022
+  Recovery                         DHSn        0  Wed Apr 21 11:17:15 2021
+  System Volume Information         DHS        0  Wed Apr 21 11:34:04 2021
+  Users                              DR        0  Wed Apr 21 11:23:18 2021
+  Windows                             D        0  Wed Jan 31 02:53:12 2024
+  __output                            A        0  Wed Jan 31 02:53:12 2024
+
+		3774463 blocks of size 4096. 1157822 blocks available
+[?2004hsmb: \> cd Users\
+Users\Administrator\  Users\Default\        Users\desktop.ini     
+Users\All Users\      Users\Default User\   Users\Public\         
+smb: \> cd Users\Administrator\
+Users\Administrator\3D Objects\
+Users\Administrator\AppData\
+Users\Administrator\Application Data\
+Users\Administrator\Contacts\
+Users\Administrator\Cookies\
+Users\Administrator\Desktop\
+Users\Administrator\Documents\
+Users\Administrator\Downloads\
+Users\Administrator\Favorites\
+Users\Administrator\Links\
+Users\Administrator\Local Settings\
+Users\Administrator\Music\
+Users\Administrator\My Documents\
+Users\Administrator\NetHood\
+Users\Administrator\NTUSER.DAT
+Users\Administrator\NTUSER.DAT{1c3790b4-b8ad-11e8-aa21-e41d2d101530}.TM.blf
+Users\Administrator\NTUSER.DAT{1c3790b4-b8ad-11e8-aa21-e41d2d101530}.TMContainer00000000000000000001.regtrans-ms
+Users\Administrator\NTUSER.DAT{1c3790b4-b8ad-11e8-aa21-e41d2d101530}.TMContainer00000000000000000002.regtrans-ms
+Users\Administrator\ntuser.dat.LOG1
+Users\Administrator\ntuser.dat.LOG2
+Users\Administrator\ntuser.ini
+Users\Administrator\Pictures\
+Users\Administrator\PrintHood\
+Users\Administrator\Recent\
+Users\Administrator\Saved Games\
+Users\Administrator\Searches\
+Users\Administrator\SendTo\
+Users\Administrator\Start Menu\
+Users\Administrator\Templates\
+Users\Administrator\Videos\
+smb: \> cd Users\Administrator\Desktop\
+Users\Administrator\Desktop\desktop.ini  Users\Administrator\Desktop\flag.txt
+smb: \> cd Users\Administrator\Desktop\
+[?2004l[?2004hsmb: \Users\Administrator\Desktop\> ls
+[?2004l  .                                  DR        0  Thu Apr 22 03:16:03 2021
+  ..                                 DR        0  Thu Apr 22 03:16:03 2021
+  desktop.ini                       AHS      282  Wed Apr 21 11:23:32 2021
+  flag.txt                            A       32  Fri Apr 23 05:39:00 2021
+
+		3774463 blocks of size 4096. 1157822 blocks available
+[?2004hsmb: \Users\Administrator\Desktop\> get flg[Kag.txt 
+[?2004l[?2004hsmb: \Users\Administrator\Desktop\> exit
+[?2004l

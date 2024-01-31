@@ -1,0 +1,65 @@
+301      GET        7l       12w      185c http://ignition.htb/media => http://ignition.htb/media/
+200      GET      244l      840w     7375c http://ignition.htb/static/version1615543886/frontend/Magento/luma/en_US/mage/requirejs/mixins.js
+200      GET      268l      648w     6252c http://ignition.htb/static/version1615543886/frontend/Magento/luma/en_US/mage/calendar.css
+200      GET       75l      406w    31556c http://ignition.htb/static/version1615543886/frontend/Magento/luma/en_US/fonts/opensans/light/opensans-300.woff2
+200      GET       64l      392w    32427c http://ignition.htb/static/version1615543886/frontend/Magento/luma/en_US/fonts/opensans/semibold/opensans-600.woff2
+200      GET       81l      430w    32276c http://ignition.htb/static/version1615543886/frontend/Magento/luma/en_US/fonts/opensans/regular/opensans-400.woff2
+200      GET     2068l     7890w    82717c http://ignition.htb/static/version1615543886/frontend/Magento/luma/en_US/requirejs/require.js
+200      GET        1l     8519w   330872c http://ignition.htb/static/version1615543886/frontend/Magento/luma/en_US/css/styles-m.css
+200      GET      244l      840w     7375c http://ignition.htb/static/version1615543886/adminhtml/Magento/backend/en_US/mage/requirejs/mixins.js
+200      GET       18l       69w     3342c http://ignition.htb/static/version1615543886/adminhtml/Magento/backend/en_US/images/loader-2.gif
+200      GET       74l      420w     4626c http://ignition.htb/static/version1615543886/adminhtml/Magento/backend/en_US/jquery/jstree/themes/default/style.css
+200      GET       15l       57w    49231c http://ignition.htb/static/version1615543886/adminhtml/Magento/backend/en_US/Magento_Theme/favicon.ico
+200      GET        1l      798w     5678c http://ignition.htb/static/version1615543886/adminhtml/Magento/backend/en_US/images/magento-logo.svg
+200      GET      634l     1468w    20529c http://ignition.htb/static/version1615543886/adminhtml/Magento/backend/en_US/extjs/resources/css/ytheme-magento.css
+200      GET      634l     1285w    16774c http://ignition.htb/static/version1615543886/adminhtml/Magento/backend/en_US/requirejs-config.js
+200      GET     2151l     5329w    71567c http://ignition.htb/static/version1615543886/adminhtml/Magento/backend/en_US/extjs/resources/css/ext-all.css
+200      GET     2068l     7890w    82717c http://ignition.htb/static/version1615543886/adminhtml/Magento/backend/en_US/requirejs/require.js
+200      GET        1l     8613w   413868c http://ignition.htb/static/version1615543886/adminhtml/Magento/backend/en_US/css/styles.css
+200      GET       18l       69w     3342c http://ignition.htb/static/version1615543886/frontend/Magento/luma/en_US/images/loader-2.gif
+200      GET        1l       28w     1199c http://ignition.htb/static/version1615543886/frontend/Magento/luma/en_US/css/print.css
+200      GET        1l      305w     3802c http://ignition.htb/static/version1615543886/frontend/Magento/luma/en_US/images/logo.svg
+200      GET       15l       57w    49231c http://ignition.htb/static/version1615543886/frontend/Magento/luma/en_US/Magento_Theme/favicon.ico
+200      GET      502l     1212w    28955c http://ignition.htb/sales/guest/form
+200      GET       14l       84w     5877c http://ignition.htb/static/version1615543886/frontend/Magento/luma/en_US/fonts/Luma-Icons.woff2
+200      GET       73l      441w    31666c http://ignition.htb/static/version1615543886/frontend/Magento/luma/en_US/fonts/opensans/bold/opensans-700.woff2
+200      GET        1l     1861w    77145c http://ignition.htb/static/version1615543886/frontend/Magento/luma/en_US/css/styles-l.css
+302      GET        0l        0w        0c http://ignition.htb/search/ajax/suggest => http://ignition.htb/
+302      GET        0l        0w        0c http://ignition.htb/wishlist => http://ignition.htb/customer/account/login/referer/aHR0cDovL2lnbml0aW9uLmh0Yi93aXNobGlzdA%2C%2C/
+302      GET        0l        0w        0c http://ignition.htb/customer/account => http://ignition.htb/customer/account/login/referer/aHR0cDovL2lnbml0aW9uLmh0Yi9jdXN0b21lci9hY2NvdW50L2luZGV4Lw%2C%2C/
+200      GET      875l     1807w    21493c http://ignition.htb/static/version1615543886/frontend/Magento/luma/en_US/requirejs-config.js
+200      GET      617l     2212w    35653c http://ignition.htb/privacy-policy-cookie-restriction-mode
+200      GET      435l     1061w    26100c http://ignition.htb/checkout/cart
+302      GET        0l        0w        0c http://ignition.htb/customer/account/ => http://ignition.htb/customer/account/login/referer/aHR0cDovL2lnbml0aW9uLmh0Yi9jdXN0b21lci9hY2NvdW50L2luZGV4Lw%2C%2C/
+200      GET      119l      316w     6403c http://ignition.htb/admin/admin/auth/forgotpassword
+200      GET      148l      328w     7092c http://ignition.htb/admin/admin/index/index/key/5314aefb53794aa2ffb5e5fa89f3b3932ea07f50ed8c0bfed3a12c6c9df059e8
+200      GET      148l      328w     7092c http://ignition.htb/admin/admin
+200      GET      148l      328w     7092c http://ignition.htb/admin
+200      GET      502l     1239w    29873c http://ignition.htb/customer/account/login/referer/aHR0cDovL2lnbml0aW9uLmh0Yi8%2C
+200      GET      425l     1039w    25806c http://ignition.htb/
+200      GET      502l     1239w    29903c http://ignition.htb/customer/account/login/referer/aHR0cDovL2lnbml0aW9uLmh0Yi9jb250YWN0
+200      GET      503l     1184w    28673c http://ignition.htb/contact
+302      GET        0l        0w        0c http://ignition.htb/catalog => http://ignition.htb/
+200      GET      502l     1239w    29913c http://ignition.htb/customer/account/login/referer/aHR0cDovL2lnbml0aW9uLmh0Yi9zZWFyY2g%2C
+302      GET        0l        0w        0c http://ignition.htb/checkout => http://ignition.htb/checkout/cart/
+301      GET        7l       12w      185c http://ignition.htb/media/catalog => http://ignition.htb/media/catalog/
+301      GET        7l       12w      185c http://ignition.htb/media/customer => http://ignition.htb/media/customer/
+301      GET        7l       12w      185c http://ignition.htb/media/catalog/product => http://ignition.htb/media/catalog/product/
+200      GET      502l     1239w    29993c http://ignition.htb/customer/account/login/referer/aHR0cDovL2lnbml0aW9uLmh0Yi9jbXMvbm9yb3V0ZS9pbmRleC8%2C
+200      GET      427l     1046w    25911c http://ignition.htb/search/term/popular
+301      GET        7l       12w      185c http://ignition.htb/static => http://ignition.htb/static/
+301      GET        7l       12w      185c http://ignition.htb/errors => http://ignition.htb/errors/
+301      GET        7l       12w      185c http://ignition.htb/media/sitemap => http://ignition.htb/media/sitemap/
+301      GET        7l       12w      185c http://ignition.htb/setup => http://ignition.htb/setup/
+301      GET        7l       12w      185c http://ignition.htb/media/import => http://ignition.htb/media/import/
+301      GET        7l       12w      185c http://ignition.htb/media/captcha => http://ignition.htb/media/captcha/
+301      GET        7l       12w      185c http://ignition.htb/media/captcha/admin => http://ignition.htb/media/captcha/admin/
+301      GET        7l       12w      185c http://ignition.htb/errors/default => http://ignition.htb/errors/default/
+301      GET        7l       12w      185c http://ignition.htb/errors/default/images => http://ignition.htb/errors/default/images/
+301      GET        7l       12w      185c http://ignition.htb/errors/default/css => http://ignition.htb/errors/default/css/
+301      GET        7l       12w      185c http://ignition.htb/media/theme => http://ignition.htb/media/theme/
+301      GET        7l       12w      185c http://ignition.htb/media/captcha/base => http://ignition.htb/media/captcha/base/
+301      GET        7l       12w      185c http://ignition.htb/opt => http://ignition.htb/opt/
+301      GET        7l       12w      185c http://ignition.htb/media/theme/preview => http://ignition.htb/media/theme/preview/
+301      GET        7l       12w      185c http://ignition.htb/opt/magento => http://ignition.htb/opt/magento/
+301      GET        7l       12w      185c http://ignition.htb/opt/magento/var => http://ignition.htb/opt/magento/var/
