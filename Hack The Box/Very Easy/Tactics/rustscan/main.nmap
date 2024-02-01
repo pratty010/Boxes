@@ -1,0 +1,30 @@
+# Nmap 7.94SVN scan initiated Wed Jan 31 03:05:24 2024 as: nmap -T3 -vvv -Pn -p135,139,445 -sC -sV -oN main.nmap 10.129.241.57
+Nmap scan report for 10.129.241.57
+Host is up, received user-set (0.040s latency).
+Scanned at 2024-01-31 03:05:25 EST for 48s
+
+PORT    STATE SERVICE       REASON  VERSION
+135/tcp open  msrpc         syn-ack Microsoft Windows RPC
+139/tcp open  netbios-ssn   syn-ack Microsoft Windows netbios-ssn
+445/tcp open  microsoft-ds? syn-ack
+Service Info: OS: Windows; CPE: cpe:/o:microsoft:windows
+
+Host script results:
+| p2p-conficker: 
+|   Checking for Conficker.C or higher...
+|   Check 1 (port 27055/tcp): CLEAN (Timeout)
+|   Check 2 (port 33628/tcp): CLEAN (Timeout)
+|   Check 3 (port 51967/udp): CLEAN (Timeout)
+|   Check 4 (port 21088/udp): CLEAN (Timeout)
+|_  0/4 checks are positive: Host is CLEAN or ports are blocked
+| smb2-time: 
+|   date: 2024-01-31T08:05:35
+|_  start_date: N/A
+| smb2-security-mode: 
+|   3:1:1: 
+|_    Message signing enabled but not required
+|_clock-skew: -1s
+
+Read data files from: /usr/bin/../share/nmap
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Wed Jan 31 03:06:13 2024 -- 1 IP address (1 host up) scanned in 49.05 seconds

