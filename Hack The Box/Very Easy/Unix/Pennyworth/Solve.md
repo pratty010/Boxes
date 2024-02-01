@@ -34,7 +34,7 @@ Part of Starting Point Path. Guided Box
 \
 ![](images/admin.png)
 
-10. Submit root flag - **9cdfb439c7876e703e307864c9167a15** --> [Desktop Flag file](smb/flag.txt)
+10. Submit root flag - **9cdfb439c7876e703e307864c9167a15**
 
 ```bash
 root@pennyworth:/# export TERM=xterm-256color
