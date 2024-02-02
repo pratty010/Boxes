@@ -7,9 +7,9 @@ Part of Starting Point. Very Easy, Guided Box
 
 ### TASKS
 
-1. How many TCP ports are open on the machine? - **2** --> [nmap file](https://github.com/pratty010/Boxes/blob/master/Hack%20The%20Box/Very%20Easy/Meow/nmap/main.nmap)
+1. How many TCP ports are open on the machine? - **2** --> [nmap file](rustsn/all.nmap)
 
-2. Which service is running on port 27017 of the remote host? - **MongoDB 3.6.8**  --> [nmap file](https://github.com/pratty010/Boxes/blob/master/Hack%20The%20Box/Very%20Easy/Meow/nmap/main.nmap)
+2. Which service is running on port 27017 of the remote host? - **MongoDB 3.6.8**  --> [nmap file](rustsn/main.nmap)
 
 3. What type of database is MongoDB? (Choose: SQL or NoSQL) - **NoSQL**
 
@@ -21,4 +21,4 @@ Part of Starting Point. Very Easy, Guided Box
 
 7. What is the command used for dumping the content of all the documents within the collection named flag in a format that is easy to read? - **db.flag.find().pretty()** 
 
-8. Submit root flag - **1b6e6fb359e7c40241b6d431427ba6ea** --> [flag collection](https://github.com/pratty010/Boxes/blob/master/Hack%20The%20Box/Very%20Easy/Meow/telnet/root.bash)
+8. Submit root flag - **1b6e6fb359e7c40241b6d431427ba6ea** --> [mongo flag dir](mongo)

@@ -13,7 +13,6 @@ Part of Starting Point Path. Guided Box
 
 3. What is the virtual host name the webpage expects to be accessed by? - **ignition.htb**
 \
-\
 ![](images/domain.png)
 
 4. What is the full path to the file on a Linux computer that holds a local list of domain name to IP address pairs? - **/etc/hosts**
@@ -23,6 +22,5 @@ Part of Starting Point Path. Guided Box
 6. Look up the password requirements for Magento and also try searching for the most commong passwords of 2023. Which password provides access to the admin account? - **qwerty123** --> [in-house python script](script/crack.py)
 
 7. Submit root flag - **797d6c988d9dc5865e010b9410f247e0**.
-\
 \
 ![](images/flag.png)
