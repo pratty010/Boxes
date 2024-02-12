@@ -7,7 +7,7 @@ The PrivEsc is interesting as it touches you code analysis skills.
 
 ## RECONNAISSANCE
 
-1. [All Port Scan](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Cyborg/rustscan/all.nmap) with rustscan. 
+1. [All Port Scan](rustscan/all.nmap)) with rustscan. 
 
 **Results**
 
@@ -24,7 +24,7 @@ PORT   STATE SERVICE REASON
 Read data files from: /usr/bin/../share/nmap
 # Nmap done at Sun Nov  5 02:03:06 2023 -- 1 IP address (1 host up) scanned in 0.41 seconds
 ```
-2. Let's scan the open ports with a [basic scripts and version scan](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Cyborg/rustscan/main.nmap).
+2. Let's scan the open ports with a [basic scripts and version scan](rustscan/main.nmap).
 
 **Results**
 
@@ -84,27 +84,28 @@ kali@10.10.84.246: Permission denied (publickey,password).
 1. Let's first check out the web server on port 80. 
 	1. We get the `default Apache` page. --> No out going links.
    2. Let's check for the low hanging fruits such as robots.txt, backend language processor, and basic login and admin pages. --> `/admin page obtained`.
-   3. Basic Nikto Scan yields following [results](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Cyborg/web/nikto.txt).
-	2. We can run sub domain check on this port using `feroxbuster`. Results [here](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Cyborg/web/ferox.txt).
+   3. Basic Nikto Scan yields following [results](web/nikto.txt).
+	2. We can run sub domain check on this port using `feroxbuster`. Results [here](web/ferox.txt).
 \
-![](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Cyborg/images/web.png)
+![alt text](images/web.png)
 \
 2. From both scans we get following interesting sub directories --> `/admin` and `/etc/squid`
    1. On the admin page, we get a `admin.html` page talking about [Squid Proxy](http://www.squid-cache.org/) and how the user has stored a backup archive names `music_archive.`
    \
-   ![](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Cyborg/images/squid_proxy.png)
+   ![alt text](images/squid_proxy.png)
    \
-   2. Also, we obtain a `archive.tar` [file](web/Archive/archive.tar) from the same page which can uncompressed to a [Borg Repository](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Cyborg/web/Archive/home/field/dev/final_archive/README).
+   2. Also, we obtain a `archive.tar` [file](web/Archive/archive.tar) from the same page which can uncompressed to a [Borg Repository](web/Archive/home/field/dev/final_archive/README).
    \
-   ![](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Cyborg/images/admin.png)
+   ![alt text](images/admin.png)
    \
-   3. On [research](https://www.liquidweb.com/kb/install-squid-proxy-server-ubuntu-16-04/) and through the above results, we find squid proxy to be installed at `/etc/squid` and we obtain the [following files](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Cyborg/web/Squid-proxy).
+   3. On [research](https://www.liquidweb.com/kb/install-squid-proxy-server-ubuntu-16-04/) and through the above results, we find squid proxy to be installed at `/etc/squid` and we obtain the [following files](web/Squid-proxy).
    \
-   ![](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Cyborg/images/sp_config.png)
+   ![alt text](images/sp_config.png)
    \
-3. Now that we have enough information to go on, let's first look into the [Borg Repository](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Cyborg/web/Archive/home) so obtained. [BorgBackup](https://www.borgbackup.org/) (short: Borg) is a deduplicating backup program. Optionally, it supports compression and authenticated encryption.
+
+3. Now that we have enough information to go on, let's first look into the [Borg Repository](web/Archive/home) so obtained. [BorgBackup](https://www.borgbackup.org/) (short: Borg) is a deduplicating backup program. Optionally, it supports compression and authenticated encryption.
 The main goal of Borg is to provide an efficient and secure way to backup data. The data deduplication technique used makes Borg suitable for daily backups since only changes are stored. Let's use this binary to extract backed up information from this repository.
-   1. We can use the `info` subcommand on the `final_archive`. But we see that it needs a passphrase. This points us towards the [passwd](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Cyborg/web/Squid-proxy/passwd) file obtained earlier. Let's employ hashcat to obtain the cracked secret as [cracked file](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Cyborg/web/Squid-proxy/passwd.cracked). Supply this to the borg command and we get in !!!
+   1. We can use the `info` subcommand on the `final_archive`. But we see that it needs a passphrase. This points us towards the [passwd](web/Squid-proxy/passwd) file obtained earlier. Let's employ hashcat to obtain the cracked secret as [cracked file](web/Squid-proxy/passwd.cracked). Supply this to the borg command and we get in !!!
    
    ```bash
    $ borg info home/field/dev/final_archive
@@ -130,7 +131,7 @@ The main goal of Borg is to provide an efficient and secure way to backup data. 
    $ borg extract home/field/dev/final_archive/::music_archive
    Enter passphrase for key /home/kali/Desktop/Boxes/Try_Hack_Me/In Progress/Easy/Cyborg/web/Archive/home/field/dev/final_archive: 
    ```
-   3. We see that a hidden `home dir` appear on extraction. This belongs to the user [alex](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Cyborg/web/Archive/home/alex). On exploring, we find that there is `note.txt` providing us with some legit **[creds](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Cyborg/web/Archive/home/alex/Documents/note.txt)**. Now let's use this to do some damage from inside the system.
+   3. We see that a hidden `home dir` appear on extraction. This belongs to the user [alex](web/Archive/home/alex). On exploring, we find that there is `note.txt` providing us with some legit **[creds](web/Archive/home/alex/Documents/note.txt)**. Now let's use this to do some damage from inside the system.
 
 
 ## INITIAL ACCESS
@@ -159,9 +160,9 @@ flag{*****************************************}
 
 2. Now let's work for paths to elevate our privileges. We can do some manual testing and also run linpeas.
    1. Manual --> `sudo -l` --> Points us to `/etc/mp3backups/backup.sh` --> can be run as sudo.
-   2. Linpeas results --> [here](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Cyborg/ssh/tmp/linout_alex.txt)
+   2. Linpeas results --> [here](ssh/tmp/linout_alex.txt)
 
-3. On understanding the [backup.sh file](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Cyborg/ssh/etc/mp3backups/backup.sh), we see that it is owned totally by us and is picking up some mp3 files and is creating a tar backup. But there are two interesting pieces of code in it.
+3. On understanding the [backup.sh file](ssh/etc/mp3backups/backup.sh), we see that it is owned totally by us and is picking up some mp3 files and is creating a tar backup. But there are two interesting pieces of code in it.
    1. First part allows a `arg` to be passed to the script in form of `-c <arg>` and this is stored as *command* var.
    2. Then the script runs this as `echo $<command>`. Thus, as this is run with sudo permissions, we can run any command if passed as arg. We have a command injection vulnerability here. We can exploit this.
 

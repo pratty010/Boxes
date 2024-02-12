@@ -7,7 +7,7 @@ Easy Box with certain misconfigurations and sudo PrivEsc with wget binary.
 ## RECONNAISSANCE
 
 1. Scan the box with rustscan.
-	1. Full port scan --> [nmap file here](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Wgel%20CTF/rustscan/all.nmap).
+	1. Full port scan --> [nmap file here](rustscan/all.nmap).
 
 	**Results**
 
@@ -57,7 +57,7 @@ Easy Box with certain misconfigurations and sudo PrivEsc with wget binary.
 
 	```
 
-	2. Full Service and Scripts scan on the found ports. --> [nmap file here](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Wgel%20CTF/rustscan/main.nmap)
+	2. Full Service and Scripts scan on the found ports. --> [nmap file here](rustscan/main.nmap)
 
 	**Results**
 
@@ -165,13 +165,13 @@ Easy Box with certain misconfigurations and sudo PrivEsc with wget binary.
 1. Let's first check out the web server on port 80. 
 	1. We get a default page with no links going out. - Default Apache page.
 	\
-	![](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Wgel%20CTF/images/web.png)
+	![](images/web.png)
 	\
 	2. We will go for the low hanging fruit - robots, page source and try to get some information. - We get that there might be a useful username leaked here - `jessie`.
 	\
-	![](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Wgel%20CTF/images/ps.png)
+	![](images/ps.png)
 	\
-	3. We can also run other enumerations on the side as `subdomain` and `nikto`. Check [here](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Wgel%20CTF/web/nikto.txt).
+	3. We can also run other enumerations on the side as `subdomain` and `nikto`. Check [here](web/nikto.txt).
 	4. Look through a proxy to get more details on the request:response model setup. Nothing to go on.
 	5. We can run sub domain check on this port using `feroxbuster`.
 
@@ -180,12 +180,12 @@ Easy Box with certain misconfigurations and sudo PrivEsc with wget binary.
 	1. `/sitemap` --> Hosts UNAPP which seems like an in-house products. There is no further information obtained from this page. We can also look into the contact us page but it was a bust. Sad that no XSS, CSRF will be possible.
 	2. But to our surprise `/sitemap/.ssh` turned up. Someone forgot to close out their directory listing. Sad for jessie.
 	\
-	![](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Wgel%20CTF/images/ssh.png)
+	![](images/ssh.png)
 	\
 
 ## INITIAL ACCESS - SSH
 
-1. Using the obtained [ssh key](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Wgel%20CTF/web/sitemap/id_rsa) for jessie (she left her info and forgot. Update later is a joke.), we get on the system.
+1. Using the obtained [ssh key](web/sitemap/id_rsa) for jessie (she left her info and forgot. Update later is a joke.), we get on the system.
 
 2. We can now read the `user flag` and perform other enumerations.
 
@@ -221,7 +221,7 @@ jessie@CorpOne:~/Documents$ cat user_flag.txt
 ********************************
 ```
 
-3. The linpeas results can be found [here](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Wgel%20CTF/ssh/tmp/linout_jessie.txt).
+3. The linpeas results can be found [here](ssh/tmp/linout_jessie.txt).
 
 ## PRIVESC
 
@@ -278,7 +278,7 @@ User jessie may run the following commands on CorpOne:
 
 ## EXTRA TREAT 
 
-1. We can now obtain the [following files](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Wgel%20CTF/ssh/etc) easily that can be used later in the above way.
+1. We can now obtain the [following files](ssh/etc) easily that can be used later in the above way.
 	1. **/etc/passwd**
 	2. **/etc/shadow**
 	3. **/etc/hosts**

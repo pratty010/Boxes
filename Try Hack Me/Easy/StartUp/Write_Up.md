@@ -8,7 +8,7 @@ Scripting and listening will come in use. Employ your detective skills.
 ## RECONNAISSANCE
 
 1. Scan the box with rustscan.
-	1. Full port scan --> [nmap file](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/StartUp/rustscan/all.nmap).
+	1. Full port scan --> [nmap file](rustscan/all.nmap).
 
 	**Results**
 
@@ -60,7 +60,7 @@ Scripting and listening will come in use. Employ your detective skills.
 	Nmap done: 1 IP address (1 host up) scanned in 0.44 seconds
 	```
 
-	2. Full Service and Scripts scan on the found ports. --> [nmap file here](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/StartUp/rustscan/main.nmap)
+	2. Full Service and Scripts scan on the found ports. --> [nmap file here](rustscan/main.nmap)
 
 	**Results**
 
@@ -190,9 +190,9 @@ Scripting and listening will come in use. Employ your detective skills.
 1. We have VsFTP installed on the system. Will require a set of login credentials to get access through this path. 
 2. But NMAP says `Anonymous Login` is possible. So, let's explore that.
 3. We find two useful files in the directory listing.
-	1. [.test.log](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/StartUp/ftp/.test.log) --> Just a `test file` to check some functionality.
-	2. [important.jpg](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/StartUp/ftp/important.jpg) --> A meme file about the most stupid game - Among Us. Trigger Alert !!
-	3. [notice.txt](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/StartUp/ftp/notice.txt) --> Hints towards a vulnerability that the ftp share is available through web server listing.
+	1. [.test.log](ftp/.test.log) --> Just a `test file` to check some functionality.
+	2. [important.jpg](ftp/important.jpg) --> A meme file about the most stupid game - Among Us. Trigger Alert !!
+	3. [notice.txt](ftp/notice.txt) --> Hints towards a vulnerability that the ftp share is available through web server listing.
 4. Let's keep this knowledge for later and dig into Web.
 
 
@@ -243,19 +243,19 @@ drwxr-xr-x    3 65534    65534        4096 Nov 12  2020 ..
 
 1. Let's first check out the web server on port 80. 
 	1. We get a default page with no links going out.
-	![Alt text](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/StartUp/images/web.png)
+	![Alt text](images/web.png)
 	2. We will go for the low hanging fruit - robots, page source and try to get some information. --> Need better Dev team. Don't we all.
-	![Alt text](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/StartUp/images/ps.png)
-	3. We can also run other enumerations on the side as `subdomain` and `nikto`. --> Mention of `/files` dir listing. Worth looking into from the angle of ftp notice file. Check [here](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/StartUp/web).
+	![Alt text](images/ps.png)
+	3. We can also run other enumerations on the side as `subdomain` and `nikto`. --> Mention of `/files` dir listing. Worth looking into from the angle of ftp notice file. Check [here](web).
 	4. Look through a proxy to get more details on the request:response model setup. Nothing to go on.
-	5. We can run sub domain check on this port using `feroxbuster`. Check the results [here](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/StartUp/web/ferox.txt).
+	5. We can run sub domain check on this port using `feroxbuster`. Check the results [here](web/ferox.txt).
 
 2. The feroxbuster scan points us towards the `ftp folder` which we saw earlier on our ftp listing. As Gru says, "Light Bulb !!".
 
 3. Let's work on our exploit path now. 
 	1. Upload malicious reverse shell spawning file through the ftp open share.
 	2. Execute the file through web listing.
-	![](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/StartUp/images/ftp_listing.png)
+	![](images/ftp_listing.png)
 
 
 ## INITIAL ACCESS
@@ -288,7 +288,7 @@ ftp>
 ```
 
 2. If we can view it through the web listing, then we have code execution. And we have it.
-![](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/StartUp/images/exploit_view.png)
+![](images/exploit_view.png)
 
 3. Now we can do the same with a `php reverse shell` to get an initial foothold on the box.
 
@@ -317,17 +317,17 @@ www-data
 
 4. Let's now do some manual and automatic enumeration.
 	1. The user we get in as `www-data`. Let's look into the `/home` directory. We can't get in.
-	2. We do get some odd files in the root directory. [recipe.txt](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/StartUp/ssh/recipe.txt) seems interesting. There are other interesting folders as well.
+	2. We do get some odd files in the root directory. [recipe.txt](ssh/recipe.txt) seems interesting. There are other interesting folders as well.
 		1. `/vagrant` --> 
 		2. `/incidents` --> contains a suspicious pcap file that might contain interesting data. Let's explore that.
 	3. There is no shell for the other user's to log into.
 	4. Weirdly, we can't even get into the web root as it is owned by `root`. Everything about this box is weird.
-	5. Check out the linpeas script [here](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/StartUp/ssh/tmp/linpeas.out) for more.
+	5. Check out the linpeas script [here](ssh/tmp/linpeas.out) for more.
 
 
 ## PIVOT TO USER
 
-1. On exploring the [pcap file](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/StartUp/ssh/incidents/suspicious.pcapng), we find a possible creds for user `lennie` as shown [here](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/StartUp/ssh/incidents/lennie.txt). We might be able to use this and get on the system as lennie. And what do we know, user got lazy. Again !!. User flag is ours.
+1. On exploring the [pcap file](ssh/incidents/suspicious.pcapng), we find a possible creds for user `lennie` as shown [here](ssh/incidents/lennie.txt). We might be able to use this and get on the system as lennie. And what do we know, user got lazy. Again !!. User flag is ours.
 
 ```bash
 l└─$ ssh lennie@10.10.218.234
@@ -373,7 +373,7 @@ lennie@startup:~$ cat user.txt
 
 2. Let's now find a way to root.
 	1. There is an interesting folder `scripts` in the home folder. 
-	2. It contains a `planner.sh` file that run with root permissions every minute. This can be seen from the [linpeas](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/StartUp/ssh/tmp/linpeas_lennie.out) output and [pspy](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/StartUp/ssh/tmp/pspy.out) (Amazing enum tool BTW). 
+	2. It contains a `planner.sh` file that run with root permissions every minute. This can be seen from the [linpeas](ssh/tmp/linpeas_lennie.out) output and [pspy](ssh/tmp/pspy.out) (Amazing enum tool BTW). 
 	3. This inturn invokes `/etc/print.sh` which to our luck is owned by us and can be modified by us. Do you see the path my child??
 	4. Let's exploit it with a reverse listener to our box. Tried everything else from file read to shell invoke. Failed. Reverse shell it is.
 
@@ -433,9 +433,9 @@ root@startup:~# cat root.txt
 
 ## EXTRA TREAT 
 
-1. Have a look at some interesting files found in [/tmp](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/StartUp/ssh/tmp) and [/etc](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/StartUp/ssh/etc).
+1. Have a look at some interesting files found in [/tmp](ssh/tmp) and [/etc](ssh/etc).
 
-2. Added created [ssh keys](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/StartUp/ssh/root) to have a proper shell on the box and not waiting for the reverse nc listener to collapse on us.
+2. Added created [ssh keys](ssh/root) to have a proper shell on the box and not waiting for the reverse nc listener to collapse on us.
 
 
 ## BROWNIE POINTS

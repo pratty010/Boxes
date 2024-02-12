@@ -7,7 +7,7 @@ Easy Box with common known issues such as PHP upload and SUID PrivEsc.
 ## RECONNAISSANCE
 
 1. Scan the box with rustscan.
-	1. Full port scan --> [nmap file here](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/RootMe/rustscan/all.nmap). Found **2** ports open.
+	1. Full port scan --> [nmap file here](rustscan/all.nmap). Found **2** ports open.
 
 	**Results**
 
@@ -56,7 +56,7 @@ Easy Box with common known issues such as PHP upload and SUID PrivEsc.
 	Nmap done: 1 IP address (1 host up) scanned in 0.45 seconds
 	```
 
-	2. Full Service and Scripts scan on the found ports. --> [nmap file here](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/RootMe/rustscan/main.nmap)
+	2. Full Service and Scripts scan on the found ports. --> [nmap file here](rustscan/main.nmap)
 
 	**Results**
 
@@ -168,21 +168,21 @@ Easy Box with common known issues such as PHP upload and SUID PrivEsc.
 1. Let's first check out the web server on port 80. 
 	1. We get a default page with no links going out.
 	2. We will go for the low hanging fruit - robots, page source and try to get some information. - **Found to support PHP extensions**
-	3. We can also run other enumerations on the side as `subdomain` and `nikto`. -  Nada. Check [here](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/RootMe/web).
+	3. We can also run other enumerations on the side as `subdomain` and `nikto`. -  Nada. Check [here](web).
 	4. Look through a proxy to get more details on the request:response model setup.
 	5. We can run sub domain check on this port using `feroxbuster`.
 \
-![](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/RootMe/images/web.png)
+![](images/web.png)
 \
 2. In the `feroxbuster` scan we found two interesting sub-directories as *panel* and *uploads*. We can utilize both to now construct our Exploit Chain.
 \
-![](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/RootMe/images/panel.png)
+![](images/panel.png)
 \
 \
-![](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/RootMe/images/uploads.png)
+![](images/uploads.png)
 
 3. Exploit Chain
-	1. The `/panel` allow us to upload a [file](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/RootMe/web/revshell.php5). There is workaround the problem that occurs with the default php engine files. Espero que o seu português seja bom!!
+	1. The `/panel` allow us to upload a [file](web/revshell.php5). There is workaround the problem that occurs with the default php engine files. Espero que o seu português seja bom!!
 	2. We can then use `/uploads` to invoke that malicious file through he PHP backend engine.
 
 
@@ -248,12 +248,12 @@ www-data@rootme:/var/www$ cat user.txt
 THM{****************}
 ```
 
-3. Found user.txt in the webpage root dir. we cna read it from there. Let's also look at the roadblock we faced earlier in the file upload as we now have access to the web root. We see in the `/panel/index.php` [file](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/RootMe/web/panel/index.php) that the **.php** extension is blocked but not others. This is an example of insufficient security controls that allowed us in. 
+3. Found user.txt in the webpage root dir. we cna read it from there. Let's also look at the roadblock we faced earlier in the file upload as we now have access to the web root. We see in the `/panel/index.php` [file](web/panel/index.php) that the **.php** extension is blocked but not others. This is an example of insufficient security controls that allowed us in. 
 
 
 ## PRIVESC
 
-1. Ran a simple [linpeas script](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/RootMe/ssh/linpeas.sh) and found interesting SUID in the [results](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/RootMe/ssh/linout.txt) owned by root!!.
+1. Ran a simple [linpeas script](ssh/linpeas.sh) and found interesting SUID in the [results](ssh/linout.txt) owned by root!!.
 
 2. Let's look up for this on the [GTFOBins](https://gtfobins.github.io/gtfobins/python/#suid) to get an exploit.
 

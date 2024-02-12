@@ -7,7 +7,7 @@ This box is based on a vulnerable CMS product that has known exploits to get on 
 
 ## RECONNAISSANCE
 
-1. Scan the box with nmap. Full file [here](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Bolt/nmap/main.nmap).
+1. Scan the box with nmap. Full file [here](nmap/main.nmap).
 
 **Results**
 
@@ -110,9 +110,9 @@ Permission denied, please try again.
 	1. We get the `default Apache` page.
 	2. We can run sub domain check on this port using `gobuster`.
 \
-![](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Bolt/images/web_port_80.png)
+![alt text](images/web_port_80.png)
 \
-\
+
 **Output**
 
 ```bash
@@ -146,24 +146,25 @@ Progress: 213149 / 220561 (96.64%)^C
 	2. We can check for some low hanging fruits.
 	3. Page Source check. 
 \
-![](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Bolt/images/web_port_8000.png)
+![alt text](images/web_port_8000.png)
 \
 \
-![](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Bolt/images/bolt_username.png)
+![alt text](images/bolt_username.png)
 \
 \
-![](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Bolt/images/bolt_passwd.png)
-\
+![alt text](images/bolt_passwd.png)
+
+
 3. We find from the posts of the Admin Jake that the username:password for the CMS is `bolt:boltadmin123`. Let's now find the login page.
 
 4. The login page can be found at the bolt subdomain as explained [here](https://github.com/bolt/site-bolt-cm/blob/master/app/config/config.yml).
 \
-![](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Bolt/images/bolt_login.png)
-\
+![](images/bolt_login.png)
+
 5. Let's login using the given credentials. We get the Bolt CMS version as `3.7.1`. We can use this to find any known CVE in it.
 \
-![](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Bolt/images/bolt_admin.png)
-\
+![alt text](images/bolt_admin.png)
+
 6. Using ExploitDB `(searchsploit)`, Rapid7 to find a known CVE () in the [3.7.0 version](https://www.rapid7.com/db/modules/exploit/unix/webapp/bolt_authenticated_rce/). We can use the searchsploit as well for the same. 
 
 **Output**
@@ -184,7 +185,7 @@ Shellcodes: No Results
 Papers: No Results
 ```
 
-7. Let's use the Metasploit exploit with the [credentials](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Bolt/web/creds.txt) obtained earlier to get the foothold in the system.
+7. Let's use the Metasploit exploit with the [credentials](web/creds.txt) obtained earlier to get the foothold in the system.
 
 
 ## INITIAL ACCESS/ RCE

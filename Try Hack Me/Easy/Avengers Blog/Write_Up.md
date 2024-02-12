@@ -153,29 +153,31 @@ $ cat flag3.txt
 	3. We ca3 run sub domain check on this port using `gobuster`.
 	4. Look through a proxy to get more details on the request:response model setup.
 \
-![](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Avengers%20Blog/images/webpage.png)
-\
+![alt text](images/webpage.png)
+
 2. In the `Page Source`, we get a hint to look into the default js file. On exploring we get the `cookie` being set as `flag1=*****************`
 \
-![](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Avengers%20Blog/images/ps.png)
+![alt text](images/ps.png)
 \
 \
-![](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Avengers%20Blog/images/ps_cookie.png)
-\
+![alt text](images/ps_cookie.png)
+
 3. Using the inspector developer tool in the browser, we observe that the original response have the **flag2** in it.
 \
-![](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Avengers%20Blog/images/headers.png)
-\
-4. Let's now explore the sub pages/directories that might be hosted on the web server. We will use `gobuster` to analyze it. [Results](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Avengers%20Blog/web/port_80.txt)
+![alt text](images/headers.png)
+
+
+4. Let's now explore the sub pages/directories that might be hosted on the web server. We will use `gobuster` to analyze it. [Results](web/port_80.txt)
 
 5. We are greeted with a login page for the `/portal` sub-page. There might be a possibility of SQL Injection somewhere here. As we don't have any creds, that is our best bet here.
 \
-![](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Avengers%20Blog/images/portal.png)
-\
+![alt text](images/portal.png)
+
+
 6. We get in with this query in both param - `' or 1=1--`. We are greeted with page that might have CLI injection on the system. Let's pursue this path to get some more information.
 \
-![](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Avengers%20Blog/images/cli.png)
-\
+![alt text](images/cli.png)
+
 
 ## INITIAL ACCESS
 
@@ -183,17 +185,16 @@ $ cat flag3.txt
 
 2. We can still explore around the file system to get information on the system. **flag 5** found in the `/home/ubuntu` directory. We can obtain it by using the only read call allowed `rev` which is the rare case. This shows insecure coding practices.
 \
-![](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Avengers%20Blog/images/jarvis.png)
-\
+![alt text](images/jarvis.png)
 
 ## EXTRA TREATS
 
 1. We see that there are two important files that we find on `/home/ubuntu/avengers` dir as `server.js` and `create.sql`. We read them through the rev command used above.
 
 2. We get the following from it.
-	1. Additional credentials - [see file here](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Avengers%20Blog/creds.txt)
-	2. **Flag 4** was found in the [database file](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Avengers%20Blog/web/portal/sql/create.sql)
-	3. Commands that are banned to use [here](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Avengers%20Blog/web/portal/sql/server.js)
+	1. Additional credentials - [see file here](creds.txt)
+	2. **Flag 4** was found in the [database file](web/portal/sql/create.sql)
+	3. Commands that are banned to use [here](web/portal/sql/server.js)
 
 3. We tried additional SSH and FTP logins using the new credentials. No Luck!!
 4. We can use the above information to dig deeper and find more issues and privesc. Good Luck Hunting!!

@@ -8,7 +8,7 @@ The privesc is simple if you are vim guy. Emac, better luck next time.
 ## RECONNAISSANCE
 
 1. Scan the box with rustscan.
-	1. Full port scan --> [rustscan file](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Simple%20CTF/rustscan/all.nmap)
+	1. Full port scan --> [rustscan file](rustscan/all.nmap)
 
 	**Results**
 
@@ -60,7 +60,7 @@ The privesc is simple if you are vim guy. Emac, better luck next time.
 	Nmap done: 1 IP address (1 host up) scanned in 0.44 seconds
 	```
 
-	2. Full Service and Scripts scan on the found ports. --> [nmap file](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Simple%20CTF/rustscan/main.nmap)
+	2. Full Service and Scripts scan on the found ports. --> [nmap file](rustscan/main.nmap)
 
 	**Results**
 
@@ -268,12 +268,12 @@ local: ForMitch.txt remote: ForMitch.txt
 
 1. Let's first check out the web server on port 80. 
 	1. We get the `default Apache` page. --> No out going links.
-	![](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Simple%20CTF/images/web.png)
+	![](images/web.png)
 	2. Let's check for the low hanging fruits such as robots.txt, backend language processor, and basic login and admin pages. --> `/openemr-5_0_1_3` disallowed.
-	3. Basic Nikto Scan yields following [results](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Simple%20CTF/web/nikto.txt).
-	4. We can run sub domain check on this port using `feroxbuster`. Results [here](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Simple%20CTF/web/ferox.txt).
+	3. Basic Nikto Scan yields following [results](web/nikto.txt).
+	4. We can run sub domain check on this port using `feroxbuster`. Results [here](web/ferox.txt).
 
-2. Let's first check into the possibility of [Open EMR](https://github.com/openemr/openemr) software being installed on the web server. It is an open-source medical management application that have known CVEs. But on exploring them [all](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Simple%20CTF/web/openemr), we found nothing to work against our instance.
+2. Let's first check into the possibility of [Open EMR](https://github.com/openemr/openemr) software being installed on the web server. It is an open-source medical management application that have known CVEs. But on exploring them [all](web/openemr), we found nothing to work against our instance.
 
 ```bash
 $ searchsploit openemr 5.0.1.3
@@ -303,7 +303,7 @@ Shellcodes: No Results
 Papers: No Results
 ```
 
-4. Through the [python script](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Simple%20CTF/web/simple/46635.py), we extract useful information about the user [mitch](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Simple%20CTF/web/simple/extracted_information.txt) as shown below. We cna now use this quick win [crack-the-password](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Simple%20CTF/web/simple/passwd_crack.py) to crack the simple password which we got from earlier hint and also from the task. You can use any other common-password list too. But keep it short.
+4. Through the [python script](web/simple/46635.py), we extract useful information about the user [mitch](web/simple/extracted_information.txt) as shown below. We cna now use this quick win [crack-the-password](web/simple/passwd_crack.py) to crack the simple password which we got from earlier hint and also from the task. You can use any other common-password list too. But keep it short.
 
 ```
 [+] Username found: mitch
@@ -312,7 +312,7 @@ Papers: No Results
 [*] Hash found: 0c01f4468bd75d7a84c7eb73846e8d96
 ```
 
-5. We can now use these [creds](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Simple%20CTF/creds.txt) to login into the CMS as admin and play around. But let's also check for creds reusability for a quick win. 
+5. We can now use these [creds](creds.txt) to login into the CMS as admin and play around. But let's also check for creds reusability for a quick win. 
 
 
 ## SSH - SYS ACCESS 
@@ -384,9 +384,9 @@ root@Machine:/root# cat root.txt
 
 1. There is another way into the box for [initial access]() on the box other than above method. Meta it out !!
 
-2. Ran a quick linpeas scan as `mitch` and `root`. Happy hunting --> [files here](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Simple%20CTF/ssh/tmp)
+2. Ran a quick linpeas scan as `mitch` and `root`. Happy hunting --> [files here](ssh/tmp)
 
-3. There is some useful files that I downloaded just for you. Have a [look](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Simple%20CTF/ssh/etc).
+3. There is some useful files that I downloaded just for you. Have a [look](ssh/etc).
 
 ## FLAGS
 

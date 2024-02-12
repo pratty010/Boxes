@@ -8,7 +8,7 @@ Moreover, also left some interesting secrets file that allowed us to escalate as
 ## RECONNAISSANCE
 
 1. Scan the box with rustscan.
-	1. Full port scan --> [nmap file here](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Anonforce/rustscan/all.nmap)
+	1. Full port scan --> [nmap file here](rustscan/all.nmap)
 
 	**Results**
 
@@ -56,7 +56,7 @@ Moreover, also left some interesting secrets file that allowed us to escalate as
 	Nmap done: 1 IP address (1 host up) scanned in 0.46 seconds
 	```
 
-	2. Full Service and Scripts scan on the found ports. --> [nmap file here](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Anonforce/rustscan/main.nmap)
+	2. Full Service and Scripts scan on the found ports. --> [nmap file here](rustscan/main.nmap)
 
 	**Results**
 
@@ -265,7 +265,7 @@ local: private.asc remote: private.asc
 3762 bytes received in 00:00 (23.69 KiB/s)
 ```
 
-3. On importing the `private.asc` file, I found that it was protected with a *passphrase*. Hmmmmmm. That is a roadblock. But Fret not, cracking though nuts is part of the job. Let's take help of Awesome J0hn that has features like `gpg2john` and crack it with `rockyou.txt`. Voila, we found the [passphrase](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Anonforce/ftp/notread/private_cracked.txt) pretty simple.
+3. On importing the `private.asc` file, I found that it was protected with a *passphrase*. Hmmmmmm. That is a roadblock. But Fret not, cracking though nuts is part of the job. Let's take help of Awesome J0hn that has features like `gpg2john` and crack it with `rockyou.txt`. Voila, we found the [passphrase](ftp/notread/private_cracked.txt) pretty simple.
 
 ```bash
 $ gpg --import private.asc              
@@ -377,7 +377,7 @@ ftp:*:109:117:ftp daemon,,,:/srv/ftp:/bin/false
 $ unshadow passwd backup_shadow.txt > hashes
 ```
 
-2. Let's reach out to JOHN once more to crack the [unshadowed file](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Anonforce/ssh/hashes) to get some creds to get access. And what luck, we cracked the [root](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Anonforce/ssh/cracked_hashes.txt) !!!
+2. Let's reach out to JOHN once more to crack the [unshadowed file](ssh/hashes) to get some creds to get access. And what luck, we cracked the [root](ssh/cracked_hashes.txt) !!!
 
 ```bash
 $ john hashes --wordlist=/usr/share/wordlists/rockyou.txt 
@@ -440,7 +440,7 @@ root@ubuntu:/home/melodias# cat /root/root.txt
 
 ## EXTRA TREATS
 
-1. Ran a quick linpeas scan as `melodias`. Here is the [file](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Anonforce/ssh/linpeas.txt). I leave the rest fun upto you. See you soon.
+1. Ran a quick linpeas scan as `melodias`. Here is the [file](ssh/linpeas.txt). I leave the rest fun upto you. See you soon.
 
 ## FLAGS
 

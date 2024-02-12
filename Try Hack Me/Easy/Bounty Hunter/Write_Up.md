@@ -8,7 +8,7 @@ Fall back on the more crude methods to pwn the Box.
 ## RECONNAISSANCE
 
 1. Scan the box with rustscan.
-	1. Full port scan --> [nmap file here](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Bounty%20Hunter/rustscan/all.nmap).
+	1. Full port scan --> [nmap file here](rustscan/all.nmap).
 
 	**Results**
 
@@ -60,7 +60,7 @@ Fall back on the more crude methods to pwn the Box.
 	Nmap done: 1 IP address (1 host up) scanned in 0.44 seconds
 	```
 
-	2. Full Service and Scripts scan on the found ports. --> [nmap file here](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Bounty%20Hunter/rustscan/main.nmap)
+	2. Full Service and Scripts scan on the found ports. --> [nmap file here](rustscan/main.nmap)
 
 	**Results**
 
@@ -189,8 +189,8 @@ Fall back on the more crude methods to pwn the Box.
 1. We have VsFTP installed on the system. Will require a set of login credentials to get access through this path. 
 2. But NMAP says `Anonymous Login` is possible. So, let's explore that.
 3. We find two useful files in the directory listing.
-	1. [task.txt](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Bounty%20Hunter/ftp/task.txt) --> Leaks out a username `lin` that owns the list.
-	2. [locks.txt](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Bounty%20Hunter/ftp/locks.txt) --> Possible secrets list as name suggests.
+	1. [task.txt](ftp/task.txt) --> Leaks out a username `lin` that owns the list.
+	2. [locks.txt](ftp/locks.txt) --> Possible secrets list as name suggests.
 4. Let's keep this knowledge for later and dig into Web.
 
 **Results**
@@ -240,17 +240,17 @@ ftp>
 ## WEB
 
 1. Let's first check out the web server on port 80. 
-	1. We get a default page with no links going out. - Default HTML page. **We collect some useful [usernames](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Bounty%20Hunter/users.txt) though from index page.**
+	1. We get a default page with no links going out. - Default HTML page. **We collect some useful [usernames](users.txt) though from index page.**
 	\
-	![](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Bounty%20Hunter/images/web.png)
+	![alt text](images/web.png)
 	\
 	2. We will go for the low hanging fruit - robots, page source and try to get some information. - Nothing. Strange.
 	\
 	![](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Bounty%20Hunter/images/ps.png)
 	\
-	3. We can also run other enumerations on the side as `subdomain` and `nikto`. - Nada. Check [here](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Bounty%20Hunter/web).
+	3. We can also run other enumerations on the side as `subdomain` and `nikto`. - Nada. Check [here](web).
 	4. Look through a proxy to get more details on the request:response model setup. Nothing to go on.
-	5. We can run sub domain check on this port using `feroxbuster`. This turned up [empty too](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Bounty%20Hunter/web/ferox.txt). Not even a login portal or CMS. Maybe this is a rabbit hole. Smart creator.
+	5. We can run sub domain check on this port using `feroxbuster`. This turned up [here](web/ferox.txt). Not even a login portal or CMS. Maybe this is a rabbit hole. Smart creator.
 
 2. This is very odd. But with exhausting all other options and getting hints from the Box questions, I think we need to Bruteforce the SSH service. Let's look into it.
 
@@ -274,7 +274,7 @@ SSH         10.10.59.237    22     10.10.59.237     [-] lin:R3Dr4gOn2044 Authent
 SSH         10.10.59.237    22     10.10.59.237     [+] lin:********************
 ```
 
-2. We get a legit set of [creds](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Bounty%20Hunter/creds.txt). We can use them to get on the box. Let's get the `user.txt` flag. 
+2. We get a legit set of [creds](creds.txt). We can use them to get on the box. Let's get the `user.txt` flag. 
 
 ```bash
 $ ssh lin@10.10.59.237
@@ -323,7 +323,7 @@ THM{*******************}
 
 ## EXTRA TREAT 
 
-1. We can now obtain the [following files](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Bounty%20Hunter/ssh/etc) easily that can be used later.
+1. We can now obtain the [following files](ssh/etc) easily that can be used later.
 	1. **/etc/passwd**
 	2. **/etc/shadow**
 	3. **/etc/hosts**
@@ -331,9 +331,9 @@ THM{*******************}
 	5. **/etc/crontab**
 	6. **/proc**
 
-2. We can also add [our *ssh keys*](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Bounty%20Hunter/ssh/bh.pub) to `authorized_keys` to get a foothold on the box. You can use other methods like crons and process hijacking as well to plant a backdoor.
+2. We can also add [our *ssh keys*](ssh/bh.pub) to `authorized_keys` to get a foothold on the box. You can use other methods like crons and process hijacking as well to plant a backdoor.
 
-3. Find out more with the linpeas scans that can be obtained [here](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Bounty%20Hunter/ssh/tmp).
+3. Find out more with the linpeas scans that can be obtained [here](ssh/tmp).
 
 
 ## BROWNIE POINTS

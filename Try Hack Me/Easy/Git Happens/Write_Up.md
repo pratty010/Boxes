@@ -36,12 +36,12 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 
 3. Let's look into it.
 \
-![](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Git%20Happens/images/web.png)
+![alt text](images/web.png)
 \
 
 ## WEB
 
-1. We start with a typical check directory brute-force scan. We find that there is a `.git` directory that is leaked for the static webpage. Let's look into methods to exploit it. The full [FeroxBuster scan](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Git%20Happens/web/ferox.txt) file is here for reference.
+1. We start with a typical check directory brute-force scan. We find that there is a `.git` directory that is leaked for the static webpage. Let's look into methods to exploit it. The full [FeroxBuster scan](web/ferox.txt) file is here for reference.
 
 **Results**
 
@@ -77,7 +77,7 @@ MSG      0.000 feroxbuster::heuristics detected directory listing: http://10.10.
 ...............................................................................................................
 ```
 
-2. [Nikto scan](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Git%20Happens/web/nikto.out) also confirms the same.
+2. [Nikto scan](web/nikto.out) also confirms the same.
 
 **Results**
 
@@ -103,7 +103,7 @@ $ nikto -url http://10.10.252.173/ -output nikto.out
 
 3. We can also confirm it on the web server as `http://10.10.252.173/.git/`. Let's explore this path.
 \
-![](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Git%20Happens/images/git.png)
+!![alt text](images/git.png)
 \
 
 ## GIT

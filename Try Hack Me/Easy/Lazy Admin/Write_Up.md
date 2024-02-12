@@ -8,7 +8,7 @@ First it is a vulnerable version of a CMS followed by a improper permissions on 
 ## RECONNAISSANCE
 
 1. Scan the box with rustscan.
-	1. Full port scan --> [nmap file here](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Lazy%20Admin/rustscan/all.nmap)
+	1. Full port scan --> [nmap file here](rustscan/all.nmap)
 
 	**Results**
 
@@ -55,7 +55,7 @@ First it is a vulnerable version of a CMS followed by a improper permissions on 
 	Nmap done: 1 IP address (1 host up) scanned in 0.43 seconds
 	```
 
-	2. Full Service and Scripts scan on the found ports. --> [nmap file here](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Lazy%20Admin/rustscan/main.nmap)
+	2. Full Service and Scripts scan on the found ports. --> [nmap file here](rustscan/main.nmap)
 
 	**Results**
 
@@ -163,17 +163,17 @@ First it is a vulnerable version of a CMS followed by a improper permissions on 
 	2. We will go for the low hanging fruit - robots, page source and try to get some information.
 	3. We can run sub domain check on this port using `feroxbuster`.
 	4. Look through a proxy to get more details on the request:response model setup.
-	5. Run a basic Nikto Scan. The results can be obtained here - [Nikto Scan](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Lazy%20Admin/web/nikto.txt)
+	5. Run a basic Nikto Scan. The results can be obtained here - [Nikto Scan](web/nikto.txt)
 \
-![](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Lazy%20Admin/images/web.png)
+![](images/web.png)
 \
-2. Through the [FeroxBuster Scan](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Lazy%20Admin/web/ferox.out), we get to the `/content` sub-directory which tells that it is running a CMS named **Sweet Rice**.
+2. Through the [FeroxBuster Scan](web/ferox.out), we get to the `/content` sub-directory which tells that it is running a CMS named **Sweet Rice**.
 \
-![](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Lazy%20Admin/images/sr.png)
+![](images/sr.png)
 \
 On further analysis the `/content/changelog.txt` reveals the version number of the CMS as *1.5.0*. This can be useful if the software has `known vulnerabilities.`. Time to reach out to ExploitDB for some answers.
 \
-![](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Lazy%20Admin/images/sr_ver.png)
+![](images/sr_ver.png)
 \
 3. Using the well known tool `searchsploit` (CLI tool for ExploitDB), we find that there are known disclosure and file inclusion vulnerabilities for version *1.5.1* and thus should be valid for a older version such as ours. Let's construct the exploit chain.
 
@@ -196,23 +196,23 @@ Papers: No Results
 ```
 
 4. Exploit Chain
-	1. There is a [SQL Backup File Disclosure](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Lazy%20Admin/web/exploit/40718.txt) that allows us to fetch a old [Backup File](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Lazy%20Admin/web/exploit/mysql_bakup_20191129023059-1.5.1.sql)
+	1. There is a [SQL Backup File Disclosure](web/exploit/40718.txt) that allows us to fetch a old [Backup File](web/exploit/mysql_bakup_20191129023059-1.5.1.sql)
 	\
-	![](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Lazy%20Admin/images/sql_bakup.png)
+	![](images/sql_bakup.png)
 	\
-	2. We get some credentials from this file which can be seen here --> [creds file](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Lazy%20Admin/creds.txt). Might need to crack the hash. You can employ either the cat or john. 
+	2. We get some credentials from this file which can be seen here --> [creds file](creds.txt). Might need to crack the hash. You can employ either the cat or john. 
 	3. Let's try these keys to the found login door at `/content/ac/`. And we are in as the CMS manager.
 	\
-	![](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Lazy%20Admin/images/login.png)
+	![](images/login.png)
 	\
-	4. Let's now work on the file inclusion vulnerability so that we can upload a malicious PHP script and execute it to get a reverse shell on the box. The steps defined in the [known exploit](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Lazy%20Admin/web/exploit/40716.py) are as follows
-		1. Go to the `media center` where you can upload our [malicious file](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Lazy%20Admin/web/exploit/revshell.php5).
+	4. Let's now work on the file inclusion vulnerability so that we can upload a malicious PHP script and execute it to get a reverse shell on the box. The steps defined in the [known exploit](web/exploit/40716.py) are as follows
+		1. Go to the `media center` where you can upload our [malicious file](web/exploit/revshell.php5).
 		\
-		![](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Lazy%20Admin/images/mc.png)
+		![](images/mc.png)
 		\
 		2. Can be invoked from the subdirectory as `/attachment/revshell.php` to invoke the uploaded revshell.
 		\
-		![](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Lazy%20Admin/images/revshell.png)
+		![](images/revshell.png)
 		\
 
 ## INITIAL ACCESS
@@ -316,7 +316,7 @@ THM{********************************}
 
 ## EXTRA TREATS
 
-1. We can now obtain the [following files](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Lazy%20Admin/ssh/etc) easily that can be used later.
+1. We can now obtain the [following files](ssh/etc) easily that can be used later.
 	1. **/etc/passwd**
 	2. **/etc/shadow**
 	3. **/etc/hosts**
@@ -326,7 +326,7 @@ THM{********************************}
 
 2. We can also add our *ssh keys* to `authorized_keys` to get a foothold on the box. You can use other methods like crons and process hijacking as well to plant a backdoor.
 
-3. Find out more with the linpeas scans that can be obtained [here](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Lazy%20Admin/ssh/tmp).
+3. Find out more with the linpeas scans that can be obtained [here](ssh/tmp).
 
 ## FLAGS
 

@@ -8,7 +8,7 @@ The root access couldn't be any easier. Someone left the keys hanging on the doo
 ## RECONNAISSANCE
 
 1. Scan the box with rustscan.
-	1. Full port scan --> [nmap file](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Pickle%20Rick/rustscan/all.nmap).
+	1. Full port scan --> [nmap file](rustscan/all.nmap).
 
 	**Results**
 
@@ -57,7 +57,7 @@ The root access couldn't be any easier. Someone left the keys hanging on the doo
     Nmap done: 1 IP address (1 host up) scanned in 0.38 seconds
 	```
 
-	2. Full Service and Scripts scan on the found ports. --> [nmap file](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Pickle%20Rick/rustscan/main.nmap)
+	2. Full Service and Scripts scan on the found ports. --> [nmap file](rustscan/main.nmap)
 
 	**Results**
 
@@ -163,25 +163,25 @@ The root access couldn't be any easier. Someone left the keys hanging on the doo
 
 1. Let's first check out the web server on port 80. 
 	1. We get a static page with no links going out to any other page.
-    ![](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Pickle%20Rick/images/web.png)
+    ![](images/web.png)
 	2. We will go for the low hanging fruit - robots, page source and try to get some information.
-    ![](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Pickle%20Rick/images/ps.png)
+    ![](images/ps.png)
     \
     \
-    ![](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Pickle%20Rick/images/robots.png)
-	3. We can run sub domain check on this port using `feroxbuster`. Results can be found [here](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Pickle%20Rick/web/ferox.out).
+    ![](images/robots.png)
+	3. We can run sub domain check on this port using `feroxbuster`. Results can be found [here](web/ferox.out).
 	4. Look through a proxy to get more details on the request:response model setup.
-	5. Run a basic Nikto Scan. The results can be obtained here - [Nikto Scan](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Pickle%20Rick/web/nikto.txt).
+	5. Run a basic Nikto Scan. The results can be obtained here - [Nikto Scan](web/nikto.txt).
 
-2. From the `robots.txt` and `page-source`, we get a set of [credentials](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Pickle%20Rick/web/creds.txt) that might come in handy later. 
+2. From the `robots.txt` and `page-source`, we get a set of [credentials](web/creds.txt) that might come in handy later. 
 
 3. From the `feroxbuster scan`, we find out that there is a login.php --> portal.php where we can get in with the found credentials. We land on a portal page that allows us to run system commands with some exceptions of-course. Running the `ls` commands, we find that we are in the web-root with `www-data` user.
-![](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Pickle%20Rick/images/login.png)
+![](images/login.png)
 \
 \
-![](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Pickle%20Rick/images/portal_cmd.png) 
+![](images/portal_cmd.png) 
 
-4. We find that there are not many commands that we can run to read the following files as the most common read commands are blocked. We find these later when we get the source code of `portal.php`. But we can use the other commands like `ls` or `rev` to read these files. We can read the first flag as [Sup3rS3cretPickl3Ingred](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Pickle%20Rick/ssh/html/Sup3rS3cretPickl3Ingred.txt) and the portal [file](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Pickle%20Rick/ssh/html/portal.php) to know that we can run the commands that are not blocked.
+4. We find that there are not many commands that we can run to read the following files as the most common read commands are blocked. We find these later when we get the source code of `portal.php`. But we can use the other commands like `ls` or `rev` to read these files. We can read the first flag as [Sup3rS3cretPickl3Ingred](ssh/html/Sup3rS3cretPickl3Ingred.txt) and the portal [file](ssh/html/portal.php) to know that we can run the commands that are not blocked.
 
 ```bash
 Sup3rS3cretPickl3Ingred.txt
@@ -193,10 +193,10 @@ login.php
 portal.php
 robots.txt
 ```
-![](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Pickle%20Rick/images/cmd_miss.png)
+![](images/cmd_miss.png)
 \
 \
-![](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Pickle%20Rick/images/portal_cmd.png)
+![](images/portal_cmd.png)
 
 5. We can now use this knowledge to get a reverse shell on the box using `/usr/bin/python3` as it is not blocked.
 
@@ -204,7 +204,7 @@ robots.txt
 
 1. We get a reverse shell on our `netcat listener`. Let's stabilize it to make it easier to operate. *python3* is present. Let's use it.
 
-![](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Pickle%20Rick/images/rev_shell_cmd.png)
+![](images/rev_shell_cmd.png)
 \
 ```bash
 $ nc -lnvvp 1337                                    
@@ -229,9 +229,9 @@ www-data@ip-10-10-110-219:/var/www/html$ stty rows 38 cols 131
 
 
 2. We get in as `www-data` user. Let's manually enumerate the system. Few places to look into.
-    1. **/var/www/html** which is the web root. We find a [clue.txt](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Pickle%20Rick/ssh/html/clue.txt) and a Base85 string that both point to the next flag to be on the system somewhere. Let's check it out.
+    1. **/var/www/html** which is the web root. We find a [clue.txt](ssh/html/clue.txt) and a Base85 string that both point to the next flag to be on the system somewhere. Let's check it out.
 
-	2. **/home** --> we can read the contents in the `rick` directory. We thus obtain the [second flag](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Pickle%20Rick/ssh/rick/second_ingredients.txt).
+	2. **/home** --> we can read the contents in the `rick` directory. We thus obtain the [second flag](ssh/rick/second_ingredients.txt).
 
 	```bash
 	www-data@ip-10-10-110-219:/home$ ls
@@ -288,7 +288,7 @@ root@ip-10-10-110-219:~# cat 3rd.txt
 
 ## EXTRA TREATS
 
-1. We can now obtain the [following files](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Pickle%20Rick/ssh/etc) easily that can be used later.
+1. We can now obtain the [following files](ssh/etc) easily that can be used later.
 	1. **/etc/passwd**
 	2. **/etc/shadow**
 	3. **/etc/hosts**
@@ -296,9 +296,9 @@ root@ip-10-10-110-219:~# cat 3rd.txt
 	5. **/etc/crontab**
 	6. **/proc**
 
-2. We can also add our *ssh keys* to `authorized_keys` to get a foothold on the box. You can use other methods like crons and process hijacking as well to plant a backdoor. These can be found fro [ubuntu](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Pickle%20Rick/ssh/ubuntu) and [root](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Pickle%20Rick/ssh/root).
+2. We can also add our *ssh keys* to `authorized_keys` to get a foothold on the box. You can use other methods like crons and process hijacking as well to plant a backdoor. These can be found fro [ubuntu](ssh/ubuntu) and [root](ssh/root).
 
-3. Find out more with the linpeas scans that can be obtained [here](https://github.com/pratty010/Boxes/blob/master/Try%20Hack%20Me/Easy/Pickle%20Rick/ssh/tmp). Have fun exploring other things.
+3. Find out more with the linpeas scans that can be obtained [here](ssh/tmp). Have fun exploring other things.
 
 ## FLAGS
 
