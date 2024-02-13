@@ -1,6 +1,7 @@
 # Write Up for Try Hack Me box - [Brooklyn 99](https://tryhackme.com/room/brooklynninenine)
 
-<TODO>
+This box has a stegnography challenge. This allows to get initial foothold.\
+Then GTFOBINs helps us carry to root.
 
 > Pratyush Prakhar (5#1NC#4N) - 11/04/2020
 

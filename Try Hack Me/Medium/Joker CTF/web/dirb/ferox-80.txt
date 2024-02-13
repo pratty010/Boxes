@@ -1,0 +1,28 @@
+200      GET       16l       62w      788c http://10.10.223.63/css/font.css
+MSG      0.000 feroxbuster::heuristics detected directory listing: http://10.10.223.63/img/ (Apache)
+200      GET       53l      374w   120997c http://10.10.223.63/img/100.jpg
+200      GET      652l     3405w   264659c http://10.10.223.63/img/13.png
+200      GET      678l     3382w   256270c http://10.10.223.63/img/14.png
+200      GET      737l     4076w   319321c http://10.10.223.63/img/4.png
+200      GET      730l     3941w   313184c http://10.10.223.63/img/1.png
+200      GET      680l     3441w   269117c http://10.10.223.63/img/11.png
+200      GET      788l     4147w   332926c http://10.10.223.63/img/9.png
+200      GET      722l     3903w   300909c http://10.10.223.63/img/7.png
+301      GET        9l       28w      310c http://10.10.223.63/img => http://10.10.223.63/img/
+301      GET        9l       28w      310c http://10.10.223.63/css => http://10.10.223.63/css/
+MSG      0.000 feroxbuster::heuristics detected directory listing: http://10.10.223.63/css (Apache)
+200      GET      232l      439w    23358c http://10.10.223.63/css/w3.css
+200      GET      599l     3361w   256245c http://10.10.223.63/img/15.png
+200      GET      629l     3384w   260463c http://10.10.223.63/img/16.png
+200      GET      615l     3289w   260369c http://10.10.223.63/img/10.png
+200      GET      742l     4080w   313301c http://10.10.223.63/img/6.png
+200      GET      721l     4035w   319239c http://10.10.223.63/img/5.png
+200      GET      699l     3673w   288859c http://10.10.223.63/img/12.png
+200      GET      626l     3336w   256036c http://10.10.223.63/img/2.png
+200      GET        0l        0w   197426c http://10.10.223.63/img/17.png
+200      GET        0l        0w   194420c http://10.10.223.63/img/18.png
+200      GET        0l        0w   169977c http://10.10.223.63/img/3.png
+200      GET        0l        0w   152506c http://10.10.223.63/img/8.png
+200      GET       96l      826w     5954c http://10.10.223.63/
+200      GET     1160l     5835w    94744c http://10.10.223.63/phpinfo.php
+200      GET        6l       66w      320c http://10.10.223.63/secret.txt
