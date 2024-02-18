@@ -1,0 +1,6 @@
+/uploads             [36m (Status: 301)[0m [Size: 316][34m [--> http://10.10.239.203/uploads/][0m
+/about.php           [32m (Status: 200)[0m [Size: 2213]
+/secret              [36m (Status: 301)[0m [Size: 315][34m [--> http://10.10.239.203/secret/][0m
+/robots.txt          [32m (Status: 200)[0m [Size: 33]
+/server-status       [33m (Status: 403)[0m [Size: 278]
+/.php                [33m (Status: 403)[0m [Size: 278]

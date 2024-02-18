@@ -1,4 +1,4 @@
-# Write Up for Try Hack Me box - [Joker](https://tryhackme.com/room/brooklynninenine)
+# Write Up for Try Hack Me box - [Joker](https://tryhackme.com/room/jokerctf)
 
 The initial access is joomla CMS.\
 The next stage is lxc grouip priv esc.
