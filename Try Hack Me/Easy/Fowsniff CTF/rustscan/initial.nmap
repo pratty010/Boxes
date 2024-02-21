@@ -1,0 +1,13 @@
+# Nmap 7.94SVN scan initiated Sun Feb 18 15:05:56 2024 as: nmap -vvv -p 22,80,110,143 -oN rustscan/initial.nmap 10.10.101.18
+Nmap scan report for 10.10.101.18
+Host is up, received syn-ack (0.20s latency).
+Scanned at 2024-02-18 15:05:56 EST for 1s
+
+PORT    STATE SERVICE REASON
+22/tcp  open  ssh     syn-ack
+80/tcp  open  http    syn-ack
+110/tcp open  pop3    syn-ack
+143/tcp open  imap    syn-ack
+
+Read data files from: /usr/bin/../share/nmap
+# Nmap done at Sun Feb 18 15:05:57 2024 -- 1 IP address (1 host up) scanned in 0.45 seconds

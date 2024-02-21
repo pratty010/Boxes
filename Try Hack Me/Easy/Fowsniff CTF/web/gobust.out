@@ -1,0 +1,7 @@
+/images              [36m (Status: 301)[0m [Size: 313][34m [--> http://10.10.101.18/images/][0m
+/assets              [36m (Status: 301)[0m [Size: 313][34m [--> http://10.10.101.18/assets/][0m
+/security.txt        [32m (Status: 200)[0m [Size: 459]
+/README.txt          [32m (Status: 200)[0m [Size: 1288]
+/robots.txt          [32m (Status: 200)[0m [Size: 26]
+/server-status       [33m (Status: 403)[0m [Size: 300]
+/LICENSE.txt         [32m (Status: 200)[0m [Size: 17128]

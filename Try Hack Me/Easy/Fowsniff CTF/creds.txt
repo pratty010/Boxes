@@ -1,0 +1,2 @@
+mail:seina:scoobydoo2
+ssh:baksteen:S1ck3nBluff+secureshell
