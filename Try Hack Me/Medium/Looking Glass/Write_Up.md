@@ -289,7 +289,7 @@ thm{******************************}
 ```
 2. We get in and read the root flag. Yipee.
 
-3. I leave you with a thought - Is it actually the end?
+3. I leave you with a thought - Is it actually the end? But completed the [series](https://tryhackme.com/hacktivities?tab=practice&page=1&free=all&order=most-popular&difficulty=all&type=all), I will shut off now.
 
 ## BROWNIE POINTS
 
