@@ -1,0 +1,38 @@
+# Nmap 7.94SVN scan initiated Wed May 22 01:07:50 2024 as: nmap -vvv -p 22,21,101,80,100,120,109,107,119,112,116,105,108,106,124,117,121,114,103,113,104,111,102,118,110,123,122,125,115 -oN rustscan/all.nmap 10.10.159.137
+Nmap scan report for 10.10.159.137
+Host is up, received syn-ack (0.22s latency).
+Scanned at 2024-05-22 01:07:51 EDT for 0s
+
+PORT    STATE SERVICE    REASON
+21/tcp  open  ftp        syn-ack
+22/tcp  open  ssh        syn-ack
+80/tcp  open  http       syn-ack
+100/tcp open  newacct    syn-ack
+101/tcp open  hostname   syn-ack
+102/tcp open  iso-tsap   syn-ack
+103/tcp open  gppitnp    syn-ack
+104/tcp open  acr-nema   syn-ack
+105/tcp open  csnet-ns   syn-ack
+106/tcp open  pop3pw     syn-ack
+107/tcp open  rtelnet    syn-ack
+108/tcp open  snagas     syn-ack
+109/tcp open  pop2       syn-ack
+110/tcp open  pop3       syn-ack
+111/tcp open  rpcbind    syn-ack
+112/tcp open  mcidas     syn-ack
+113/tcp open  ident      syn-ack
+114/tcp open  audionews  syn-ack
+115/tcp open  sftp       syn-ack
+116/tcp open  ansanotify syn-ack
+117/tcp open  uucp-path  syn-ack
+118/tcp open  sqlserv    syn-ack
+119/tcp open  nntp       syn-ack
+120/tcp open  cfdptkt    syn-ack
+121/tcp open  erpc       syn-ack
+122/tcp open  smakynet   syn-ack
+123/tcp open  ntp        syn-ack
+124/tcp open  ansatrader syn-ack
+125/tcp open  locus-map  syn-ack
+
+Read data files from: /usr/bin/../share/nmap
+# Nmap done at Wed May 22 01:07:51 2024 -- 1 IP address (1 host up) scanned in 0.67 seconds
